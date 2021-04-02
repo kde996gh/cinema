@@ -1,0 +1,2 @@
+# cinema
+Alkalmazásfejlesztés beadandó
