@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.alkfejl.controller.ReservationWindowController">
+    <top>
+        <Label text="Foglalások kezelése" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" top="10.0" />
+            </padding>
+        </Label>
+    </top>
+    <left>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button mnemonicParsing="false" onAction="#backToMainWindow" text="Főmenü" />
+            <Label text="Foglaló keresése" />
+            <TextField />
+            </children>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <padding>
+                <Insets top="25.0" />
+            </padding>
+        </VBox>
+    </left>
+    <center>
+        <TableView prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn prefWidth="114.4000244140625" text="Foglaló neve" />
+                <TableColumn prefWidth="65.5999755859375" text="Jegyszám" />
+                <TableColumn prefWidth="77.5999755859375" text="Terem" />
+                <TableColumn minWidth="0.0" prefWidth="78.4000244140625" text="Székszám" />
+                <TableColumn prefWidth="170.4000244140625" text="Műveletek" />
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
