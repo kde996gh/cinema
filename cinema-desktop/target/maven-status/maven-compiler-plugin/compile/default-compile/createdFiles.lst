@@ -1,7 +1,7 @@
-hu\alkfejl\controller\HallsWindowController.class
 hu\alkfejl\SystemInfo.class
+hu\alkfejl\controller\TicketWindowController.class
 hu\alkfejl\App.class
 hu\alkfejl\controller\ReservationWindowController.class
+hu\alkfejl\controller\MovieWindowController.class
 hu\alkfejl\controller\MainWindowController.class
-hu\alkfejl\controller\TicketsWindowController.class
-hu\alkfejl\controller\MoviesWindowController.class
+hu\alkfejl\controller\RoomWindowController.class

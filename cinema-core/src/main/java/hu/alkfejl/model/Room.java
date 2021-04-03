@@ -12,7 +12,6 @@ public class Room {
     private IntegerProperty rowSeats = new SimpleIntegerProperty(this, "rowSeats");
     private StringProperty name = new SimpleStringProperty(this, "name");
 
-
     public int getId() {
         return id.get();
     }
@@ -59,5 +58,10 @@ public class Room {
 
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    @Override
+    public String toString() {
+        return "Room: " + name.getValue() + ", ferohely: " + (this.rowNumber.getValue() * this.rowSeats.getValue());
     }
 }

@@ -1,5 +1,8 @@
 package hu.alkfejl;
 
+import hu.alkfejl.dao.implementation.RoomDAOImpl;
+import hu.alkfejl.dao.interfaces.RoomDAO;
+import hu.alkfejl.model.Room;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * JavaFX App
@@ -50,6 +54,10 @@ private static Stage stage;
     public static void main(String[] args) {
 
 
+
+         RoomDAO roomDAO = new RoomDAOImpl();
+         List<Room> rl = roomDAO.findAll();
+        System.out.println(rl);
 
         launch();
     }
