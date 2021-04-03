@@ -5,16 +5,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/11"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.TicketsWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.alkfejl.controller.MovieWindowController">
     <top>
-        <Label text="Jegyek beállítása" BorderPane.alignment="CENTER">
+        <Label text="Filmek beállítása" BorderPane.alignment="CENTER">
             <font>
                 <Font size="20.0" />
             </font>
@@ -27,7 +28,9 @@
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
                 <Button mnemonicParsing="false" onAction="#backToMainWindow" text="Főmenü" />
-                <Button mnemonicParsing="false" text="Új jegy" />
+                <Button mnemonicParsing="false" text="Új film" />
+            <Label text="Film keresése" />
+            <TextField />
             </children>
             <BorderPane.margin>
                 <Insets />
@@ -40,11 +43,8 @@
     <center>
         <TableView prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn prefWidth="75.0" text="Film" />
-                <TableColumn prefWidth="83.20001220703125" text="Jegy típus" />
-                <TableColumn prefWidth="68.0" text="Ár" />
-                <TableColumn prefWidth="68.0" text="Korhatár" />
-                <TableColumn prefWidth="206.4000244140625" text="Műveletek" />
+                <TableColumn prefWidth="220.0" text="Cím" />
+                <TableColumn prefWidth="279.20001220703125" text="Műveletek" />
             </columns>
         </TableView>
     </center>
