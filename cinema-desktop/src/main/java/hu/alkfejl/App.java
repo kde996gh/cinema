@@ -48,6 +48,9 @@ private static Stage stage;
         return loader;
     }
     public static void main(String[] args) {
+
+
+
         launch();
     }
 
