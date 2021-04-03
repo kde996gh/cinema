@@ -1404,7 +1404,7 @@
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="511" parent="171" name="date">
+    <column id="511" parent="171" name="playTimeDate">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
