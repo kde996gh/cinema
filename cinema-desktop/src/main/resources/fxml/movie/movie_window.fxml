@@ -13,7 +13,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hu.alkfejl.controller.MovieWindowController">
+            fx:controller="hu.alkfejl.controller.movie.MovieWindowController">
     <top>
         <Label text="Filmek beállítása" BorderPane.alignment="CENTER">
             <font>

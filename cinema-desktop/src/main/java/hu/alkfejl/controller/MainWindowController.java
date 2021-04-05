@@ -16,22 +16,22 @@ public class MainWindowController implements Initializable {
 
     @FXML
     public void switchToHalls(ActionEvent actionEvent) {
-        App.loadFXML("/fxml/room_window.fxml");
+        App.loadFXML("/fxml/room/room_window.fxml");
     }
 
     @FXML
     public void switchToMovies(ActionEvent actionEvent) {
-        App.loadFXML("/fxml/movie_window.fxml");
+        App.loadFXML("/fxml/movie/movie_window.fxml");
     }
 
     @FXML
     public void switchToTickets(ActionEvent actionEvent) {
-        App.loadFXML("/fxml/ticket_window.fxml");
+        App.loadFXML("/fxml/ticket/ticket_window.fxml");
     }
 
     @FXML
     public void switchToReservations(ActionEvent actionEvent) {
-        App.loadFXML("/fxml/reservation_window.fxml");
+        App.loadFXML("/fxml/reservation/reservation_window.fxml");
     }
 
     @Override

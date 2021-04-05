@@ -9,7 +9,7 @@ public class Room {
 
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
     private IntegerProperty rowNumber = new SimpleIntegerProperty(this, "rowNumber");
-    private IntegerProperty rowSeats = new SimpleIntegerProperty(this, "rowSeats");
+    private IntegerProperty colNumber = new SimpleIntegerProperty(this, "colNumber");
     private StringProperty name = new SimpleStringProperty(this, "name");
 
     public int getId() {
@@ -36,16 +36,16 @@ public class Room {
         this.rowNumber.set(rowNumber);
     }
 
-    public int getRowSeats() {
-        return rowSeats.get();
+    public int getColNumber() {
+        return colNumber.get();
     }
 
-    public IntegerProperty rowSeatsProperty() {
-        return rowSeats;
+    public IntegerProperty colNumberProperty() {
+        return colNumber;
     }
 
-    public void setRowSeats(int rowSeats) {
-        this.rowSeats.set(rowSeats);
+    public void setColNumber(int colNumber) {
+        this.colNumber.set(colNumber);
     }
 
     public String getName() {
@@ -62,6 +62,6 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room: " + name.getValue() + ", ferohely: " + (this.rowNumber.getValue() * this.rowSeats.getValue());
+        return "Room: " + name.getValue() + ", ferohely: " + (this.rowNumber.getValue() * this.colNumber.getValue());
     }
 }
