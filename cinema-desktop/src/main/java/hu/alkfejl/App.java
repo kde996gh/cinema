@@ -56,8 +56,8 @@ private static Stage stage;
 
 
          RoomDAO roomDAO = new RoomDAOImpl();
-         List<Room> rl = roomDAO.findAll();
-        System.out.println(rl);
+         roomDAO.fillSeats();
+      //  System.out.println(rl);
 
         launch();
     }

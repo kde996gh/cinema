@@ -12,7 +12,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/11"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.TicketWindowController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.ticket.TicketWindowController">
     <top>
         <Label text="Jegyek beállítása" BorderPane.alignment="CENTER">
             <font>

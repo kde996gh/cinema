@@ -9,5 +9,5 @@ public interface RoomDAO {
     List<Room> findAll();
     Room save(Room room);
     void delete(Room room);
-
+    void fillSeats();
 }
