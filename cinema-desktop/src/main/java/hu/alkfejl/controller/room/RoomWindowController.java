@@ -40,7 +40,7 @@ public class RoomWindowController implements Initializable{
     private TableColumn<Room, Integer> colNumberColumn;
 
     @FXML
-    private TableColumn<Room, Integer> seatSumColumn;
+    private TableColumn<Room, Integer> seatNumberColumn;
 
     @FXML
     private TableColumn<Room, Void> actionsColumn;
@@ -58,6 +58,7 @@ public class RoomWindowController implements Initializable{
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         rowNumberColumn.setCellValueFactory(new PropertyValueFactory<>("rowNumber"));
         colNumberColumn.setCellValueFactory(new PropertyValueFactory<>("colNumber"));
+        seatNumberColumn.setCellValueFactory(new PropertyValueFactory<>("seatNumber"));
 
         actionsColumn.setCellFactory(param -> new TableCell<>(){
             private final Button deleteButton = new Button("Törlés");

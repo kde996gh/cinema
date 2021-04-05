@@ -5,10 +5,7 @@ import hu.alkfejl.App;
 import hu.alkfejl.dao.implementation.RoomDAOImpl;
 import hu.alkfejl.dao.interfaces.RoomDAO;
 import hu.alkfejl.model.Room;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,6 +34,9 @@ public class RoomAddEditController implements Initializable {
     @FXML
     private Button saveButton;
 
+    @FXML
+    private TextField room_seats;
+
 
 //    private SpinnerValueFactory.IntegerSpinnerValueFactory room_rows;
 
@@ -46,8 +46,13 @@ public class RoomAddEditController implements Initializable {
         this.room = r;
         List<Room> roomList = roomdao.findAll();
         room_name.textProperty().bindBidirectional(room.nameProperty());
+        IntegerProperty asda = new SimpleIntegerProperty(room.getSeatNumber());
+        room_seats.setText(asda.getValue().toString());
+        IntegerProperty colTest = new SimpleIntegerProperty(room.getColNumber());
 
         // sor beállítás + bind
+        IntegerProperty rowTest = new SimpleIntegerProperty(room.getRowNumber());
+
         SpinnerValueFactory<Integer> rowValueFactory=
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
 
@@ -56,11 +61,15 @@ public class RoomAddEditController implements Initializable {
 
         room_rows.valueProperty().addListener((observable, oldV, newV) -> {
             IntegerProperty tmp = new SimpleIntegerProperty(newV);
+            rowTest.bind(tmp);
+            asda.setValue(colTest.getValue() * rowTest.getValue());
+            room_seats.setText(asda.getValue().toString());
+
             room.rowNumberProperty().bindBidirectional(tmp);
         });
         //oszlop beállítás + bind
 
-     //   IntegerProperty colTest = new SimpleIntegerProperty();
+
 
         SpinnerValueFactory<Integer> colValueFactory=
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
@@ -70,14 +79,42 @@ public class RoomAddEditController implements Initializable {
 
         room_cols.valueProperty().addListener((observable, oldV, newV) -> {
             IntegerProperty tmp = new SimpleIntegerProperty(newV);
-          //  colTest.bind(tmp);
+            colTest.bind(tmp);
             room.colNumberProperty().bindBidirectional(tmp);
-
-          //  System.out.println("coltest: " + colTest.get());
-
+            asda.setValue(colTest.getValue() * rowTest.getValue());
+            room_seats.setText(asda.getValue().toString());
+            System.out.println(asda.getValue());
         });
 
+        System.out.println(colTest.getValue() * rowTest.getValue());
+      //  IntegerProperty asda = new SimpleIntegerProperty(colTest.getValue() * rowTest.getValue());
 
+        room.seatNumberProperty().bindBidirectional(asda);
+
+
+
+
+
+
+
+
+          //  System.out.println("coltest: " + colTest.get());
+           // colTest.multiply(rowTest);
+
+
+
+        /*
+             IntegerProperty yzt = new SimpleIntegerProperty(Integer.parseInt(room_seats.getText()));
+            IntegerProperty yzt2 = new SimpleIntegerProperty(colTest.multiply(rowTest));
+            room.seatNumberProperty().bindBidirectional(yzt);
+        room_seats.textProperty().bind((colTest.multiply(rowTest)).asString());
+        room_seats.textProperty().bind((colTest.multiply(rowTest)).asString());
+
+        IntegerProperty xd = new SimpleIntegerProperty(Integer.parseInt(room_seats.getText()));
+
+        room.seatNumberProperty().bindBidirectional(Integer.parseInt(room_seats.getText()));
+
+        System.out.println("fikás csöcs" + Integer.parseInt(room_seats.getText()));*/
 
     }
 

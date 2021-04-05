@@ -11,6 +11,19 @@ public class Room {
     private IntegerProperty rowNumber = new SimpleIntegerProperty(this, "rowNumber");
     private IntegerProperty colNumber = new SimpleIntegerProperty(this, "colNumber");
     private StringProperty name = new SimpleStringProperty(this, "name");
+    private IntegerProperty seatNumber = new SimpleIntegerProperty(this, "seatNumber");
+
+    public int getSeatNumber() {
+        return seatNumber.get();
+    }
+
+    public IntegerProperty seatNumberProperty() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber.set(seatNumber);
+    }
 
     public int getId() {
         return id.get();
@@ -62,6 +75,6 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room: " + name.getValue() + ", ferohely: " + (this.rowNumber.getValue() * this.colNumber.getValue());
+        return "Room: " + name.getValue() + ", ferohely: " + seatNumber.getValue();
     }
 }

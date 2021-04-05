@@ -38,7 +38,7 @@
             <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Teremnév" />
             <TableColumn fx:id="rowNumberColumn" prefWidth="83.20001220703125" text="Sorok száma" />
             <TableColumn fx:id="colNumberColumn" prefWidth="103.20001220703125" text="Sor mérete" />
-            <TableColumn fx:id="seatSumColumn" prefWidth="84.79998779296875" text="Helyek száma" />
+            <TableColumn fx:id="seatNumberColumn" prefWidth="84.79998779296875" text="Helyek száma" />
             <TableColumn fx:id="actionsColumn" prefWidth="153.5999755859375" text="Műveletek" />
         </columns>
       </TableView>

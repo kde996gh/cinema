@@ -10,8 +10,8 @@ import java.util.List;
 
 public class RoomDAOImpl implements RoomDAO {
 
-    private static final String INSERT_ROOM = "INSERT INTO ROOM (rowNumber, colNumber, name) VALUES (?,?,?)";
-    private static final String UPDATE_ROOM = "UPDATE ROOM SET rowNumber=?, colNumber=?, name=? WHERE id=?";
+    private static final String INSERT_ROOM = "INSERT INTO ROOM (rowNumber, colNumber, name, seatNumber) VALUES (?,?,?,?)";
+    private static final String UPDATE_ROOM = "UPDATE ROOM SET rowNumber=?, colNumber=?, name=?, seatNumber=? WHERE id=?";
     private  String connectionURL;
     private static final String SELECT_ALL_ROOM = "SELECT * FROM ROOM";
     private static final String INSERT_INTO_SEATS  = "INSERT INTO SEAT (id, room_id, seat_id) VALUES (?,?,?)";
@@ -69,6 +69,7 @@ public class RoomDAOImpl implements RoomDAO {
                     current.setRowNumber(rs.getInt("rowNumber"));
                     current.setColNumber(rs.getInt("colNumber"));
                     current.setName(rs.getString("name"));
+                    current.setSeatNumber(rs.getInt("seatNumber"));
 
                     result.add(current);
                 }
@@ -87,11 +88,12 @@ public class RoomDAOImpl implements RoomDAO {
 
     ){
         if(room.getId() > 0) {
-            stmt.setInt(4, room.getId());
+            stmt.setInt(5, room.getId());
         }
         stmt.setInt(1, room.getRowNumber());
         stmt.setInt(2, room.getColNumber());
         stmt.setString(3, room.getName());
+        stmt.setInt(4, room.getSeatNumber());
         stmt.executeUpdate();
 
 
