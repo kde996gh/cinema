@@ -45,51 +45,49 @@ public class RoomAddEditController implements Initializable {
     public void setRoom(Room r){
         this.room = r;
         List<Room> roomList = roomdao.findAll();
-        room_name.textProperty().bindBidirectional(room.nameProperty());
-        IntegerProperty asda = new SimpleIntegerProperty(room.getSeatNumber());
-        room_seats.setText(asda.getValue().toString());
-        IntegerProperty colTest = new SimpleIntegerProperty(room.getColNumber());
+
+        room_name.textProperty().bindBidirectional(room.nameProperty());//szoba nevének betölése 2way bindinggel
+        IntegerProperty seatProp = new SimpleIntegerProperty(room.getSeatNumber());// uj prop létrehozása a szoba méretével
+        room_seats.setText(seatProp.getValue().toString()); // az érték beállytása hogy az fxmlen is megjelenjen
+        IntegerProperty colTest = new SimpleIntegerProperty(room.getColNumber()); //az oszlop szám lekérése
+        IntegerProperty rowTest = new SimpleIntegerProperty(room.getRowNumber()); // a sor számok lekérése
 
         // sor beállítás + bind
-        IntegerProperty rowTest = new SimpleIntegerProperty(room.getRowNumber());
-
+        //sor spinner méret beállítása
         SpinnerValueFactory<Integer> rowValueFactory=
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
 
-        rowValueFactory.setValue(room.getRowNumber());
-        room_rows.setValueFactory(rowValueFactory);
-
+        rowValueFactory.setValue(room.getRowNumber()); // a meglévő alapérték beállítása
+        room_rows.setValueFactory(rowValueFactory); // spinner értékek beállítása
+        //spinner érték változásának lekövetése
         room_rows.valueProperty().addListener((observable, oldV, newV) -> {
-            IntegerProperty tmp = new SimpleIntegerProperty(newV);
-            rowTest.bind(tmp);
-            asda.setValue(colTest.getValue() * rowTest.getValue());
-            room_seats.setText(asda.getValue().toString());
-
-            room.rowNumberProperty().bindBidirectional(tmp);
+            IntegerProperty tmp = new SimpleIntegerProperty(newV); // ideiglenes property az aktuális érték eltárolására
+            rowTest.bind(tmp);                                     // az oszlopérték az új értéktől függ
+            seatProp.setValue(colTest.getValue() * rowTest.getValue()); // az aktuális sor mérettől függő székszám beállítása
+            room_seats.setText(seatProp.getValue().toString());  // a field ami kiirja a székek számát realtime frissuljön ezért ujra van álltiva itt
+            room.rowNumberProperty().bindBidirectional(tmp); // a sorok számát kötöm az aktuálishoz
         });
         //oszlop beállítás + bind
-
-
+        //oszlop spinner méret beállítása
 
         SpinnerValueFactory<Integer> colValueFactory=
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
 
-        colValueFactory.setValue(room.getColNumber());
-        room_cols.setValueFactory(colValueFactory);
-
+        colValueFactory.setValue(room.getColNumber()); // a meglévő érték beállítása kezdőértéknek
+        room_cols.setValueFactory(colValueFactory);    // a spinner értékek beállítása
+        //az oszlop spinner érték változásának lekövetése
         room_cols.valueProperty().addListener((observable, oldV, newV) -> {
-            IntegerProperty tmp = new SimpleIntegerProperty(newV);
-            colTest.bind(tmp);
-            room.colNumberProperty().bindBidirectional(tmp);
-            asda.setValue(colTest.getValue() * rowTest.getValue());
-            room_seats.setText(asda.getValue().toString());
-            System.out.println(asda.getValue());
+            IntegerProperty tmp = new SimpleIntegerProperty(newV);// ideiglenes property az aktuális érték eltárolására
+            colTest.bind(tmp);                                    //az uj oszlop érték kötése, a későbbi szék szám szorzás végett
+            room.colNumberProperty().bindBidirectional(tmp);      // az oszlopok számát kötöm az aktuális objekthez
+            seatProp.setValue(colTest.getValue() * rowTest.getValue()); // az aktuális oszlop mérettől függő székszám beállítása
+            room_seats.setText(seatProp.getValue().toString()); //a field ami kiirja a székek számát realtime frissüljön oszlop méret állításkor is
+            //System.out.println(seatProp.getValue());
         });
 
         System.out.println(colTest.getValue() * rowTest.getValue());
-      //  IntegerProperty asda = new SimpleIntegerProperty(colTest.getValue() * rowTest.getValue());
 
-        room.seatNumberProperty().bindBidirectional(asda);
+        room.seatNumberProperty().bindBidirectional(seatProp);
 
 
 
@@ -131,9 +129,10 @@ public class RoomAddEditController implements Initializable {
     @FXML
     public void onSave() {
         room = roomdao.save(room);
-
-        App.loadFXML("/fxml/main_window.fxml");
-        System.out.println("megnyomták a terem mentést!");
+        room = roomdao.addRoomSeats(room);
+        //roomdao.addRoomSeats(r);
+        App.loadFXML("/fxml/room/room_window.fxml");
+        //System.out.println("megnyomták a terem mentést!");
     }
 
     public void onCancel(ActionEvent actionEvent) {

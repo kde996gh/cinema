@@ -8,6 +8,19 @@ public class Seat {
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
     private IntegerProperty room_id = new SimpleIntegerProperty(this, "room_id");
     private IntegerProperty seat_id = new SimpleIntegerProperty(this, "seat_id");
+    private IntegerProperty taken = new SimpleIntegerProperty(this, "taken");
+
+    public int getTaken() {
+        return taken.get();
+    }
+
+    public IntegerProperty takenProperty() {
+        return taken;
+    }
+
+    public void setTaken(int taken) {
+        this.taken.set(taken);
+    }
 
     public int getSeat_id() {
         return seat_id.get();
