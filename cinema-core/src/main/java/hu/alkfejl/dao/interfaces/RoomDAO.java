@@ -10,4 +10,6 @@ public interface RoomDAO {
     Room save(Room room);
     void delete(Room room);
     void fillSeats();
+    Room addRoomSeats(Room room);
+    boolean findRoomById(Room room);
 }
