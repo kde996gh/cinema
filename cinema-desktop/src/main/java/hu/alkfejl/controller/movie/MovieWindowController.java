@@ -5,21 +5,16 @@ import hu.alkfejl.dao.implementation.MovieDAOImpl;
 import hu.alkfejl.model.Movie;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,6 +32,7 @@ public class MovieWindowController implements Initializable {
     private AnchorPane movieListPane;
     @FXML
     private FlowPane menuFlowPane;
+
 
     //gridPane.add(movieBtn[i], col, row);
 
@@ -73,7 +69,7 @@ public class MovieWindowController implements Initializable {
                 col = 0;
                 row++;
             }
-            int currentIndex = i;
+            //int currentIndex = i;
 
             /*
             FXMLLoader fxmlLoader = App.loadFXML(("/fxml/room/room_add_edit.fxml"));
@@ -83,7 +79,7 @@ public class MovieWindowController implements Initializable {
             Movie currMovieToSend = movies.get(i);
 
             movieButton[i].setOnAction(actionEvent -> {
-                FXMLLoader fxmlLoader = App.loadFXML(("/fxml/movie/edit_movie.fxml"));
+                FXMLLoader fxmlLoader = App.loadFXML(("/fxml/movie/movie_add_edit.fxml"));
                 MovieEditController controller = fxmlLoader.getController();
                 controller.setMovie(currMovieToSend);
             });
