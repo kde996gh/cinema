@@ -12,6 +12,20 @@ public class Movie {
     private IntegerProperty length = new SimpleIntegerProperty(this, "length");
     private IntegerProperty ageLimit = new SimpleIntegerProperty(this, "ageLimit");
     private StringProperty director = new SimpleStringProperty(this, "director");
+    private StringProperty actors = new SimpleStringProperty(this, "actors");
+
+    public String getActors() {
+        return actors.get();
+    }
+
+    public StringProperty actorsProperty() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors.set(actors);
+    }
+
     private StringProperty description = new SimpleStringProperty(this, "description");
     private StringProperty coverImage = new SimpleStringProperty(this, "coverImage");
     private IntegerProperty movieType = new SimpleIntegerProperty(this, "movieType");
