@@ -4,25 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ac1cbdf-765c-46dd-98b1-82f36a1c94c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieEditController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/edit_movie.fxml" afterDir="false" />
+    <list default="true" id="0ac1cbdf-765c-46dd-98b1-82f36a1c94c4" name="Default Changelist" comment="film szerkesztés binding">
+      <change afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlayTimeAddEditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlaytimeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/playtime/playtime_add_edit.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/playtime/playtime_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ca64df07-d126-4751-bbe9-38915c705b41.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ca64df07-d126-4751-bbe9-38915c705b41.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/MovieDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/MovieDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/RoomDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/RoomDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/TicketDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/TicketDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/MovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/MovieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/TicketDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/TicketDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/target/classes/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/classes/cinema" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieEditController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomAddEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomAddEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/main_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/movie_add_edit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/movie_add_edit.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/movie_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/movie_window.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/asd.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/halls_window.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/movies_window.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/reservations_window.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/tickets_window.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/main_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/hu/alkfejl/controller/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/classes/hu/alkfejl/controller/MainWindowController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +91,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../gitesOpProjekt/Movie-Booking-System-App" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -92,13 +107,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -118,7 +135,13 @@
       <workItem from="1617572208624" duration="1467000" />
       <workItem from="1617604492840" duration="19647000" />
       <workItem from="1617701857313" duration="7416000" />
-      <workItem from="1617883028781" duration="10528000" />
+      <workItem from="1617883028781" duration="18891000" />
+      <workItem from="1617910752381" duration="3942000" />
+      <workItem from="1617953090391" duration="711000" />
+      <workItem from="1617957584612" duration="15710000" />
+      <workItem from="1618039302790" duration="2000" />
+      <workItem from="1618047017042" duration="9621000" />
+      <workItem from="1618122661179" duration="6107000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton">
       <created>1617386989614</created>
@@ -176,7 +199,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617713560270</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="filmek listázás + szerkesztés basic működés">
+      <created>1617896234528</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617896234528</updated>
+    </task>
+    <task id="LOCAL-00010" summary="film szerkesztés binding">
+      <created>1617907440459</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617907440459</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +228,8 @@
     <MESSAGE value="room 85%" />
     <MESSAGE value="room 95% + realtime meret szamitás és megjelenités" />
     <MESSAGE value="room 99% + szék db feltölése megfelelően" />
-    <option name="LAST_COMMIT_MESSAGE" value="room 99% + szék db feltölése megfelelően" />
+    <MESSAGE value="filmek listázás + szerkesztés basic működés" />
+    <MESSAGE value="film szerkesztés binding" />
+    <option name="LAST_COMMIT_MESSAGE" value="film szerkesztés binding" />
   </component>
 </project>

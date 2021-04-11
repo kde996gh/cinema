@@ -3,6 +3,8 @@ E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\implementation\TicketDAOImpl.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\implementation\PlayTimeDAOImpl.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\interfaces\ReservationDAO.java
+E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\interfaces\UserDAO.java
+E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\model\User.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\model\Ticket.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\implementation\ReservationDAOImpl.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\model\PlayTime.java
@@ -15,5 +17,6 @@ E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\interfaces\TicketDAO.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\model\Movie.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\implementation\SeatDAOImpl.java
+E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\implementation\UserDaoImpl.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\dao\interfaces\SeatDAO.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\java\hu\alkfejl\model\Room.java

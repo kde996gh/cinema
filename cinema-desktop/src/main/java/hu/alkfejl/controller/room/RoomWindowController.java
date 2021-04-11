@@ -46,9 +46,6 @@ public class RoomWindowController implements Initializable{
     private TableColumn<Room, Void> actionsColumn;
 
 
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         refreshTable();
@@ -94,11 +91,7 @@ public class RoomWindowController implements Initializable{
                 }
             }
         });
-
-
     }//init vége
-
-
 
     private void refreshTable() {
         all = roomDAO.findAll();

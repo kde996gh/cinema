@@ -1,6 +1,5 @@
 package hu.alkfejl.controller.room;
 
-import com.sun.javafx.binding.BidirectionalBinding;
 import hu.alkfejl.App;
 import hu.alkfejl.dao.implementation.RoomDAOImpl;
 import hu.alkfejl.dao.interfaces.RoomDAO;
@@ -22,7 +21,6 @@ public class RoomAddEditController implements Initializable {
     private Room room;
     private RoomDAO roomdao = new RoomDAOImpl();
 
-
     @FXML
     private TextField room_name;
 
@@ -37,12 +35,7 @@ public class RoomAddEditController implements Initializable {
     @FXML
     private TextField room_seats;
 
-
-//    private SpinnerValueFactory.IntegerSpinnerValueFactory room_rows;
-
-
-
-    public void setRoom(Room r){
+    public void setRoom(Room r) {
         this.room = r;
         List<Room> roomList = roomdao.findAll();
 
@@ -54,7 +47,7 @@ public class RoomAddEditController implements Initializable {
 
         // sor beállítás + bind
         //sor spinner méret beállítása
-        SpinnerValueFactory<Integer> rowValueFactory=
+        SpinnerValueFactory<Integer> rowValueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
 
         rowValueFactory.setValue(room.getRowNumber()); // a meglévő alapérték beállítása
@@ -70,7 +63,7 @@ public class RoomAddEditController implements Initializable {
         //oszlop beállítás + bind
         //oszlop spinner méret beállítása
 
-        SpinnerValueFactory<Integer> colValueFactory=
+        SpinnerValueFactory<Integer> colValueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
 
         colValueFactory.setValue(room.getColNumber()); // a meglévő érték beállítása kezdőértéknek
@@ -82,44 +75,12 @@ public class RoomAddEditController implements Initializable {
             room.colNumberProperty().bindBidirectional(tmp);      // az oszlopok számát kötöm az aktuális objekthez
             seatProp.setValue(colTest.getValue() * rowTest.getValue()); // az aktuális oszlop mérettől függő székszám beállítása
             room_seats.setText(seatProp.getValue().toString()); //a field ami kiirja a székek számát realtime frissüljön oszlop méret állításkor is
-            //System.out.println(seatProp.getValue());
         });
 
         System.out.println(colTest.getValue() * rowTest.getValue());
 
         room.seatNumberProperty().bindBidirectional(seatProp);
-
-
-
-
-
-
-
-
-          //  System.out.println("coltest: " + colTest.get());
-           // colTest.multiply(rowTest);
-
-
-
-        /*
-             IntegerProperty yzt = new SimpleIntegerProperty(Integer.parseInt(room_seats.getText()));
-            IntegerProperty yzt2 = new SimpleIntegerProperty(colTest.multiply(rowTest));
-            room.seatNumberProperty().bindBidirectional(yzt);
-        room_seats.textProperty().bind((colTest.multiply(rowTest)).asString());
-        room_seats.textProperty().bind((colTest.multiply(rowTest)).asString());
-
-        IntegerProperty xd = new SimpleIntegerProperty(Integer.parseInt(room_seats.getText()));
-
-        room.seatNumberProperty().bindBidirectional(Integer.parseInt(room_seats.getText()));
-
-        System.out.println("fikás csöcs" + Integer.parseInt(room_seats.getText()));*/
-
     }
-
-
-
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -130,9 +91,7 @@ public class RoomAddEditController implements Initializable {
     public void onSave() {
         room = roomdao.save(room);
         room = roomdao.addRoomSeats(room);
-        //roomdao.addRoomSeats(r);
         App.loadFXML("/fxml/room/room_window.fxml");
-        //System.out.println("megnyomták a terem mentést!");
     }
 
     public void onCancel(ActionEvent actionEvent) {
