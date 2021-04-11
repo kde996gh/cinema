@@ -9,7 +9,7 @@ public class Movie {
 
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
     private StringProperty title = new SimpleStringProperty(this, "title");
-    private IntegerProperty length = new SimpleIntegerProperty(this, "length");
+    private IntegerProperty lengthMin = new SimpleIntegerProperty(this, "lengthMin");
     private IntegerProperty ageLimit = new SimpleIntegerProperty(this, "ageLimit");
     private StringProperty director = new SimpleStringProperty(this, "director");
     private StringProperty actors = new SimpleStringProperty(this, "actors");
@@ -54,16 +54,17 @@ public class Movie {
         this.title.set(title);
     }
 
-    public int getLength() {
-        return length.get();
+
+    public int getLengthMin() {
+        return lengthMin.get();
     }
 
-    public IntegerProperty lengthProperty() {
-        return length;
+    public IntegerProperty lengthMinProperty() {
+        return lengthMin;
     }
 
-    public void setLength(int length) {
-        this.length.set(length);
+    public void setLengthMin(int lengthMin) {
+        this.lengthMin.set(lengthMin);
     }
 
     public int getAgeLimit() {

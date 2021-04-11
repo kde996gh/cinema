@@ -6,9 +6,21 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Ticket {
 
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
-    private IntegerProperty movieType = new SimpleIntegerProperty(this, "movieType");
     private IntegerProperty price = new SimpleIntegerProperty(this, "price");
     private IntegerProperty lowerPrice = new SimpleIntegerProperty(this, "lowerPrice");
+    private IntegerProperty type = new SimpleIntegerProperty(this,"type");
+
+    public int getType() {
+        return type.get();
+    }
+
+    public IntegerProperty typeProperty() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type.set(type);
+    }
 
     public int getId() {
         return id.get();
@@ -20,18 +32,6 @@ public class Ticket {
 
     public void setId(int id) {
         this.id.set(id);
-    }
-
-    public int getMovieType() {
-        return movieType.get();
-    }
-
-    public IntegerProperty movieTypeProperty() {
-        return movieType;
-    }
-
-    public void setMovieType(int movieType) {
-        this.movieType.set(movieType);
     }
 
     public int getPrice() {

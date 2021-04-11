@@ -12,9 +12,8 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
           minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-          xmlns="http://javafx.com/javafx/11"
-          xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="hu.alkfejl.controller.MainWindowController">
+          xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="hu.alkfejl.controller.MainWindowController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -45,10 +44,11 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" text="Termek" onAction="#switchToHalls" />
-            <Button mnemonicParsing="false" text="Filmek" onAction="#switchToMovies"/>
-            <Button mnemonicParsing="false" text="Jegyek" onAction="#switchToTickets"/>
-            <Button mnemonicParsing="false" text="Foglalások" onAction="#switchToReservations" />
+            <Button mnemonicParsing="false" onAction="#switchToHalls" text="Termek" />
+            <Button mnemonicParsing="false" onAction="#switchToMovies" text="Filmek" />
+            <Button mnemonicParsing="false" onAction="#switchToTickets" text="Jegyek" />
+            <Button mnemonicParsing="false" onAction="#switchToReservations" text="Foglalások" />
+            <Button mnemonicParsing="false" onAction="#switchToPlayTimes" text="Vetítések" />
          </children>
          <GridPane.margin>
             <Insets />

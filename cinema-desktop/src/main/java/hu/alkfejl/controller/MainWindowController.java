@@ -38,4 +38,9 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    public void switchToPlayTimes(ActionEvent actionEvent) {
+        App.loadFXML("/fxml/playtime/playtime_window.fxml");
+
+    }
 }
