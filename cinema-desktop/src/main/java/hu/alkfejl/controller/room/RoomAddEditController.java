@@ -77,8 +77,6 @@ public class RoomAddEditController implements Initializable {
             room_seats.setText(seatProp.getValue().toString()); //a field ami kiirja a székek számát realtime frissüljön oszlop méret állításkor is
         });
 
-        System.out.println(colTest.getValue() * rowTest.getValue());
-
         room.seatNumberProperty().bindBidirectional(seatProp);
     }
 

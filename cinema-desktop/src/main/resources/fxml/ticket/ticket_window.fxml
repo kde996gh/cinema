@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/11"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.ticket.TicketWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.alkfejl.controller.ticket.TicketWindowController">
     <top>
         <Label text="Jegyek beállítása" BorderPane.alignment="CENTER">
             <font>
@@ -26,8 +25,8 @@
     <left>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" onAction="#backToMainWindow" text="Főmenü" />
-                <Button mnemonicParsing="false" text="Új jegy" />
+                <Button fx:id="back" mnemonicParsing="false" onAction="#backToMainWindow" text="Főmenü" />
+                <Button fx:id="newTicketType" mnemonicParsing="false" text="Új jegy" onAction="#newTicket"/>
             </children>
             <BorderPane.margin>
                 <Insets />
@@ -38,13 +37,12 @@
         </VBox>
     </left>
     <center>
-        <TableView prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
+        <TableView fx:id="ticketTable" prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn prefWidth="75.0" text="Film" />
-                <TableColumn prefWidth="83.20001220703125" text="Jegy típus" />
-                <TableColumn prefWidth="68.0" text="Ár" />
-                <TableColumn prefWidth="68.0" text="Korhatár" />
-                <TableColumn prefWidth="206.4000244140625" text="Műveletek" />
+                <TableColumn fx:id="ticketTypeColumn" minWidth="0.0" prefWidth="87.20001220703125" text="Jegy típus" />
+                <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="100.00006103515625" text="Ár" />
+                <TableColumn fx:id="lowerPriceColumn" prefWidth="121.5999755859375" text="Akciós Ár" />
+                <TableColumn fx:id="actionsColumn" prefWidth="191.99993896484375" text="Műveletek" />
             </columns>
         </TableView>
     </center>
