@@ -1573,7 +1573,7 @@
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="547" parent="177" name="type">
+    <column id="547" parent="177" name="ticketType">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>

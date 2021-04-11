@@ -8,22 +8,23 @@ public class Ticket {
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
     private IntegerProperty price = new SimpleIntegerProperty(this, "price");
     private IntegerProperty lowerPrice = new SimpleIntegerProperty(this, "lowerPrice");
-    private IntegerProperty type = new SimpleIntegerProperty(this,"type");
+    private IntegerProperty ticketType = new SimpleIntegerProperty(this,"type");
 
-    public int getType() {
-        return type.get();
-    }
-
-    public IntegerProperty typeProperty() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type.set(type);
-    }
 
     public int getId() {
         return id.get();
+    }
+
+    public int getTicketType() {
+        return ticketType.get();
+    }
+
+    public IntegerProperty ticketTypeProperty() {
+        return ticketType;
+    }
+
+    public void setTicketType(int ticketType) {
+        this.ticketType.set(ticketType);
     }
 
     public IntegerProperty idProperty() {

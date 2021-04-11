@@ -9,4 +9,6 @@ hu\alkfejl\controller\room\RoomWindowController$1.class
 hu\alkfejl\controller\movie\MovieEditController.class
 hu\alkfejl\controller\reservation\ReservationWindowController.class
 hu\alkfejl\App.class
+hu\alkfejl\controller\ticket\TicketAddEditController.class
+hu\alkfejl\controller\ticket\TicketWindowController$1.class
 hu\alkfejl\controller\ticket\TicketWindowController.class

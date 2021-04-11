@@ -127,21 +127,16 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public void delete(Room room) {
-
         try (
                 //Connection conn = DriverManager.getConnection(connectionURL);
                 PreparedStatement stmt = conn.prepareStatement(DELETE_ROOM);
-
         ) {
             stmt.setInt(1, room.getId());
             stmt.executeUpdate();
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-    // private static final String INSERT_INTO_SEATS  = "INSERT INTO SEAT (id, room_id, seat_id, taken) VALUES (?,?,?,?)";
 
     @Override
     public Room addRoomSeats(Room room) {

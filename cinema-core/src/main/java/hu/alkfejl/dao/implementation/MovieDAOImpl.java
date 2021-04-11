@@ -71,7 +71,6 @@ public class MovieDAOImpl implements MovieDAO {
             if(movie.getId() > 0){
                 stmt.setInt(9 ,movie.getId());
             }
-            // description=?, coverImage=?, movieType=? director WHERE id=?";
             stmt.setString(1, movie.getTitle());
             stmt.setInt(2, movie.getLengthMin());
             stmt.setInt(3, movie.getAgeLimit());
