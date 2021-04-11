@@ -13,6 +13,7 @@ public class MovieDAOImpl implements MovieDAO {
     private static final String SELECT_ALL_MOVIES = "SELECT * FROM MOVIE";
     private static final String UPDATE_MOVIE = "UPDATE MOVIE SET title=?, lengthMin=?, ageLimit=?, director=?, actors=?, description=?, coverImage=?, movieType=? WHERE id=?";
     private static final String INSERT_MOVIE = "INSERT INTO MOVIE (title, lengthMin, ageLimit, director, actors, description, coverImage, movieType) VALUES (?,?,?,?,?,?,?,?)";
+    private static final String DELETE_MOVIE = "DELETE FROM MOVIE WHERE id=?";
     private String connectionURL;
     private Connection conn;
     private static MovieDAOImpl instance = new MovieDAOImpl();
@@ -98,4 +99,14 @@ public class MovieDAOImpl implements MovieDAO {
 
     }
 
+    @Override
+    public void delete(Movie movie) {
+        try(PreparedStatement stmt = conn.prepareStatement(DELETE_MOVIE)){
+            stmt.setInt(1,movie.getId());
+            stmt.executeUpdate();
+        }catch(SQLException exception){
+                exception.printStackTrace();
+        }
+
+    }
 }

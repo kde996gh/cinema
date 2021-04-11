@@ -9,6 +9,8 @@ public interface MovieDAO {
 
     public Movie save(Movie movie);
 
+    public void delete(Movie movie);
+
 
 
     }

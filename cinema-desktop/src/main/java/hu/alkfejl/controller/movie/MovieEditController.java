@@ -6,11 +6,10 @@ import hu.alkfejl.dao.interfaces.MovieDAO;
 import hu.alkfejl.model.Movie;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -119,6 +118,17 @@ public class MovieEditController implements Initializable {
     @FXML
     public void saveMovie() {
         movie = moviedao.save(movie);
+        App.loadFXML("/fxml/movie/movie_window.fxml");
+    }
+
+    public void deleteMovie(ActionEvent actionEvent) {
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,"Biztosan törlöd a filmet", ButtonType.YES, ButtonType.NO);
+        confirm.showAndWait().ifPresent(buttonType -> {
+            if(buttonType.equals(buttonType.YES)){
+
+                moviedao.delete(movie);
+            }
+        });
         App.loadFXML("/fxml/movie/movie_window.fxml");
     }
 }

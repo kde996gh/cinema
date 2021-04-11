@@ -13,10 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-          minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-          xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="hu.alkfejl.controller.movie.MovieEditController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.movie.MovieEditController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.20001220703125" minWidth="10.0" percentWidth="12.0" prefWidth="160.79998779296875" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.20001220703125" minWidth="10.0" percentWidth="23.0" prefWidth="160.79998779296875" />
@@ -78,7 +75,8 @@
         </VBox>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
          <children>
-            <Button fx:id="newCoverImage" layoutX="274.0" layoutY="15.0" mnemonicParsing="false" text="Új borítókép" />
+            <Button fx:id="newCoverImage" layoutX="339.0" layoutY="15.0" mnemonicParsing="false" text="Új borítókép" />
+            <Button fx:id="deleteMovie" layoutX="181.0" layoutY="15.0" mnemonicParsing="false" text="Film törlése" onAction="#deleteMovie" />
          </children>
       </Pane>
     </children>
