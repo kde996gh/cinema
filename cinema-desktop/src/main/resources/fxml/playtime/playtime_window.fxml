@@ -35,7 +35,7 @@
         </VBox>
     </left>
     <center>
-        <TableView fx:id="roomTable" prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
+        <TableView fx:id="playTimeTable" prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="movieNameColumn" prefWidth="75.0" text="Film" />
             <TableColumn fx:id="roomColumn" prefWidth="74.39996337890625" text="Terem" />

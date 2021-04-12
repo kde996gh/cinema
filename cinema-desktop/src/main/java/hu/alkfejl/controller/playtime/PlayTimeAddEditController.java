@@ -39,12 +39,6 @@ public class PlayTimeAddEditController implements Initializable {
     private Spinner<Integer> minuteSpinner;
 
     @FXML
-    private Slider sliderHour;
-
-    @FXML
-    private Slider sliderMinute;
-
-    @FXML
     private ComboBox<String> titleComboBox;
 
     @FXML
@@ -58,6 +52,9 @@ public class PlayTimeAddEditController implements Initializable {
 
     @FXML
     private TextField timeTextField;
+
+
+
     private PlayTime playTime;
 
 
@@ -72,30 +69,32 @@ public class PlayTimeAddEditController implements Initializable {
 
        // StringProperty n = new SimpleStringProperty(movieName);
         //IntegerProperty in = new SimpleIntegerProperty(MovieDAOImpl.getInstance().getIdByTitle(n.getValue()));
-       String movieName = MovieDAOImpl.getInstance().findMovieNameById(playTime.getMovie_id());
-        titleComboBox.getSelectionModel().select(movieName);
+        //String movieName = MovieDAOImpl.getInstance().findMovieNameById(playTime.getMovie_id());
+        titleComboBox.getSelectionModel().select(playTime.getMovie_name());
         titleComboBox.setItems(movieNames);
         titleComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
-            IntegerProperty ip = new SimpleIntegerProperty(MovieDAOImpl.getInstance().getIdByTitle(newV));
-            playTime.movie_idProperty().bindBidirectional(ip);
+            //IntegerProperty ip = new SimpleIntegerProperty(MovieDAOImpl.getInstance().getIdByTitle(newV));
+            StringProperty sp = new SimpleStringProperty(newV);
+            playTime.movie_nameProperty().bindBidirectional(sp);
         });
 
-        String roomName = RoomDAOImpl.getInstance().findRoomNameById(playTime.getRoom_id());
-        roomComboBox.getSelectionModel().select(roomName);
+        //String roomName = RoomDAOImpl.getInstance().findRoomNameById(playTime.getRoom_id());
+        roomComboBox.getSelectionModel().select(playTime.getRoom_name());
         roomComboBox.setItems(roomNames);
         roomComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
-            IntegerProperty ip = new SimpleIntegerProperty(RoomDAOImpl.getInstance().getIdByRoomName(newV));
-            playTime.room_idProperty().bindBidirectional(ip);
-            System.out.println("id :  " + playTime.room_idProperty());
+            //IntegerProperty ip = new SimpleIntegerProperty(RoomDAOImpl.getInstance().getIdByRoomName(newV));
+            StringProperty sp = new SimpleStringProperty(newV);
+            playTime.room_nameProperty().bindBidirectional(sp);
         });
 
-        Integer ticketType = TicketDAOImpl.getInstance().findTicketTypeById(playTime.getTicket_id());
-        ticketTypeComboBox.getSelectionModel().select(ticketType);
+       // Integer ticketType = TicketDAOImpl.getInstance().findTicketTypeById(playTime.getTicket_id());
+        ticketTypeComboBox.getSelectionModel().select(playTime.getTicket_type());
+        System.out.println(playTime.getTicket_type() + " jegy tipusa!");
         ticketTypeComboBox.setItems(ticketTypes);
         ticketTypeComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
-            IntegerProperty ip = new SimpleIntegerProperty(TicketDAOImpl.getInstance().getIdByTicketType(newV));
-            playTime.ticket_idProperty().bindBidirectional(ip);
-            System.out.println("id :  " + playTime.ticket_idProperty());
+            IntegerProperty ip = new SimpleIntegerProperty(newV);
+            playTime.ticket_typeProperty().bindBidirectional(ip);
+//            System.out.println("id :  " + playTime.ticket_idProperty());
         });
 
         datePicker.valueProperty().bindBidirectional(playTime.playTimeDateProperty());

@@ -13,8 +13,8 @@ import java.time.LocalDate;
 public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     private static final String SELECT_ALL_PLAYTIME = "SELECT * FROM PLAYTIME";
-    private static final String INSERT_PLAYTIME = "INSERT INTO PLAYTIME (room_id, movie_id, ticket_id, playTimeDate, playTimeHours) values (?,?,?,?,?)";
-    private static final String UPDATE_PLAYTIME = "UPDATE PLAYTIME SET room_id=?, movie_id=?, ticket_id=?, playTimeDate=?, playTimeHours=? WHERE id=?";
+    private static final String INSERT_PLAYTIME = "INSERT INTO PLAYTIME (room_name, movie_name, ticket_type, playTimeDate, playTimeHours) values (?,?,?,?,?)";
+    private static final String UPDATE_PLAYTIME = "UPDATE PLAYTIME SET room_name=?, movie_name=?, ticket_type=?, playTimeDate=?, playTimeHours=? WHERE id=?";
     private static final String DELETE_PLAYTIME = "DELETE FROM PLAYTIME WHERE id=?";
     private String connectionURL;
     private Connection conn;
@@ -44,9 +44,9 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                 PlayTime pt = new PlayTime();
 
                 pt.setId(rs.getInt("id"));
-                pt.setRoom_id(rs.getInt("room_id"));
-                pt.setMovie_id(rs.getInt("movie_id"));
-                pt.setTicket_id(rs.getInt("ticket_id"));
+                pt.setRoom_name(rs.getString("room_name"));
+                pt.setMovie_name(rs.getString("movie_name"));
+                pt.setTicket_type(rs.getInt("ticket_type"));
 
                 Date date = Date.valueOf(rs.getString("playTimeDate"));
                 pt.setPlayTimeDate(date == null ? LocalDate.now() : date.toLocalDate());
@@ -70,12 +70,13 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                 //    movie_id=?, ticket_id=?, playTimeDate=?, playTimeHours=? WHERE id=?";
                 PreparedStatement stmt = playTime.getId() <= 0 ? conn.prepareStatement(INSERT_PLAYTIME, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_PLAYTIME)
         ){
+            //INSERT INTO PLAYTIME (room_name, movie_name, ticket_type, playTimeDate, playTimeHours) values (?,?,?,?,?)
             if(playTime.getId() > 0){
                 stmt.setInt(6 ,playTime.getId());
             }
-            stmt.setInt(1, playTime.getRoom_id());
-            stmt.setInt(2, playTime.getMovie_id());
-            stmt.setInt(3, playTime.getTicket_id());
+            stmt.setString(1, playTime.getRoom_name());
+            stmt.setString(2, playTime.getMovie_name());
+            stmt.setInt(3, playTime.getTicket_type());
             stmt.setString(4, playTime.getPlayTimeDate().toString());
             stmt.setString(5, playTime.getPlayTimeHours());
             stmt.executeUpdate();

@@ -63,14 +63,5 @@
       <ComboBox fx:id="titleComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <ComboBox fx:id="roomComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <ComboBox fx:id="ticketTypeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-<!--      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">-->
-<!--         <children>-->
-<!--            <Label text="Óra" />-->
-<!--            <Slider fx:id="sliderHour" blockIncrement="2" min="8" max="22" />-->
-<!--            <Label text="Perc" />-->
-<!--            <Slider fx:id="sliderMinute" blockIncrement="10" majorTickUnit="10.0" max="60.0" minorTickCount="0"-->
-<!--                    showTickLabels="true" />-->
-<!--         </children>-->
-<!--      </VBox>-->
     </children>
 </GridPane>
