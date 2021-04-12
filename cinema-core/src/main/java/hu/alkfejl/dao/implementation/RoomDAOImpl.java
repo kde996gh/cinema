@@ -2,7 +2,10 @@ package hu.alkfejl.dao.implementation;
 
 import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.RoomDAO;
+import hu.alkfejl.model.Movie;
 import hu.alkfejl.model.Room;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,12 +16,19 @@ public class RoomDAOImpl implements RoomDAO {
     private static final String INSERT_ROOM = "INSERT INTO ROOM (rowNumber, colNumber, name, seatNumber) VALUES (?,?,?,?)";
     private static final String UPDATE_ROOM = "UPDATE ROOM SET rowNumber=?, colNumber=?, name=?, seatNumber=? WHERE id=?";
     private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE room_id=?";
+    private static final String SELECT_ONLY_NAMES = "SELECT name FROM ROOM";
     private String connectionURL;
     private static final String SELECT_ALL_ROOM = "SELECT * FROM ROOM";
     private static final String INSERT_SEATS = "INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
     private static final String DELETE_ROOM = "DELETE FROM ROOM WHERE id = ?";
 
     private Connection conn;
+
+    private static RoomDAOImpl instance = new RoomDAOImpl();
+
+    public static RoomDAOImpl getInstance() {
+        return instance;
+    }
 
 
     public RoomDAOImpl() {
@@ -167,33 +177,10 @@ public class RoomDAOImpl implements RoomDAO {
                 }
                 System.out.println("Nem találtam meg a szobát!");
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return room;
-
-
-
-
-/*
-        try(    Connection conn = DriverManager.getConnection(connectionURL);
-                PreparedStatement stmt = !this.findRoomById(room) ? conn.prepareStatement(INSERT_INTO_SEATS, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_ROOM)
-            ){
-              for(int i=1; i<room.getSeatNumber()+1; i++){
-                    stmt.setInt(1, room.getId());
-                    stmt.setInt(2, i);
-                    stmt.setInt(3, 0);
-                    stmt.executeUpdate();
-
-              }
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-*/
-
     }
 
     @Override
@@ -205,5 +192,47 @@ public class RoomDAOImpl implements RoomDAO {
             }
         }
         return false;
+    }
+
+
+    @Override
+    public String findRoomNameById(int room_id) {
+        String result = "";
+        List<Room> roomList = this.findAll();
+        for (int i = 0; i < roomList.size(); i++) {
+            if (roomList.get(i).getId() == room_id) {
+                result = roomList.get(i).getName();
+            }
+        }
+        return result;
+    }
+
+
+    @Override
+    public ObservableList<String> listByName() {
+        ObservableList<String> result = FXCollections.observableArrayList();
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(SELECT_ONLY_NAMES)
+        ) {
+            while (rs.next()) {
+                String a = rs.getString("name");
+                result.add(a);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public int getIdByRoomName(String newV) {
+        int result = 0;
+        List<Room> roomList = this.findAll();
+        for (Room room : roomList) {
+            if (room.getName().equals(newV))
+                result = room.getId();
+        }
+        return result;
     }
 }

@@ -1,9 +1,6 @@
 package hu.alkfejl.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 
 import java.time.LocalDate;
 
@@ -14,6 +11,19 @@ public class PlayTime {
     private IntegerProperty movie_id = new SimpleIntegerProperty(this, "movie_id");
     private IntegerProperty ticket_id = new SimpleIntegerProperty(this, "ticket_id");
     private ObjectProperty<LocalDate> playTimeDate = new SimpleObjectProperty<>(this, "playTimeDate");
+    private StringProperty playTimeHours = new SimpleStringProperty(this, "playTimeHours");
+
+    public String getPlayTimeHours() {
+        return playTimeHours.get();
+    }
+
+    public StringProperty playTimeHoursProperty() {
+        return playTimeHours;
+    }
+
+    public void setPlayTimeHours(String playTimeHours) {
+        this.playTimeHours.set(playTimeHours);
+    }
 
     public int getId() {
         return id.get();

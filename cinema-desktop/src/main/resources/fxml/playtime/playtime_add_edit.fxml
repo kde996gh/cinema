@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="hu.alkfejl.controller.playtime.PlayTimeAddEditController"
-            prefHeight="400.0" prefWidth="600.0">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.playtime.PlayTimeAddEditController">
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="145.99998779296874" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="316.8000244140625" minWidth="10.0" prefWidth="175.400048828125" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.19999694824224" minWidth="10.0" prefWidth="278.59995117187503" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="273.1999816894531" minHeight="0.0" percentHeight="20.0" prefHeight="240.39999389648438" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="237.9999942779541" minHeight="10.0" percentHeight="10.0" prefHeight="30.000015258789062" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="283.2" minHeight="7.200038146972645" percentHeight="10.0" prefHeight="153.99998474121094" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="341.3999618530274" minHeight="10.0" percentHeight="10.0" prefHeight="65.40000000000003" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="341.3999618530274" minHeight="10.0" percentHeight="10.0" prefHeight="65.40000000000003" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="341.3999618530274" minHeight="10.0" percentHeight="30.0" prefHeight="74.4000244140625" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="341.3999618530274" minHeight="10.0" prefHeight="65.19997558593747" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="122.0" layoutY="34.0" text="Terem szerkesztése vagy hozzáadása">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Label text="Terem" GridPane.rowIndex="2" />
+        <Label text="Jegy Típus" GridPane.rowIndex="3" />
+        <Label text="Dátum" GridPane.rowIndex="4" />
 
-</AnchorPane>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnSpan="3" GridPane.rowIndex="6">
+            <children>
+                <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSave" text="Mentés" />
+                <Button mnemonicParsing="false" onAction="#onCancel" text="Mégse" />
+            </children>
+        </HBox>
+      <Label text="Cím" GridPane.rowIndex="1" />
+      <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label text="Idő" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <children>
+            <Label text="Óra" />
+            <Spinner fx:id="hourSpinner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="55.0" HBox.hgrow="ALWAYS" />
+            <Label text="Perc" />
+            <Spinner fx:id="minuteSpinner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="55.0" />
+         </children>
+      </HBox>
+      <TextField fx:id="timeTextField" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <ComboBox fx:id="titleComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ComboBox fx:id="roomComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <ComboBox fx:id="ticketTypeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+<!--      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">-->
+<!--         <children>-->
+<!--            <Label text="Óra" />-->
+<!--            <Slider fx:id="sliderHour" blockIncrement="2" min="8" max="22" />-->
+<!--            <Label text="Perc" />-->
+<!--            <Slider fx:id="sliderMinute" blockIncrement="10" majorTickUnit="10.0" max="60.0" minorTickCount="0"-->
+<!--                    showTickLabels="true" />-->
+<!--         </children>-->
+<!--      </VBox>-->
+    </children>
+</GridPane>

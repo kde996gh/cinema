@@ -45,7 +45,7 @@ public class MovieWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //gridPane.add(x, 0, 0);
-
+        System.out.println(MovieDAOImpl.getInstance().listByName());
         movies = MovieDAOImpl.getInstance().listMovies();
         imageDrawer(movies);
 
