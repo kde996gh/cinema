@@ -2,7 +2,10 @@ package hu.alkfejl.dao.implementation;
 
 import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.TicketDAO;
+import hu.alkfejl.model.Room;
 import hu.alkfejl.model.Ticket;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import javax.management.relation.RelationSupport;
 import java.sql.*;
@@ -15,6 +18,7 @@ public class TicketDAOImpl implements TicketDAO {
     private static final String UPDATE_TICKET = "UPDATE TICKET SET price=?, lowerPrice=?, ticketType=? where id=?";
     private static final String INSERT_TICKET = "INSERT INTO TICKET (price, lowerPrice, ticketType) VALUES (?,?,?)";
     private static final String DELETE_TICKET = "DELETE FROM TICKET WHERE id=?";
+    private static final String SELECT_ONLY_NAMES = "SELECT ticketType FROM TICKET";
 
     private String connectionURL;
     private Connection conn;
@@ -60,6 +64,24 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     @Override
+    public ObservableList<Integer> findTicketTypes() {
+        ObservableList<Integer> result = FXCollections.observableArrayList();
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(SELECT_ONLY_NAMES)
+        ) {
+            while (rs.next()) {
+                Integer a = rs.getInt("ticketType");
+                result.add(a);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @Override
     public Ticket save(Ticket ticket) {
         try (//PDATE TICKET SET price=?, lowerPrice=?, ticketType=? where id=?
              PreparedStatement stmt = ticket.getId() <= 0 ? conn.prepareStatement(INSERT_TICKET, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_TICKET)
@@ -95,5 +117,29 @@ public class TicketDAOImpl implements TicketDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Integer findTicketTypeById(int ticket_id) {
+        Integer result = 0;
+        List<Ticket> ticketList = this.findAllTicket();
+        for (int i = 0; i < ticketList.size(); i++) {
+            if (ticketList.get(i).getId() == ticket_id) {
+                result = ticketList.get(i).getTicketType();
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public int getIdByTicketType(Integer newV) {
+        int result = 0;
+        List<Ticket> ticketList = this.findAllTicket();
+        for (Ticket ticket : ticketList) {
+            if (ticket.getTicketType() == newV) {
+                result = ticket.getId();
+            }
+        }
+        return result;
     }
 }
