@@ -5,6 +5,7 @@ hu\alkfejl\controller\MainWindowController.class
 hu\alkfejl\controller\playtime\PlayTimeAddEditController.class
 hu\alkfejl\controller\room\RoomAddEditController.class
 hu\alkfejl\controller\room\RoomWindowController.class
+hu\alkfejl\controller\playtime\PlaytimeController$1.class
 hu\alkfejl\controller\room\RoomWindowController$1.class
 hu\alkfejl\controller\movie\MovieEditController.class
 hu\alkfejl\controller\reservation\ReservationWindowController.class

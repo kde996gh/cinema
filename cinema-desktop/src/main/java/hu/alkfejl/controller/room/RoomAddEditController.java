@@ -88,7 +88,7 @@ public class RoomAddEditController implements Initializable {
     @FXML
     public void onSave() {
         room = roomdao.save(room);
-        room = roomdao.addRoomSeats(room);
+       // room = roomdao.addRoomSeats(room);
         App.loadFXML("/fxml/room/room_window.fxml");
     }
 

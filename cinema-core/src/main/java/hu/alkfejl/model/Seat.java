@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Seat {
 
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
-    private IntegerProperty room_id = new SimpleIntegerProperty(this, "room_id");
+    private IntegerProperty playtime_id = new SimpleIntegerProperty(this, "playtime_id");
     private IntegerProperty seat_id = new SimpleIntegerProperty(this, "seat_id");
     private IntegerProperty taken = new SimpleIntegerProperty(this, "taken");
 
@@ -46,15 +46,15 @@ public class Seat {
         this.id.set(id);
     }
 
-    public int getRoom_id() {
-        return room_id.get();
+    public int getPlaytime_id() {
+        return playtime_id.get();
     }
 
-    public IntegerProperty room_idProperty() {
-        return room_id;
+    public IntegerProperty playtime_idProperty() {
+        return playtime_id;
     }
 
-    public void setRoom_id(int room_id) {
-        this.room_id.set(room_id);
+    public void setPlaytime_id(int playtime_id) {
+        this.playtime_id.set(playtime_id);
     }
 }

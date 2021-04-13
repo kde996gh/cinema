@@ -15,12 +15,14 @@ public class RoomDAOImpl implements RoomDAO {
 
     private static final String INSERT_ROOM = "INSERT INTO ROOM (rowNumber, colNumber, name, seatNumber) VALUES (?,?,?,?)";
     private static final String UPDATE_ROOM = "UPDATE ROOM SET rowNumber=?, colNumber=?, name=?, seatNumber=? WHERE id=?";
-    private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE room_id=?";
+
+
     private static final String SELECT_ONLY_NAMES = "SELECT name FROM ROOM";
     private String connectionURL;
     private static final String SELECT_ALL_ROOM = "SELECT * FROM ROOM";
-    private static final String INSERT_SEATS = "INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
     private static final String DELETE_ROOM = "DELETE FROM ROOM WHERE id = ?";
+    private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE room_id=?";
+    private static final String INSERT_SEATS = "INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
 
     private Connection conn;
 
@@ -186,8 +188,8 @@ public class RoomDAOImpl implements RoomDAO {
     @Override
     public boolean findRoomById(Room room) {
         List<Room> roomList = this.findAll();
-        for (int i = 0; i < roomList.size(); i++) {
-            if (roomList.get(i).getId() == (room.getId())) {
+        for (Room value : roomList) {
+            if (value.getId() == (room.getId())) {
                 return true;
             }
         }
@@ -235,4 +237,15 @@ public class RoomDAOImpl implements RoomDAO {
         }
         return result;
     }
+
+    public Room getRoomByName(String name){
+        Room result = null;
+        List<Room> roomList = this.findAll();
+        for (Room room : roomList) {
+            if (room.getName().equals(name))
+                result = room;
+        }
+        return result;
+    }
+
 }
