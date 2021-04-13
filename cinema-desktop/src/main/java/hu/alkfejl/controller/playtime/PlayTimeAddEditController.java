@@ -168,6 +168,7 @@ public class PlayTimeAddEditController implements Initializable {
     public void onSave() {
         System.out.println("megnyomtak a mentest!");
         playTime = playtimedao.save(playTime);
+        playtimedao.addRoomSeats(playTime);
         App.loadFXML("/fxml/playtime/playtime_window.fxml");
     }
 

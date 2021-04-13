@@ -100,6 +100,7 @@ public class PlaytimeController implements Initializable {
         confirm.showAndWait().ifPresent(buttonType -> {
             if(buttonType.equals(buttonType.YES)){
                 playtimedao.delete(playtime);
+                playtimedao.deleteRoomSeat(playtime);
             }
         });
     }

@@ -7,9 +7,14 @@ import javafx.collections.ObservableList;
 public interface PlayTimeDAO {
 
 
-    public ObservableList<PlayTime> listPlayTimes();
+    ObservableList<PlayTime> listPlayTimes();
 
-    public PlayTime save(PlayTime playTime);
+    PlayTime save(PlayTime playTime);
 
-    public void delete(PlayTime playTime);
+    void delete(PlayTime playTime);
+
+    void addRoomSeats(PlayTime playTime);
+
+    void deleteRoomSeat(PlayTime pt);
+
 }

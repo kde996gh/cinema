@@ -1494,7 +1494,7 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="530" parent="174" name="room_id">
+    <column id="530" parent="174" name="playtime_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
     </column>
@@ -1512,9 +1512,9 @@
       <Primary>1</Primary>
     </key>
     <foreign-key id="534" parent="174">
-      <ColNames>room_id</ColNames>
-      <RefTableName>room</RefTableName>
-      <RefKeyName>rooms_pk</RefKeyName>
+      <ColNames>playtime_id</ColNames>
+      <RefTableName>playtime</RefTableName>
+      <RefKeyName>playtime_pk</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <column id="535" parent="175" name="type">

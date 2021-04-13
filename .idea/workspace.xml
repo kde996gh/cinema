@@ -8,15 +8,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ca64df07-d126-4751-bbe9-38915c705b41.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ca64df07-d126-4751-bbe9-38915c705b41.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/PlayTimeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/PlayTimeDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/PlayTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/PlayTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/RoomDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/RoomDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/PlayTimeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/PlayTimeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/Seat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/target/classes/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/classes/cinema" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlayTimeAddEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlayTimeAddEditController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlaytimeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlaytimeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/playtime/playtime_add_edit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/playtime/playtime_add_edit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/playtime/playtime_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/playtime/playtime_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomAddEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomAddEditController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,19 +86,6 @@
       <recent name="E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\resources\fxml\room" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -121,7 +109,8 @@
       <workItem from="1618122661179" duration="6842000" />
       <workItem from="1618173056707" duration="8355000" />
       <workItem from="1618209019616" duration="16915000" />
-      <workItem from="1618242512037" duration="15618000" />
+      <workItem from="1618242512037" duration="15777000" />
+      <workItem from="1618305462972" duration="5255000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton">
       <created>1617386989614</created>
@@ -221,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618262622377</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="vetítés 95%">
+      <created>1618266662612</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1618266662612</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +237,18 @@
     <MESSAGE value="jegyek listázása/beállítása" />
     <MESSAGE value="film törlés működik" />
     <MESSAGE value="vetítés hozzáadása" />
-    <option name="LAST_COMMIT_MESSAGE" value="vetítés hozzáadása" />
+    <MESSAGE value="vetítés 95%" />
+    <option name="LAST_COMMIT_MESSAGE" value="vetítés 95%" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/RoomDAOImpl.java</url>
+          <line>189</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
