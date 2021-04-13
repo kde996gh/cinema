@@ -103,7 +103,11 @@ public class MovieWindowController implements Initializable {
 
     public void onSearch(KeyEvent keyEvent) {
 
-        List<Movie> filtered = movies.stream().filter(movie -> movie.getTitle().toLowerCase().contains(searchByTitle.getText().toLowerCase())).collect(Collectors.toList());
+        List<Movie> filtered = movies.stream().filter(movie -> (movie.getTitle().toLowerCase().contains(searchByTitle.getText().toLowerCase()))
+                || (movie.getActors().toLowerCase().contains(searchByTitle.getText().toLowerCase()))
+                || (movie.getDirector().toLowerCase().contains(searchByTitle.getText().toLowerCase()))
+                || (movie.getDescription().toLowerCase().contains(searchByTitle.getText().toLowerCase()))
+        ).collect(Collectors.toList());
         if(!filtered.equals(movies)) {
             gridPane.getChildren().clear();
             imageDrawer(filtered);
