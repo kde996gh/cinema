@@ -1,6 +1,7 @@
 package hu.alkfejl.controller.room;
 
 import hu.alkfejl.App;
+import hu.alkfejl.controller.Utils;
 import hu.alkfejl.dao.implementation.RoomDAOImpl;
 import hu.alkfejl.dao.interfaces.RoomDAO;
 import hu.alkfejl.model.Room;
@@ -64,7 +65,7 @@ public class RoomWindowController implements Initializable{
             {
                 deleteButton.setOnAction(event -> {
                     Room room = getTableRow().getItem();
-                    System.out.println("megnyomták a törlés gombot");
+                    //System.out.println("megnyomták a törlés gombot");
                     deleteRoom(room);// törlés
                     refreshTable(); // táblafrissites
                 });
@@ -72,7 +73,7 @@ public class RoomWindowController implements Initializable{
                 editButton.setOnAction(event ->{
                     Room c = getTableRow().getItem();
                     editRoom(c);
-                    System.out.println("megnyomták a módosítás gombot");
+                    //System.out.println("megnyomták a módosítás gombot");
 
                     refreshTable();
                 });
@@ -105,6 +106,7 @@ public class RoomWindowController implements Initializable{
                 roomDAO.delete(room);
             }
         });
+        Utils.showInfo("Sikeres törlés!");
     }
 
     private void editRoom(Room room){

@@ -1,12 +1,13 @@
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\App.java
-E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\MainWindowController.java
-E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\ticket\TicketWindowController.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\room\RoomWindowController.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\room\RoomAddEditController.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\movie\MovieWindowController.java
+E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\SystemInfo.java
+E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\Utils.java
+E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\MainWindowController.java
+E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\ticket\TicketWindowController.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\playtime\PlayTimeAddEditController.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\movie\MovieEditController.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\ticket\TicketAddEditController.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\reservation\ReservationWindowController.java
 E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\controller\playtime\PlaytimeController.java
-E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-desktop\src\main\java\hu\alkfejl\SystemInfo.java

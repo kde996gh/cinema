@@ -129,7 +129,7 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     stmt.setInt(3, 0);
                     stmt.executeUpdate();
                 }
-                System.out.println("Megtaláltam!");
+                //System.out.println("Megtaláltam!");
             } else {
                 stmt = conn.prepareStatement(INSERT_SEATS);
                 for (int i = 1; i < r.getSeatNumber() + 1; i++) {
@@ -139,7 +139,7 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     stmt.executeUpdate();
 
                 }
-                System.out.println("Nem találtam meg a szobát!");
+              //  System.out.println("Nem találtam meg a szobát!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

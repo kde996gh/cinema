@@ -1,6 +1,7 @@
 package hu.alkfejl.controller.ticket;
 
 import hu.alkfejl.App;
+import hu.alkfejl.controller.Utils;
 import hu.alkfejl.dao.implementation.RoomDAOImpl;
 import hu.alkfejl.dao.implementation.TicketDAOImpl;
 import hu.alkfejl.dao.interfaces.RoomDAO;
@@ -59,7 +60,7 @@ public class TicketWindowController implements Initializable {
                 editButton.setOnAction(event ->{
                    Ticket ticket = getTableRow().getItem();
                     editRoom(ticket);
-                    System.out.println("megnyomták a módosítás gombot");
+                    //System.out.println("megnyomták a módosítás gombot");
 
                     refreshTable();
                 });
@@ -95,10 +96,10 @@ public class TicketWindowController implements Initializable {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,"Biztosan törlöd a jegy típust?", ButtonType.YES, ButtonType.NO);
         confirm.showAndWait().ifPresent(buttonType -> {
             if(buttonType.equals(buttonType.YES)){
-
                 ticketDAO.delete(ticket);
             }
         });
+        Utils.showInfo("Sikeres törlés");
     }
     private void refreshTable() {
         tickets = ticketDAO.findAllTicket();

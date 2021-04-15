@@ -150,7 +150,7 @@ public class MovieDAOImpl implements MovieDAO {
                 result = movie.getId();
             }
         }
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
 }
