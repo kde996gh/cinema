@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+html body {
+    padding-top: 70px;
+    background: darkslategray;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10%;
+}
+

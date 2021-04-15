@@ -12,6 +12,7 @@
     <modules>
         <module>cinema-core</module>
         <module>cinema-desktop</module>
+        <module>cinema-web</module>
     </modules>
 
     <properties>
