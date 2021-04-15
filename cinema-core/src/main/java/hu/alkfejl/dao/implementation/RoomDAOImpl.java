@@ -105,7 +105,7 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public Room save(Room room) {
-        System.out.println("RoomDAO save: name: " + room.getName() + ", row: " + room.getRowNumber() + ", id: " + room.getId());
+        //System.out.println("RoomDAO save: name: " + room.getName() + ", row: " + room.getRowNumber() + ", id: " + room.getId());
         try (//Connection conn = DriverManager.getConnection(connectionURL);
              PreparedStatement stmt = room.getId() <= 0 ? conn.prepareStatement(INSERT_ROOM, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_ROOM)
 
@@ -167,7 +167,7 @@ public class RoomDAOImpl implements RoomDAO {
                     stmt.setInt(3, 0);
                     stmt.executeUpdate();
                 }
-                System.out.println("Megtaláltam!");
+                //System.out.println("Megtaláltam!");
             } else {
                 stmt = conn.prepareStatement(INSERT_SEATS);
                 for (int i = 1; i < room.getSeatNumber() + 1; i++) {
@@ -177,7 +177,7 @@ public class RoomDAOImpl implements RoomDAO {
                     stmt.executeUpdate();
 
                 }
-                System.out.println("Nem találtam meg a szobát!");
+              //  System.out.println("Nem találtam meg a szobát!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

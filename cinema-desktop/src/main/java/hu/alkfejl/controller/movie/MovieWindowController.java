@@ -9,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import org.apache.commons.io.FileUtils;
 
 import javax.imageio.ImageIO;
@@ -45,7 +48,7 @@ public class MovieWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //gridPane.add(x, 0, 0);
-        System.out.println(MovieDAOImpl.getInstance().listByName());
+        //System.out.println(MovieDAOImpl.getInstance().listByName());
         movies = MovieDAOImpl.getInstance().listMovies();
         imageDrawer(movies);
 
@@ -66,14 +69,26 @@ public class MovieWindowController implements Initializable {
                 e.printStackTrace();
             }
 
-            imgV.setFitWidth(125d);
-            imgV.setFitHeight(160d);
+            Label titleLabel = new Label();
+            titleLabel.setText(movies.get(i).getTitle());
+
+            imgV.setFitWidth(140d);
+            imgV.setFitHeight(140d);
 
             movieButton[i] = new Button("", imgV);
-            movieButton[i].setMinWidth(125d);
-            movieButton[i].setMinHeight(160d);
+            movieButton[i].setMinWidth(140d);
+            movieButton[i].setMinHeight(140d);
+            movieButton[i].setAlignment(Pos.CENTER);
 
-            gridPane.add(movieButton[i], col, row);
+            VBox container = new VBox();
+            container.setAlignment(Pos.CENTER);
+            //container.setSpacing(5d);
+            container.setPadding(new Insets(5));
+
+            container.getChildren().addAll(titleLabel,movieButton[i]);
+
+            gridPane.add(container, col, row);
+           // gridPane.add(titleLabel,col,row);
             col++;
 
             if (col == 3) {

@@ -1,6 +1,7 @@
 package hu.alkfejl.controller.playtime;
 
 import hu.alkfejl.App;
+import hu.alkfejl.controller.Utils;
 import hu.alkfejl.controller.movie.MovieEditController;
 import hu.alkfejl.controller.room.RoomAddEditController;
 import hu.alkfejl.dao.implementation.PlayTimeDAOImpl;
@@ -60,7 +61,7 @@ public class PlaytimeController implements Initializable {
             {
                 deleteButton.setOnAction(event -> {
                     PlayTime playtime = getTableRow().getItem();
-                    System.out.println("megnyomták a törlés gombot");
+                    //System.out.println("megnyomták a törlés gombot");
                     deletePlayTime(playtime);// törlés
                     refreshTable(); // táblafrissites
                 });
@@ -68,7 +69,7 @@ public class PlaytimeController implements Initializable {
                 editButton.setOnAction(event ->{
                     PlayTime playtime = getTableRow().getItem();
                     editPlayTime(playtime);
-                    System.out.println("megnyomták a módosítás gombot");
+                   // System.out.println("megnyomták a módosítás gombot");
 
                     refreshTable();
                 });
@@ -103,6 +104,8 @@ public class PlaytimeController implements Initializable {
                 playtimedao.deleteRoomSeat(playtime);
             }
         });
+        Utils.showInfo("Sikeres törlés!");
+
     }
 
     private void editPlayTime(PlayTime playtime){
@@ -117,7 +120,7 @@ public class PlaytimeController implements Initializable {
 
     }
 
-    public void newPlayTime(ActionEvent actionEvent) {
+    public void newPlayTime() {
         FXMLLoader fxmlLoader = App.loadFXML(("/fxml/playtime/playtime_add_edit.fxml"));
         PlayTimeAddEditController controller = fxmlLoader.getController();
         controller.setPlayTime(new PlayTime());
