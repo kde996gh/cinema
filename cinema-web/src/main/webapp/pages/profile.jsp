@@ -1,11 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%--
   Created by IntelliJ IDEA.
   User: Deniel
   Date: 2021. 04. 15.
-  Time: 21:43
+  Time: 20:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,13 +12,8 @@
     <title>Filmek</title>
 </head>
 <body>
+<jsp:include page="common/menu.jsp"/>
 <div class="container">
-
-    <jsp:include page="common/menu.jsp"/>
-    <div class="content">
-
-    </div>
 </div>
-
 </body>
 </html>

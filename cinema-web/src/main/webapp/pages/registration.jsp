@@ -15,20 +15,28 @@
 <jsp:include page="common/menu.jsp"/>
 
 <div class="container">
-    <form action="../LoginController" method="post">
+    <form action="/registration" method="post">
+
         <div class="form-group">
-            <label for="username">Username</label>
-            <input required name="username" type="text" class="form-control" id="username"
-                   placeholder="Username"/>
+            <label for="realname">Név</label>
+            <input required name="realname" type="text" class="form-control" id="realname"
+                   placeholder="Név"/>
         </div>
+
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="email">Email</label>
+            <input required name="email" type="email" class="form-control" id="email"
+                   placeholder="Email"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Jelszó</label>
             <input required name="password" type="password" class="form-control" id="password"
-                   placeholder="Password"/>
+                   placeholder="Jelszó"/>
         </div>
-        <button id="submit" type="submit" class="btn btn-primary">Bejelentkezés</button>
+
+        <button id="submit" type="submit" class="btn btn-primary">Regisztráció</button>
     </form>
-    <button id="register" type="submit" class="btn btn-primary">Regisztráció</button>
 
 </div>
 

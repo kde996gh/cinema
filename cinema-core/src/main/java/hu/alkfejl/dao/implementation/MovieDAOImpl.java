@@ -20,19 +20,31 @@ public class MovieDAOImpl implements MovieDAO {
     private static final String FIND_MOVIE_BY_ID = "SELECT title FROM MOVIE WHERE id=?";
     private String connectionURL;
     private Connection conn;
-    private static MovieDAOImpl instance = new MovieDAOImpl();
+    private static MovieDAOImpl instance;
 
-    public static MovieDAOImpl getInstance() {
-        return instance;
-    }
+//    public static MovieDAOImpl getInstance() {
+//        return instance;
+//    }
 
 
     ///QUERIES
 
+    public static MovieDAOImpl getInstance() {
+        if (instance == null) {
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }
+            instance = new MovieDAOImpl();
+        }
+        return instance;
+    }
 
     public MovieDAOImpl() {
         connectionURL = CinemaConfiguration.getValue("db.url");
         try {
+
             conn = DriverManager.getConnection(connectionURL);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

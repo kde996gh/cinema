@@ -9,23 +9,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav w-100">
-            <li class="nav-item"><a class="nav-link" href="home.jsp">Főoldal</a></li>
-            <li class="nav-item"><a class="nav-link" href="movies.jsp">Filmek</a></li>
-            <li class="nav-item"><a class="nav-link" href="showtimes.jsp">Vetítések</a></li>
-            <li class="nav-item"><a class="nav-link" href="login.jsp">Bejelentkezés</a></li>
-            <li class="nav-item"><a class="nav-link" href="registration.jsp">Regisztráció</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Főoldal</a></li>
+            <li class="nav-item"><a class="nav-link" href="/movies">Filmek</a></li>
+            <li class="nav-item"><a class="nav-link" href="/showtimes">Vetítések</a></li>
 
-                        <c:if test="${11 > 1}">
-                            <li class="nav-item dropdown ml-auto">
-                                <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                                        :(
-                                </a>
-                                <div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>
-                                    <a class='dropdown-item' href='../LogoutController'>Kijelentkezés</a>
-                                </div>
-                            </li>
-                        </c:if>
+            <c:if test="${sessionScope.name != null}">
+                <li class="nav-item dropdown ml-auto">
+                    <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown'
+                       aria-haspopup='true' aria-expanded='false'>
+                            ${sessionScope.name}
+                    </a>
+                    <div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>
+                        <a class='dropdown-item' href='/logout'>Kijelentkezés</a>
+                        <a class='dropdown-item' href='/profile'>Profilom</a>
+                    </div>
+                </li>
+            </c:if>
+            <c:if test="${sessionScope.name == null}">
+                <li class="nav-item"><a class="nav-link" href="/login">Bejelentkezés</a></li>
+                <li class="nav-item"><a class="nav-link" href="/registration">Regisztráció</a></li>
 
+            </c:if>
 
         </ul>
     </div>

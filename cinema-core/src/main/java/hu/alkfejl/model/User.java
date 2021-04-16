@@ -11,7 +11,6 @@ public class User {
     private StringProperty userName = new SimpleStringProperty(this, "userName");
     private StringProperty password = new SimpleStringProperty(this, "password");
     private StringProperty email = new SimpleStringProperty(this, "email");
-    private IntegerProperty playTimeId = new SimpleIntegerProperty(this, "playTimeId");
 
     public int getId() {
         return id.get();

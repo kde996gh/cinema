@@ -15,14 +15,14 @@
 <jsp:include page="common/menu.jsp"/>
 
 <div class="container">
-    <form action="../LoginController" method="post">
+    <form action="/login" method="post">
         <div class="form-group">
-            <label for="username">Username</label>
-            <input required name="username" type="text" class="form-control" id="username"
-                   placeholder="Username"/>
+            <label for="email">Email cím</label>
+            <input required name="email" type="text" class="form-control" id="email"
+                   placeholder="email"/>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">Jelszó</label>
             <input required name="password" type="password" class="form-control" id="password"
                    placeholder="Password"/>
         </div>
