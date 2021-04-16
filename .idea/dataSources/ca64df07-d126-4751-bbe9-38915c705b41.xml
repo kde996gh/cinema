@@ -1589,30 +1589,19 @@
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="551" parent="178" name="playTimeId">
-      <Position>5</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="552" parent="178" name="user_userName_uindex">
+    <index id="551" parent="178" name="user_userName_uindex">
       <ColNames>userName</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="553" parent="178" name="user_email_uindex">
+    <index id="552" parent="178" name="user_email_uindex">
       <ColNames>email</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="554" parent="178" name="user_pk">
+    <key id="553" parent="178" name="user_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="555" parent="178">
-      <ColNames>playTimeId</ColNames>
-      <RefTableName>playtime</RefTableName>
-      <RefKeyName>playtime_pk</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
   </database-model>
 </dataSource>
