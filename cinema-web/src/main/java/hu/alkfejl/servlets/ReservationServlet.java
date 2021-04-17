@@ -10,30 +10,56 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @WebServlet(name = "ReservationServlet", urlPatterns = "/reservation")
 public class ReservationServlet extends HttpServlet {
+    PlayTimeDAO playtimedao = PlayTimeDAOImpl.getInstance();
+    SeatDAO seatDAO = SeatDAOImpl.getInstance();
+    RoomDAO roomDAO = RoomDAOImpl.getInstance();
+    TicketDAO ticketDAO = TicketDAOImpl.getInstance();
+    ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
+    SeatDAOImpl seatDao = SeatDAOImpl.getInstance();
+
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
 
-        String[] seatsPicked = req.getParameterValues("seatPicked");
-        String price = req.getParameter("finalPrice");
+
+        int priceInt = Integer.parseInt(req.getParameter("finalPrice"));
         String email = (String) req.getSession().getAttribute("email");
+        int ptid = Integer.parseInt(req.getParameter("playTimeId"));
+        String[] seatsPicked = req.getParameterValues("seatPicked");
+        String seatsPickedString = seatsPicked[0];
+        //int arrayyé konvertálás
+        ArrayList<Integer> seatsPickedIntArray = new ArrayList<>();
+        String[] arrOfStr = seatsPickedString.split(",");
 
-//        int contactId = 0;
-//        int contactId = 0;
-//        try {
-//            contactId = Integer.parseInt(req.getParameter("finalPrice"));
-//        } catch (NumberFormatException ex){
-//            ex.printStackTrace();
-//        }
+        for (String s : arrOfStr) {
+            seatsPickedIntArray.add(Integer.parseInt(s));
+        }
 
-        System.out.println("ezaz????? :PLS :))))) " + Arrays.toString(seatsPicked) + "   ara: " + price + "   , " + email);
+        for (Integer integer : seatsPickedIntArray) {
+            Reservation r = new Reservation();
+            r.setPlaytime_id(ptid);
+            r.setPrice(priceInt);
+            r.setEmail(email);
+            r.setReserved_seat(integer);
+            reservationDAO.save(r);
+            seatDao.reserve(ptid, integer);
+        }
+
+
+
+
+        //seateknél update
+
 
     }
 
@@ -41,35 +67,41 @@ public class ReservationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int playtimeid = Integer.parseInt(req.getParameter("ptid"));
-       // PlayTime pt = null;
-      //  PlayTime obj = (PlayTime) req.getAttribute("ptid");
-       // System.out.println(obj.getMovie_name());
+        String message = "";
+        // PlayTime pt = null;
+        //  PlayTime obj = (PlayTime) req.getAttribute("ptid");
+        // System.out.println(obj.getMovie_name());
 
         // az adott vetítéshez tartozó terem székei
+        String email = (String) req.getSession().getAttribute("email");
 
-        PlayTimeDAO playtimedao = PlayTimeDAOImpl.getInstance();
+
         PlayTime playTime = playtimedao.getPlayTimeById(playtimeid);
 
-        SeatDAO seatDAO = SeatDAOImpl.getInstance();
         List<Seat> seats = seatDAO.getPlayTimeSeats(playtimeid);
 
-        RoomDAO roomDAO = RoomDAOImpl.getInstance();
         Room currentRoom = roomDAO.getRoomByName(playTime.getRoom_name());
 
-        TicketDAO ticketDAO = TicketDAOImpl.getInstance();
         Ticket ticket = ticketDAO.getTicketByType(playTime.getTicket_type());
 
+        boolean alreadyBooked = reservationDAO.checkIfAlreadyBooked(email, playtimeid);
+        System.out.println("alreadyBooked??? : " + alreadyBooked + ", email: " +email + ", ptid: " +playtimeid);
 
-        req.setAttribute("seats", seats);
-        req.setAttribute("room", currentRoom);
-        req.setAttribute("playtime", playTime);
-        req.setAttribute("ticket", ticket);
+        if (alreadyBooked) {
+            message = "Már foglaltál erre a filmre, a profilodon megtekinheted vagy módosíthatod!";
+            req.setAttribute("message", message);
 
+        }else {
+            req.setAttribute("message", message);
+            req.setAttribute("seats", seats);
+            req.setAttribute("room", currentRoom);
+            req.setAttribute("playtime", playTime);
+            req.setAttribute("ticket", ticket);
+        }
 
-       // System.out.println(playtimeid + " +++PLAYTIMEID");
+        // System.out.println(playtimeid + " +++PLAYTIMEID");
 
         getServletContext().getRequestDispatcher("/pages/reservation.jsp").forward(req, resp);
-
 
 
     }

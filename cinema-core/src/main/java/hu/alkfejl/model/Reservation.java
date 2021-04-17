@@ -9,10 +9,9 @@ public class Reservation {
 
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
     private IntegerProperty playtime_id = new SimpleIntegerProperty(this, "playtime_id");
-    private StringProperty name = new SimpleStringProperty(this, "name");
+    private IntegerProperty price = new SimpleIntegerProperty(this, "price");
     private StringProperty email = new SimpleStringProperty(this, "email");
-    private IntegerProperty age = new SimpleIntegerProperty(this, "age");
-    private IntegerProperty reservedTickets = new SimpleIntegerProperty(this, "reservedTickets");
+    private IntegerProperty reserved_seat = new SimpleIntegerProperty(this, "reserved_seat");
 
     public int getId() {
         return id.get();
@@ -38,17 +37,6 @@ public class Reservation {
         this.playtime_id.set(playtime_id);
     }
 
-    public String getName() {
-        return name.get();
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
 
     public String getEmail() {
         return email.get();
@@ -62,27 +50,28 @@ public class Reservation {
         this.email.set(email);
     }
 
-    public int getAge() {
-        return age.get();
+    public int getPrice() {
+        return price.get();
     }
 
-    public IntegerProperty ageProperty() {
-        return age;
+    public IntegerProperty priceProperty() {
+        return price;
     }
 
-    public void setAge(int age) {
-        this.age.set(age);
+    public void setPrice(int price) {
+        this.price.set(price);
     }
 
-    public int getReservedTickets() {
-        return reservedTickets.get();
+    public int getReserved_seat() {
+        return reserved_seat.get();
     }
 
-    public IntegerProperty reservedTicketsProperty() {
-        return reservedTickets;
+    public IntegerProperty reserved_seatProperty() {
+        return reserved_seat;
     }
 
-    public void setReservedTickets(int reservedTickets) {
-        this.reservedTickets.set(reservedTickets);
+    public void setReserved_seat(int reserved_seat) {
+        this.reserved_seat.set(reserved_seat);
     }
 }
+

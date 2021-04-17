@@ -10,48 +10,59 @@
 </head>
 <body>
 <jsp:include page="common/menu.jsp"/>
-<div class="container">
-    <div class="content">
-        <c:forEach var="seat" items="${requestScope.seats}">
-            <c:if test="${(seat.seat_id-1) % 6 == 0}">
-                <br>
-            </c:if>
-            <c:if test="${seat.taken == 0}">
-                <button class="notTaken" id="id${seat.seat_id}"
-                        onclick="pickSeatFunction('id'+${seat.seat_id} , ${seat.seat_id})">
-                        ${seat.seat_id}
-                </button>
-            </c:if>
-            <c:if test="${seat.taken == 1}">
-                <button class="taken">
-                        ${seat.seat_id}
-                </button>
-            </c:if>
-
-        </c:forEach>
-        <br>
-
-        <p id="price"><c:out value="${requestScope.ticket.price}"/></p>
-        <br>
-        <p id="lower_price"><c:out value="${requestScope.ticket.lowerPrice}"/></p>
-        <br>
-        <label for="lowerPriceCheck">Checkbox:</label>
-        <input type="checkbox" id="lowerPriceCheck">
+<c:if test="${requestScope.message != ''}">
+    ${requestScope.message}
+</c:if>
 
 
-        <p id="finalPrice">
-        </p>
+<c:if test="${requestScope.message == ''}">
+
+    <div class="container">
+        <div class="content">
+            <c:forEach var="seat" items="${requestScope.seats}">
+                <c:if test="${(seat.seat_id-1) % 6 == 0}">
+                    <br>
+                </c:if>
+                <c:if test="${seat.taken == 0}">
+                    <button class="notTaken" id="id${seat.seat_id}"
+                            onclick="pickSeatFunction('id'+${seat.seat_id} , ${seat.seat_id})">
+                            ${seat.seat_id}
+                    </button>
+                </c:if>
+                <c:if test="${seat.taken == 1}">
+                    <button class="taken">
+                            ${seat.seat_id}
+                    </button>
+                </c:if>
+
+            </c:forEach>
+            <br>
+
+            <p id="price"><c:out value="${requestScope.ticket.price}"/></p>
+            <br>
+            <p id="lower_price"><c:out value="${requestScope.ticket.lowerPrice}"/></p>
+            <br>
+            <label for="lowerPriceCheck">Checkbox:</label>
+            <input type="checkbox" id="lowerPriceCheck">
+
+
+            <p id="finalPrice">
+            </p>
+        </div>
+
+        <div class="form-group">
+            <form action="/reservation" method="post">
+                <input type="hidden" id="formPtId" name="playTimeId"
+                       value="<c:out value="${requestScope.playtime.id}"/>"/>
+                <input type="hidden" id="formSeatArray" name="seatPicked" value=""/>
+                <input type="hidden" id="finalPriceToServlet" name="finalPrice" value=""/>
+                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
     </div>
+</c:if>
 
-    <div class="form-group">
-        <form action="/reservation" method="post">
-            <input type="hidden" id="formSeatArray" name="seatPicked" value=""/>
-            <input type="hidden" id="finalPriceToServlet" name="finalPrice" value=""/>
-            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-
-</div>
 <script type="text/javascript">
     let glob = [];
     let fprice;
@@ -65,10 +76,12 @@
     console.log("price: " + price + ", lower: " + lower_price);
 
     let finalPrice = document.getElementById('finalPrice');
+    formFinalPrice.value = priceCheck();
 
     function pickSeatFunction(id, seat_id) {
         let currElem = document.getElementById(id);
         if (currElem.style.backgroundColor === "yellow") {
+            currElem.style.backgroundColor = "green"
             currElem.style.backgroundColor = "green"
             for (let i = 0; i < glob.length; i++) {
                 if (glob[i] === seat_id) {
@@ -81,21 +94,34 @@
         }
         //check();
         formSeatArray.value = check();
-        formFinalPrice.value = fprice;
         finalPriceCounter();
         //console.log(a + " " + p);
+        sendBackPrice = priceCheck()
     }
 
     $(lower_check_box).change(function () {
+        formFinalPrice.value = priceCheck()
+
         finalPriceCounter();
     });
+
+    function priceCheck() {
+        if (lower_check_box.checked === true) {
+            return parseInt(lower_price);
+        } else {
+            return parseInt(price);
+        }
+    }
 
     function finalPriceCounter() {
 
         if (lower_check_box.checked === true) {
             fprice = parseInt(lower_price) * glob.length;
+            sendBackPrice = parseInt(lower_price);
         } else {
             fprice = parseInt(price) * glob.length;
+            sendBackPrice = parseInt(price);
+
         }
         console.log("final proce: " + fprice);
 
