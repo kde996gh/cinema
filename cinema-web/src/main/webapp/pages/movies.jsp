@@ -25,14 +25,14 @@
             <th scope="col">Korhatár</th>
             <th scope="col">Rendező</th>
             <th scope="col">Szereplők</th>
-            <th scope="col">Leíárs</th>
+            <th scope="col">Leírás</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="item" items="${requestScope.movies}">
             <tr>
                 <td>
-                    <a href="/movies?movieName=${item.title}">
+                    <a href="/movie?movid=${item.id}">
                     <img src="data:image/jpg;base64,${item.coverImage}"
                          onclick=""
                          width="100" height="100"/>

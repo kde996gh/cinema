@@ -24,4 +24,6 @@ public interface RoomDAO {
     ObservableList<String> listByName();
 
     int getIdByRoomName(String newV);
+
+    Room getRoomByName(String room_name);
 }

@@ -14,4 +14,6 @@ public interface TicketDAO {
     public Integer findTicketTypeById(int room_id);
 
     int getIdByTicketType(Integer newV);
+
+    Ticket getTicketByType(int ticket_type);
 }

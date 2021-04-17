@@ -50,6 +50,7 @@ public class MovieDAOImpl implements MovieDAO {
             throwables.printStackTrace();
         }
     }
+
     @Override
     public ObservableList<Movie> listMovies() {
         try (Statement stmt = conn.createStatement();
@@ -82,27 +83,27 @@ public class MovieDAOImpl implements MovieDAO {
     @Override
     public ObservableList<String> listByName() {
         ObservableList<String> result = FXCollections.observableArrayList();
-        try(Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(SELECT_ONLY_TITLES)
-        ){
-            while(rs.next()){
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(SELECT_ONLY_TITLES)
+        ) {
+            while (rs.next()) {
                 String a = rs.getString("title");
                 result.add(a);
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
     }
 
     @Override
-    public Movie save(Movie movie){
-        try(
+    public Movie save(Movie movie) {
+        try (
                 PreparedStatement stmt = movie.getId() <= 0 ? conn.prepareStatement(INSERT_MOVIE, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_MOVIE)
-        ){
-            if(movie.getId() > 0){
-                stmt.setInt(9 ,movie.getId());
+        ) {
+            if (movie.getId() > 0) {
+                stmt.setInt(9, movie.getId());
             }
             stmt.setString(1, movie.getTitle());
             stmt.setInt(2, movie.getLengthMin());
@@ -122,7 +123,7 @@ public class MovieDAOImpl implements MovieDAO {
             }
 
 
-        }catch (SQLException s){
+        } catch (SQLException s) {
             s.printStackTrace();
             return null;
 
@@ -133,20 +134,21 @@ public class MovieDAOImpl implements MovieDAO {
 
     @Override
     public void delete(Movie movie) {
-        try(PreparedStatement stmt = conn.prepareStatement(DELETE_MOVIE)){
-            stmt.setInt(1,movie.getId());
+        try (PreparedStatement stmt = conn.prepareStatement(DELETE_MOVIE)) {
+            stmt.setInt(1, movie.getId());
             stmt.executeUpdate();
-        }catch(SQLException exception){
-                exception.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
 
     }
+
     @Override
-    public String findMovieNameById(int movie_id){
-        String result ="";
+    public String findMovieNameById(int movie_id) {
+        String result = "";
         List<Movie> movieList = this.listMovies();
-        for(int i=0; i<movieList.size(); i++){
-            if(movieList.get(i).getId() == movie_id){
+        for (int i = 0; i < movieList.size(); i++) {
+            if (movieList.get(i).getId() == movie_id) {
                 result = movieList.get(i).getTitle();
             }
         }
@@ -165,4 +167,16 @@ public class MovieDAOImpl implements MovieDAO {
         //System.out.println(result);
         return result;
     }
+
+    @Override
+    public Movie findMovie(int id) {
+        List<Movie> movieList = this.listMovies();
+        for(Movie it : movieList){
+            if(it.getId() == id){
+                return it;
+            }
+        }
+        return null;
+    }
 }
+

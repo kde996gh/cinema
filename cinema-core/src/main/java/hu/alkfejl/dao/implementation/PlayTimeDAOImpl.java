@@ -21,11 +21,21 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE playtime_id=?";
     private static final String INSERT_SEATS = "INSERT INTO SEAT (playtime_id, seat_id, taken) VALUES (?,?,?)";
+    private static final String SELECT_SPEC_MOVIES = "SELECT * FROM PLAYTIME WHERE movie_name=?";
     private String connectionURL;
     private Connection conn;
 
-    private static PlayTimeDAOImpl instance = new PlayTimeDAOImpl();
+    private static PlayTimeDAOImpl instance;
+
     public static PlayTimeDAOImpl getInstance() {
+        if (instance == null) {
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }
+            instance = new PlayTimeDAOImpl();
+        }
         return instance;
     }
 
@@ -70,14 +80,14 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     @Override
     public PlayTime save(PlayTime playTime) {
-        try(
+        try (
                 //    private static final String UPDATE_PLAYTIME = "UPDATE PLAYTIME SET room_id=?,
                 //    movie_id=?, ticket_id=?, playTimeDate=?, playTimeHours=? WHERE id=?";
                 PreparedStatement stmt = playTime.getId() <= 0 ? conn.prepareStatement(INSERT_PLAYTIME, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_PLAYTIME)
-        ){
+        ) {
             //INSERT INTO PLAYTIME (room_name, movie_name, ticket_type, playTimeDate, playTimeHours) values (?,?,?,?,?)
-            if(playTime.getId() > 0){
-                stmt.setInt(6 ,playTime.getId());
+            if (playTime.getId() > 0) {
+                stmt.setInt(6, playTime.getId());
             }
             stmt.setString(1, playTime.getRoom_name());
             stmt.setString(2, playTime.getMovie_name());
@@ -94,22 +104,36 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
             }
 
 
-        }catch (SQLException s){
+        } catch (SQLException s) {
             s.printStackTrace();
             return null;
 
         }
-        return playTime;    }
+        return playTime;
+    }
 
     @Override
     public void delete(PlayTime playTime) {
-        try(PreparedStatement stmt = conn.prepareStatement(DELETE_PLAYTIME)){
-            stmt.setInt(1,playTime.getId());
+        try (PreparedStatement stmt = conn.prepareStatement(DELETE_PLAYTIME)) {
+            stmt.setInt(1, playTime.getId());
             stmt.executeUpdate();
-        }catch(SQLException exception){
+        } catch (SQLException exception) {
             exception.printStackTrace();
         }
     }
+
+    @Override
+    public ObservableList<PlayTime> getMoviePlayTimes(String movieName) {
+        ObservableList<PlayTime> result = FXCollections.observableArrayList();
+        ObservableList<PlayTime> pts = this.listPlayTimes();
+        for(PlayTime ptit : pts){
+            if(ptit.getMovie_name().equals(movieName)){
+                result.add(ptit);
+            }
+        }
+        return result;
+    }
+
     @Override
     public void addRoomSeats(PlayTime playTime) {
         try {
@@ -122,7 +146,7 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                 stmt.executeUpdate();
                 stmt = conn.prepareStatement(INSERT_SEATS);
                 for (int i = 1; i < r.getSeatNumber() + 1; i++) {
-                   //"INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
+                    //"INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
 
                     stmt.setInt(1, playTime.getId());
                     stmt.setInt(2, i);
@@ -139,26 +163,37 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     stmt.executeUpdate();
 
                 }
-              //  System.out.println("Nem találtam meg a szobát!");
+                //  System.out.println("Nem találtam meg a szobát!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-       // return room;
+        // return room;
     }
-    public void deleteRoomSeat(PlayTime pt){
-        try(PreparedStatement stmt = conn.prepareStatement(DELETE_SEAT_WITH_ID))
-        {
+
+    public void deleteRoomSeat(PlayTime pt) {
+        try (PreparedStatement stmt = conn.prepareStatement(DELETE_SEAT_WITH_ID)) {
             stmt.setInt(1, pt.getId());
             stmt.executeUpdate();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.err.println("Hiba a szék törlésekor!");
         }
     }
+
+    @Override
+    public PlayTime getPlayTimeById(int playtimeid) {
+        for(PlayTime pt : this.listPlayTimes()){
+            if(pt.getId() == playtimeid){
+                return pt;
+            }
+        }
+        return null;
+    }
+
     private boolean findPlayTimeById(PlayTime playtime) {
         List<PlayTime> playTimeList = this.listPlayTimes();
-        for( PlayTime pt : playTimeList){
-            if(pt.getId() == playtime.getId()){
+        for (PlayTime pt : playTimeList) {
+            if (pt.getId() == playtime.getId()) {
                 return true;
             }
         }

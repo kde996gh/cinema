@@ -10,31 +10,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac1cbdf-765c-46dd-98b1-82f36a1c94c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/HomeServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/LoginServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/LogoutServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ProfileServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/RegistrationServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ShowTimesServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ca64df07-d126-4751-bbe9-38915c705b41.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ca64df07-d126-4751-bbe9-38915c705b41.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MovieServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ReservationServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/reservation.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/MovieDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/MovieDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/PlayTimeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/PlayTimeDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/RoomDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/RoomDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/SeatDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/SeatDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/TicketDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/TicketDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/MovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/MovieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/PlayTimeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/PlayTimeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/RoomDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/RoomDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/SeatDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/SeatDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/TicketDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/TicketDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/PlayTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/PlayTime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/target/classes/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/classes/cinema" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/common/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/common/menu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/registration.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +50,8 @@
         <option value="Interface" />
         <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -97,7 +97,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pub/gyakorlat/10/01-contacts-user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pub/gyakorlat/10/03-contacts-delete-modify" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -114,17 +114,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 9.0.45" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.45" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -324,7 +313,9 @@
       <workItem from="1618484860587" duration="20495000" />
       <workItem from="1618521398232" duration="273000" />
       <workItem from="1618557622766" duration="800000" />
-      <workItem from="1618578270914" duration="20122000" />
+      <workItem from="1618578270914" duration="30836000" />
+      <workItem from="1618645315016" duration="20000" />
+      <workItem from="1618648939071" duration="18913000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton">
       <created>1617386989614</created>
@@ -459,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618521475362</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="film listázás">
+      <created>1618601268577</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1618601268577</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,14 +482,15 @@
     <MESSAGE value="film keresés több mindenre" />
     <MESSAGE value="asztali funciók 90%" />
     <MESSAGE value="web+-" />
-    <option name="LAST_COMMIT_MESSAGE" value="web+-" />
+    <MESSAGE value="film listázás" />
+    <option name="LAST_COMMIT_MESSAGE" value="film listázás" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/RoomDAOImpl.java</url>
-          <line>189</line>
+          <line>198</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

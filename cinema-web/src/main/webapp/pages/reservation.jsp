@@ -1,0 +1,113 @@
+<%@ page import="hu.alkfejl.model.Seat" %>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
+<head>
+    <jsp:include page="common/header.jsp"/>
+    <title>Filmek</title>
+</head>
+<body>
+<jsp:include page="common/menu.jsp"/>
+<div class="container">
+    <div class="content">
+        <c:forEach var="seat" items="${requestScope.seats}">
+            <c:if test="${(seat.seat_id-1) % 6 == 0}">
+                <br>
+            </c:if>
+            <c:if test="${seat.taken == 0}">
+                <button class="notTaken" id="id${seat.seat_id}"
+                        onclick="pickSeatFunction('id'+${seat.seat_id} , ${seat.seat_id})">
+                        ${seat.seat_id}
+                </button>
+            </c:if>
+            <c:if test="${seat.taken == 1}">
+                <button class="taken">
+                        ${seat.seat_id}
+                </button>
+            </c:if>
+
+        </c:forEach>
+        <br>
+
+        <p id="price"><c:out value="${requestScope.ticket.price}"/></p>
+        <br>
+        <p id="lower_price"><c:out value="${requestScope.ticket.lowerPrice}"/></p>
+        <br>
+        <label for="lowerPriceCheck">Checkbox:</label>
+        <input type="checkbox" id="lowerPriceCheck">
+
+
+        <p id="finalPrice">
+        </p>
+    </div>
+
+    <div class="form-group">
+        <form action="/reservation" method="post">
+            <input type="hidden" id="formSeatArray" name="seatPicked" value=""/>
+            <input type="hidden" id="finalPriceToServlet" name="finalPrice" value=""/>
+            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+<script type="text/javascript">
+    let glob = [];
+    let fprice;
+    let formSeatArray = document.getElementById('formSeatArray');
+    let formFinalPrice = document.getElementById('finalPriceToServlet');
+
+    let lower_check_box = document.getElementById('lowerPriceCheck')
+
+    let price = document.getElementById('price').innerHTML;
+    let lower_price = document.getElementById('lower_price').innerHTML;
+    console.log("price: " + price + ", lower: " + lower_price);
+
+    let finalPrice = document.getElementById('finalPrice');
+
+    function pickSeatFunction(id, seat_id) {
+        let currElem = document.getElementById(id);
+        if (currElem.style.backgroundColor === "yellow") {
+            currElem.style.backgroundColor = "green"
+            for (let i = 0; i < glob.length; i++) {
+                if (glob[i] === seat_id) {
+                    glob.splice(i, 1);
+                }
+            }
+        } else {
+            glob.push(seat_id);
+            currElem.style.backgroundColor = "yellow"
+        }
+        //check();
+        formSeatArray.value = check();
+        formFinalPrice.value = fprice;
+        finalPriceCounter();
+        //console.log(a + " " + p);
+    }
+
+    $(lower_check_box).change(function () {
+        finalPriceCounter();
+    });
+
+    function finalPriceCounter() {
+
+        if (lower_check_box.checked === true) {
+            fprice = parseInt(lower_price) * glob.length;
+        } else {
+            fprice = parseInt(price) * glob.length;
+        }
+        console.log("final proce: " + fprice);
+
+        finalPrice.innerHTML = "Végösszeg: " + fprice;
+    }
+
+    function check() {
+        return glob;
+    }
+
+
+</script>
+</body>
+
+</html>

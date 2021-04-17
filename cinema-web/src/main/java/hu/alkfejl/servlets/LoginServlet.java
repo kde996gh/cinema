@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        req.getSession().setAttribute("name", user.getUserName());
+        req.getSession().setAttribute("email", user.getEmail());
         resp.sendRedirect("/");
 
     }
