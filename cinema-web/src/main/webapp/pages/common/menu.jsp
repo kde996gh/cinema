@@ -13,11 +13,11 @@
             <li class="nav-item"><a class="nav-link" href="/movies">Filmek</a></li>
             <li class="nav-item"><a class="nav-link" href="/showtimes">Vetítések</a></li>
 
-            <c:if test="${sessionScope.name != null}">
+            <c:if test="${sessionScope.email != null}">
                 <li class="nav-item dropdown ml-auto">
                     <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown'
                        aria-haspopup='true' aria-expanded='false'>
-                            ${sessionScope.name}
+                            ${sessionScope.email}
                     </a>
                     <div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>
                         <a class='dropdown-item' href='/logout'>Kijelentkezés</a>
@@ -25,7 +25,7 @@
                     </div>
                 </li>
             </c:if>
-            <c:if test="${sessionScope.name == null}">
+            <c:if test="${sessionScope.email == null}">
                 <li class="nav-item"><a class="nav-link" href="/login">Bejelentkezés</a></li>
                 <li class="nav-item"><a class="nav-link" href="/registration">Regisztráció</a></li>
 

@@ -26,12 +26,12 @@ public class MoviesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(req.getParameter("movieName") != null){
             String movieName = req.getParameter("movieName");
-            System.out.println(movieName);
+           // System.out.println(movieName);
         }
 
         MovieDAO movideDao = MovieDAOImpl.getInstance();
         List<Movie> all = movideDao.listMovies();
-        System.out.println(all);
+      //  System.out.println(all);
 
         req.setAttribute("movies", all);
 

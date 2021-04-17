@@ -19,5 +19,5 @@ public interface MovieDAO {
 
     String findMovieNameById(int movie_id);
 
-
-    }
+    Movie findMovie(int id);
+}

@@ -22,9 +22,18 @@ public class TicketDAOImpl implements TicketDAO {
 
     private String connectionURL;
     private Connection conn;
-    private static TicketDAOImpl instance = new TicketDAOImpl();
+    private static TicketDAOImpl instance;
+
 
     public static TicketDAOImpl getInstance() {
+        if (instance == null) {
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }
+            instance = new TicketDAOImpl();
+        }
         return instance;
     }
 
@@ -40,9 +49,7 @@ public class TicketDAOImpl implements TicketDAO {
 
     @Override
     public List<Ticket> findAllTicket() {
-
         List<Ticket> result = new ArrayList<>();
-
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_TICKET);) {
             while (rs.next()) {
@@ -53,15 +60,13 @@ public class TicketDAOImpl implements TicketDAO {
                 current.setTicketType(rs.getInt("ticketType"));
                 result.add(current);
             }
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
         return result;
     }
+
+
 
     @Override
     public ObservableList<Integer> findTicketTypes() {
@@ -141,5 +146,15 @@ public class TicketDAOImpl implements TicketDAO {
             }
         }
         return result;
+    }
+
+    @Override
+    public Ticket getTicketByType(int ticket_type) {
+        for(Ticket ticket : this.findAllTicket()){
+            if(ticket.getTicketType() == ticket_type){
+                return ticket;
+            }
+        }
+        return null;
     }
 }

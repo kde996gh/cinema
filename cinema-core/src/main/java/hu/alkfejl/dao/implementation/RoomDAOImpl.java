@@ -26,9 +26,18 @@ public class RoomDAOImpl implements RoomDAO {
 
     private Connection conn;
 
-    private static RoomDAOImpl instance = new RoomDAOImpl();
+    private static RoomDAOImpl instance;
+
 
     public static RoomDAOImpl getInstance() {
+        if (instance == null) {
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }
+            instance = new RoomDAOImpl();
+        }
         return instance;
     }
 
@@ -177,7 +186,7 @@ public class RoomDAOImpl implements RoomDAO {
                     stmt.executeUpdate();
 
                 }
-              //  System.out.println("Nem találtam meg a szobát!");
+                //  System.out.println("Nem találtam meg a szobát!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -238,7 +247,8 @@ public class RoomDAOImpl implements RoomDAO {
         return result;
     }
 
-    public Room getRoomByName(String name){
+    @Override
+    public Room getRoomByName(String name) {
         Room result = null;
         List<Room> roomList = this.findAll();
         for (Room room : roomList) {

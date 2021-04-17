@@ -13,8 +13,11 @@ public interface PlayTimeDAO {
 
     void delete(PlayTime playTime);
 
+    ObservableList<PlayTime> getMoviePlayTimes(String movieName);
+
     void addRoomSeats(PlayTime playTime);
 
     void deleteRoomSeat(PlayTime pt);
 
+    PlayTime getPlayTimeById(int playtimeid);
 }
