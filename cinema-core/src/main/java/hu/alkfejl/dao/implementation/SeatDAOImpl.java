@@ -15,6 +15,7 @@ import java.util.List;
 public class SeatDAOImpl implements SeatDAO {
 
     private static final String SELECT_ALL_SEAT = "SELECT * FROM SEAT";
+    private static final String UPDATE_RESERVE = "UPDATE SEAT SET taken=1 WHERE playtime_id=? AND seat_id=?";
     private String connectionURL;
     private Connection conn;
     private static SeatDAOImpl instance;
@@ -42,7 +43,16 @@ public class SeatDAOImpl implements SeatDAO {
     }
 
     @Override
-    public void reserve(int roomId, int seatId) {
+    public void reserve(int playtimeId, int seatId) {
+        //    private static final String UPDATE_RESERVE =
+        //    "UPDATE SEAT SET taken=1 WHERE playtime_id=? AND seat_id=?";
+        try(PreparedStatement stmt = conn.prepareStatement(UPDATE_RESERVE)){
+            stmt.setInt(1, playtimeId);
+            stmt.setInt(2, seatId);
+            stmt.executeUpdate();
+        }catch(SQLException e){
+            System.err.println("Hiba szék updatekor");
+        }
 
     }
 
