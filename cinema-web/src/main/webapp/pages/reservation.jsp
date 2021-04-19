@@ -13,14 +13,11 @@
 <c:if test="${requestScope.message != ''}">
     ${requestScope.message}
 </c:if>
-
-
 <c:if test="${requestScope.message == ''}">
-
     <div class="container">
         <div class="content">
             <c:forEach var="seat" items="${requestScope.seats}">
-                <c:if test="${(seat.seat_id-1) % 6 == 0}">
+                <c:if test="${(seat.seat_id-1) % requestScope.room.colNumber == 0}">
                     <br>
                 </c:if>
                 <c:if test="${seat.taken == 0}">
@@ -98,7 +95,7 @@
         finalPriceCounter();
         finalSumPrice.value = fprice;
         //console.log(a + " " + p);
-     //   sendBackPrice = priceCheck()
+        //   sendBackPrice = priceCheck()
     }
 
     $(lower_check_box).change(function () {
@@ -119,10 +116,10 @@
 
         if (lower_check_box.checked === true) {
             fprice = parseInt(lower_price) * glob.length;
-           // sendBackPrice = parseInt(lower_price);
+            // sendBackPrice = parseInt(lower_price);
         } else {
             fprice = parseInt(price) * glob.length;
-          //  sendBackPrice = parseInt(price);
+            //  sendBackPrice = parseInt(price);
 
         }
         console.log("final proce: " + fprice);

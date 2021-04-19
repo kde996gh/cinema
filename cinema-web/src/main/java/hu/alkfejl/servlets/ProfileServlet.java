@@ -20,7 +20,8 @@ import java.util.List;
 public class ProfileServlet extends HttpServlet {
     ReservationDAO reservationdao = ReservationDAOImpl.getInstance();
     PlayTimeDAO playtimedao = PlayTimeDAOImpl.getInstance();
-String message = "";
+    String message = "";
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
@@ -30,51 +31,33 @@ String message = "";
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String email = (String) req.getSession().getAttribute("email");
-        if(email == null){
+        if (email == null) {
             message = "Ez az oldal csak bejelentkezés után érhető el!";
-        }else{
+        } else {
 
             List<Reservation> userReservations = reservationdao.getUserReservations(email);
 
             List<Integer> userPtResIds = new ArrayList<>();
-            for(Reservation r : userReservations){
-                if(!userPtResIds.contains(r.getPlaytime_id())){
+            for (Reservation r : userReservations) {
+                if (!userPtResIds.contains(r.getPlaytime_id())) {
                     userPtResIds.add(r.getPlaytime_id());
                 }
             }
 
             List<PlayTime> usersPlaytimes = new ArrayList<>();
-            for(Integer integer : userPtResIds){
+            for (Integer integer : userPtResIds) {
                 usersPlaytimes.add(playtimedao.getPlayTimeById(integer));
             }
 
             req.setAttribute("usersPlaytimes", usersPlaytimes);
-
-
+            req.setAttribute("userReservations", userReservations);
 
 
             System.out.println("Ez a foglalások számai:  " + userPtResIds);
 
 
-
-
-
-
-
-
-
-
-
-
-
-            message="";
+            message = "";
         }
-
-
-
-
-
-
 
 
         req.setAttribute("message", message);

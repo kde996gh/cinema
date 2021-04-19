@@ -41,31 +41,31 @@
         Hossz: <c:out value="${requestScope.movie.description}"/>
     </p>
 </div>
-    <div id="playtimes">
-        <table class="table">
-            <thead class="thead-dark">
+<div id="playtimes">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Cím</th>
+            <th scope="col">Terem</th>
+            <th scope="col">Dátum</th>
+            <th scope="col">Óra</th>
+            <th scope="col">Jegy</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="playtime" items="${requestScope.playTimes}">
             <tr>
-                <th scope="col">Cím</th>
-                <th scope="col">Terem</th>
-                <th scope="col">Dátum</th>
-                <th scope="col">Óra</th>
-                <th scope="col">Jegy</th>
+                <td>${playtime.movie_name}</td>
+                <td>${playtime.room_name}</td>
+                <td>${playtime.playTimeDate}</td>
+                <td>${playtime.playTimeHours}</td>
+                <td><a href="/reservation?ptid=${playtime.id}"> Foglal </a>
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="playtime" items="${requestScope.playTimes}">
-                <tr>
-                    <td>${playtime.movie_name}</td>
-                    <td>${playtime.room_name}</td>
-                    <td>${playtime.playTimeDate}</td>
-                    <td>${playtime.playTimeHours}</td>
-                    <td><a href="/reservation?ptid=${playtime.id}"> Foglal </a>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 
 
 </body>

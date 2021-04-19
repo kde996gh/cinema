@@ -2,7 +2,6 @@ package hu.alkfejl.dao.implementation;
 
 import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.ReservationDAO;
-import hu.alkfejl.model.Movie;
 import hu.alkfejl.model.Reservation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,8 +13,8 @@ import java.util.List;
 public class ReservationDAOImpl implements ReservationDAO {
 
     private static final String SELECT_ALL_RESERVATIONS = "SELECT * FROM RESERVATION";
-    private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtime_id, price, email, reserved_seat) VALUES (?,?,?,?)";
-    private static final String UPDATE_RESERVATION = "UPDATE RESERVATION SET playtime_id=?, price=?, email=?, reserved_seat=? WHERE id=?";
+    private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtime_id, email, reserved_seat, price_sum) VALUES (?,?,?,?)";
+    private static final String UPDATE_RESERVATION = "UPDATE RESERVATION SET playtime_id=?, email=?, reserved_seat=?, price_sum=? WHERE id=?";
     private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtime_id=? AND email=?";
 
     private String connectionURL;
@@ -56,10 +55,10 @@ public class ReservationDAOImpl implements ReservationDAO {
 
                 currRes.setId(rs.getInt("id"));
                 currRes.setPlaytime_id(rs.getInt("playtime_id"));
-                currRes.setPrice(rs.getInt("price"));
+                // currRes.setPrice(rs.getInt("price"));
                 currRes.setEmail(rs.getString("email"));
-                currRes.setReserved_seat(rs.getInt("reserved_seat"));
-
+                currRes.setReserved_seat(rs.getString("reserved_seat"));
+                currRes.setPrice_sum(rs.getInt("price_sum"));
                 ress.add(currRes);
             }
             return ress;
@@ -81,9 +80,10 @@ public class ReservationDAOImpl implements ReservationDAO {
             }
             stmt = conn.prepareStatement(INSERT_RESERVATION);
             stmt.setInt(1, reservation.getPlaytime_id());
-            stmt.setInt(2, reservation.getPrice());
-            stmt.setString(3, reservation.getEmail());
-            stmt.setInt(4, reservation.getReserved_seat());
+            // stmt.setInt(2, reservation.getPrice());
+            stmt.setString(2, reservation.getEmail());
+            stmt.setString(3, reservation.getReserved_seat());
+            stmt.setInt(4, reservation.getPrice_sum());
             stmt.executeUpdate();
 
             if (reservation.getId() <= 0) {
@@ -145,6 +145,16 @@ public class ReservationDAOImpl implements ReservationDAO {
         } catch (SQLException e) {
             System.err.println("Hiba a foglalás törlésekor!");
         }
+    }
+
+    @Override
+    public Reservation getReservationByIdEmail(int ptid, String email) {
+        for(Reservation r : this.listReservations()){
+            if(r.getEmail().equals(email) && r.getPlaytime_id() == ptid){
+                return r;
+            }
+        }
+        return null;
     }
 
 

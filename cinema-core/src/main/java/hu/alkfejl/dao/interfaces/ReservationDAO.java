@@ -17,4 +17,6 @@ public interface ReservationDAO {
     List<Reservation> getUserReservations(String email);
 
     void deleteReservationByUser(String email, int intptid);
+
+    Reservation getReservationByIdEmail(int ptid, String email);
 }

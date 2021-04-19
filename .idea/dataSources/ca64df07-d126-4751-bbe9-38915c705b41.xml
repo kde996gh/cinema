@@ -1428,20 +1428,19 @@
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="517" parent="172" name="price">
+    <column id="517" parent="172" name="email">
       <Position>3</Position>
-      <DataType>integer|0s</DataType>
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="518" parent="172" name="email">
+    <column id="518" parent="172" name="reserved_seat">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="519" parent="172" name="reserved_seat">
+    <column id="519" parent="172" name="price_sum">
       <Position>5</Position>
       <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
     </column>
     <key id="520" parent="172" name="reservation_pk">
       <ColNames>id</ColNames>

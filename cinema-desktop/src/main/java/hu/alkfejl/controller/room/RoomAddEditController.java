@@ -96,7 +96,7 @@ public class RoomAddEditController implements Initializable {
 
     @FXML
     public void onSave() {
-        if(room.getRowNumber() < room.getColNumber()){
+        if(room.getRowNumber() > room.getColNumber()){
             Utils.showWarning("Téglalap alakú elrendezést kell követni, változtass a méreten!");
         }else {
             room = roomdao.save(room);
