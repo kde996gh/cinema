@@ -56,6 +56,7 @@
                        value="<c:out value="${requestScope.playtime.id}"/>"/>
                 <input type="hidden" id="formSeatArray" name="seatPicked" value=""/>
                 <input type="hidden" id="finalPriceToServlet" name="finalPrice" value=""/>
+                <input type="hidden" id="finalSumPrice" name="finalSumPrice" value=""/>
                 <button id="submit" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -68,12 +69,12 @@
     let fprice;
     let formSeatArray = document.getElementById('formSeatArray');
     let formFinalPrice = document.getElementById('finalPriceToServlet');
+    let finalSumPrice = document.getElementById('finalSumPrice');
 
     let lower_check_box = document.getElementById('lowerPriceCheck')
 
     let price = document.getElementById('price').innerHTML;
     let lower_price = document.getElementById('lower_price').innerHTML;
-    console.log("price: " + price + ", lower: " + lower_price);
 
     let finalPrice = document.getElementById('finalPrice');
     formFinalPrice.value = priceCheck();
@@ -95,8 +96,9 @@
         //check();
         formSeatArray.value = check();
         finalPriceCounter();
+        finalSumPrice.value = fprice;
         //console.log(a + " " + p);
-        sendBackPrice = priceCheck()
+     //   sendBackPrice = priceCheck()
     }
 
     $(lower_check_box).change(function () {
@@ -117,10 +119,10 @@
 
         if (lower_check_box.checked === true) {
             fprice = parseInt(lower_price) * glob.length;
-            sendBackPrice = parseInt(lower_price);
+           // sendBackPrice = parseInt(lower_price);
         } else {
             fprice = parseInt(price) * glob.length;
-            sendBackPrice = parseInt(price);
+          //  sendBackPrice = parseInt(price);
 
         }
         console.log("final proce: " + fprice);

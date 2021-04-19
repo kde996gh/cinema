@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Deniel
-  Date: 2021. 04. 15.
-  Time: 16:52
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,6 +7,11 @@
 </head>
 <body>
 <jsp:include page="common/menu.jsp"/>
+
+<c:if test="${requestScope.message != ''}">
+    ${requestScope.message}
+</c:if>
+<c:if test="${requestScope.message == ''}">
 
 <div class="container">
     <form action="/registration" method="post">
@@ -39,6 +38,7 @@
     </form>
 
 </div>
+</c:if>
 
 
 </body>

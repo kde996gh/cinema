@@ -16,6 +16,7 @@ public class SeatDAOImpl implements SeatDAO {
 
     private static final String SELECT_ALL_SEAT = "SELECT * FROM SEAT";
     private static final String UPDATE_RESERVE = "UPDATE SEAT SET taken=1 WHERE playtime_id=? AND seat_id=?";
+    private static final String UPDATE_ON_DELETE = "UPDATE SEAT SET taken=0 WHERE playtime_id=? AND seat_id=?";
     private String connectionURL;
     private Connection conn;
     private static SeatDAOImpl instance;
@@ -91,6 +92,17 @@ public class SeatDAOImpl implements SeatDAO {
             }
         }
         return result;
+    }
+
+    @Override
+    public void updateOnDelete(int ptid, int seatid) {
+        try(PreparedStatement stmt = conn.prepareStatement(UPDATE_ON_DELETE)){
+            stmt.setInt(1, ptid);
+            stmt.setInt(2, seatid);
+            stmt.executeUpdate();
+        }catch(SQLException e){
+            System.err.println("Hiba szék updatekor");
+        }
     }
 
 }

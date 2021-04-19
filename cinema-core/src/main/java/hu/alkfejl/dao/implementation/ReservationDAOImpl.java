@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReservationDAOImpl implements ReservationDAO {
 
@@ -69,11 +71,11 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public Reservation save(Reservation reservation) {
-        try{
+        try {
             PreparedStatement stmt;
-            if(checkIfAlreadyExists(reservation)){
+            if (checkIfAlreadyExists(reservation)) {
                 stmt = conn.prepareStatement(DELETE_WITH_ID_EMAIL);
-                stmt.setInt(1,reservation.getPlaytime_id());
+                stmt.setInt(1, reservation.getPlaytime_id());
                 stmt.setString(2, reservation.getEmail());
                 stmt.executeUpdate();
             }
@@ -102,9 +104,9 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public boolean checkIfAlreadyExists(Reservation r){
-        for(Reservation res : this.listReservations()){
-            if(r.emailProperty().equals(res.emailProperty()) && r.getPlaytime_id() == res.getPlaytime_id()){
+    public boolean checkIfAlreadyExists(Reservation r) {
+        for (Reservation res : this.listReservations()) {
+            if (r.emailProperty().equals(res.emailProperty()) && r.getPlaytime_id() == res.getPlaytime_id()) {
                 return true;
             }
         }
@@ -112,13 +114,37 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public boolean checkIfAlreadyBooked(String email, int ptid){
-        for(Reservation res : this.listReservations()){
-            if(res.getEmail().equals(email) && res.getPlaytime_id() == ptid){
+    public boolean checkIfAlreadyBooked(String email, int ptid) {
+        for (Reservation res : this.listReservations()) {
+            if (res.getEmail().equals(email) && res.getPlaytime_id() == ptid) {
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public List<Reservation> getUserReservations(String email) {
+        List<Reservation> result = new ArrayList<>();
+        for (Reservation reservation : this.listReservations()) {
+            if (reservation.getEmail().equals(email)) {
+                result.add(reservation);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public void deleteReservationByUser(String email, int intptid) {
+        try {
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement(DELETE_WITH_ID_EMAIL);
+            stmt.setInt(1, intptid);
+            stmt.setString(2, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Hiba a foglalás törlésekor!");
+        }
     }
 
 

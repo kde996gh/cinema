@@ -31,9 +31,13 @@ public class ReservationServlet extends HttpServlet {
         resp.setCharacterEncoding("utf-8");
 
         String email = (String) req.getSession().getAttribute("email");
+
+
         if (email != null) {
             int priceInt = Integer.parseInt(req.getParameter("finalPrice"));
             int ptid = Integer.parseInt(req.getParameter("playTimeId"));
+            int summa = Integer.parseInt(req.getParameter("finalSumPrice"));
+
             String[] seatsPicked = req.getParameterValues("seatPicked");
             String seatsPickedString = seatsPicked[0];
             //int arrayyé konvertálás

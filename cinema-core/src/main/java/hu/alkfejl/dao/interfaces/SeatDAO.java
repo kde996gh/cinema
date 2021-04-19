@@ -10,4 +10,6 @@ public interface SeatDAO {
 
 
     ObservableList<Seat> getPlayTimeSeats(int ptId);
+
+    void updateOnDelete(int ptid, int i);
 }
