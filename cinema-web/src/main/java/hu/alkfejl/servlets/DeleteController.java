@@ -34,7 +34,7 @@ public class DeleteController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       String ptid = req.getParameter("ptid");
+        String ptid = req.getParameter("ptid");
         String email = (String) req.getSession().getAttribute("email");
 
         List<Reservation> resses = rdao.listReservations();
@@ -47,7 +47,7 @@ public class DeleteController extends HttpServlet {
 
             String playDate = pt.getPlayTimeDate() + " " + pt.getPlayTimeHours();
 
-            if(timeCheck(playDate)){
+            if (timeCheck(playDate)) {
                 List<Integer> seatNumbers = new ArrayList<>();
                 String seats = "";
 
@@ -60,13 +60,13 @@ public class DeleteController extends HttpServlet {
                 String[] splitedSeats = seats.split(",");
 
                 for (String splitedSeat : splitedSeats) {
-                    seatdao.updateOnDelete(intptid,Integer.parseInt(splitedSeat));
+                    seatdao.updateOnDelete(intptid, Integer.parseInt(splitedSeat));
 
                 }
 
                 rdao.deleteReservationByUser(email, intptid);
                 isDeleted = "Sikeres törlés!";
-            }else{
+            } else {
                 isDeleted = "Sajnos már nem mondhatod le a foglalást, csak 24 órával előbb mint az előadás kezdete!";
             }
 
@@ -90,11 +90,11 @@ public class DeleteController extends HttpServlet {
 
         LocalDateTime dateTime1 = LocalDateTime.parse(playTime_time, dateformatter);
         LocalDateTime dateTime2 = LocalDateTime.parse(currentDate, dateformatter);
-       // System.out.println("dateTime1 " + dateTime1);
+        // System.out.println("dateTime1 " + dateTime1);
         //System.out.println("dateTime2 " + dateTime2);
 
         long diffInMinutes = Math.abs(java.time.Duration.between(dateTime1, dateTime2).toMinutes());
-       // System.out.println("percek hátra: " + diffInMinutes);
+        // System.out.println("percek hátra: " + diffInMinutes);
 
         if (diffInMinutes >= 1440) {
             return true;

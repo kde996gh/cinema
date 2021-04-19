@@ -60,7 +60,7 @@
                 <input type="hidden" id="formPtId" name="playTimeId"
                        value="<c:out value="${requestScope.playtime.id}"/>"/>
                 <input type="hidden" id="formSeatArray" name="seatPicked" value=""/>
-                    <%--                <input type="hidden" id="finalPriceToServlet" name="finalPrice" value=""/>--%>
+                <input type="hidden" id="formSeatArrayOld" name="seatPickedOld" value=""/>
                 <input type="hidden" id="formSumPrice" name="sumPrice" value=""/>
                 <button id="submit" type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -72,6 +72,7 @@
 <script type="text/javascript">
     let picked_seats = [];
     let formSeatArray = document.getElementById('formSeatArray'); // itt megy vissza a szervernek a választott szék/ek
+    let formSeatArrayOld = document.getElementById('old'); // itt megy vissza a szervernek a választott szék/ek
     //  let formFinalPrice = document.getElementById('finalPriceToServlet');
     let formSumPrice = document.getElementById('formSumPrice');
     let lower_check_box = document.getElementById('lowerPriceCheck')
@@ -96,14 +97,14 @@
                 if (picked_seats[i] == seat_id)
                     picked_seats.splice(i, 1);
             }
-        } else {
+        } else if(currElem.style.backgroundColor === "green") {
             picked_seats.push(seat_id);
             currElem.style.backgroundColor = "yellow"
         }
 
         formSeatArray.value = check();
         formSumPrice.value = priceCheck() * picked_seats.length
-        finalPrice.innerHTML =  priceCheck() * picked_seats.length;
+        finalPrice.innerHTML = priceCheck() * picked_seats.length;
     }
 
     $(lower_check_box).change(function () {
@@ -124,9 +125,10 @@
         if (lower_check_box.checked === true) {
             return parseInt(lower_price) * picked_seats.length;
         } else {
-            return  parseInt(price) * picked_seats.length;
+            return parseInt(price) * picked_seats.length;
         }
     }
+
     function check() {
         return picked_seats;
     }
@@ -135,20 +137,25 @@
     let reservedSeatsArray = reservedSeats.split(",");
 
 
-
-
     for (let i = 0; i < reservedSeatsArray.length; i++) {
         picked_seats.push(reservedSeatsArray[i]);
         let idBuilder = "id" + reservedSeatsArray[i];
         let currElem = document.getElementById(idBuilder);
         currElem.style.backgroundColor = "blue";
     }
+    var x = document.getElementsByClassName("notTaken");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.backgroundColor = "green";
+    }
+
 
     formSumPrice.value = parseInt(price) * picked_seats.length
-    finalPrice.innerHTML =  parseInt(price) * picked_seats.length;
+    finalPrice.innerHTML = parseInt(price) * picked_seats.length;
+    console.log(" picked seats: " + picked_seats)
     formSeatArray.value = picked_seats;
 
-
+      formSeatArrayOld.value = picked_seats;
 
     console.log(" lowerpice :" + parseInt(lower_price));
     console.log(" lowerpice :" + parseInt(price));

@@ -41,20 +41,20 @@ public class ReservationServlet extends HttpServlet {
             String[] seatsPicked = req.getParameterValues("seatPicked");
 
             String seatsPickedString1 = "";
-            for(int i=0; i<seatsPicked.length; i++){
-                if(i==seatsPicked.length-1){
+            for (int i = 0; i < seatsPicked.length; i++) {
+                if (i == seatsPicked.length - 1) {
                     seatsPickedString1 += seatsPicked[i];
-                }else{
-                    seatsPickedString1 += seatsPicked[i]+",";
+                } else {
+                    seatsPickedString1 += seatsPicked[i] + ",";
                 }
             }
             String[] splitedSeats = seatsPickedString1.split(",");
 
-            System.out.println( "EZA  STRING:" + seatsPickedString1 );
+            System.out.println("EZA  STRING:" + seatsPickedString1);
 
             Reservation r = new Reservation();
             r.setPlaytime_id(ptid);
-            r.setPrice(priceInt);
+            r.setPrice_sum(priceInt);
             r.setEmail(email);
             r.setPrice_sum(summa);
             r.setReserved_seat(seatsPickedString1);
@@ -104,7 +104,7 @@ public class ReservationServlet extends HttpServlet {
             req.setAttribute("message", message);
 
         } else {
-            message="";
+            message = "";
             req.setAttribute("message", message);
             req.setAttribute("seats", seats);
             req.setAttribute("room", currentRoom);
