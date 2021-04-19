@@ -14,8 +14,8 @@ import java.util.List;
 public class ReservationDAOImpl implements ReservationDAO {
 
     private static final String SELECT_ALL_RESERVATIONS = "SELECT * FROM RESERVATION";
-    private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtime_id, price, email, reserved_seat) VALUES (?,?,?,?)";
-    private static final String UPDATE_RESERVATION = "UPDATE RESERVATION SET playtime_id=?, price=?, email=?, reserved_seat=? WHERE id=?";
+    private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtime_id, price, email, reserved_seat, price_sum) VALUES (?,?,?,?,?)";
+    private static final String UPDATE_RESERVATION = "UPDATE RESERVATION SET playtime_id=?, price=?, email=?, reserved_seat=?, price_sum=? WHERE id=?";
     private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtime_id=? AND email=?";
 
     private String connectionURL;
@@ -58,8 +58,8 @@ public class ReservationDAOImpl implements ReservationDAO {
                 currRes.setPlaytime_id(rs.getInt("playtime_id"));
                 currRes.setPrice(rs.getInt("price"));
                 currRes.setEmail(rs.getString("email"));
-                currRes.setReserved_seat(rs.getInt("reserved_seat"));
-
+                currRes.setReserved_seat(rs.getString("reserved_seat"));
+                currRes.setPrice_sum(rs.getInt("price_sum"));
                 ress.add(currRes);
             }
             return ress;
@@ -83,7 +83,8 @@ public class ReservationDAOImpl implements ReservationDAO {
             stmt.setInt(1, reservation.getPlaytime_id());
             stmt.setInt(2, reservation.getPrice());
             stmt.setString(3, reservation.getEmail());
-            stmt.setInt(4, reservation.getReserved_seat());
+            stmt.setString(4, reservation.getReserved_seat());
+            stmt.setInt(5, reservation.getPrice_sum());
             stmt.executeUpdate();
 
             if (reservation.getId() <= 0) {

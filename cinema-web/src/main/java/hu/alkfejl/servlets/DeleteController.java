@@ -34,8 +34,9 @@ public class DeleteController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String ptid = req.getParameter("ptid");
+       String ptid = req.getParameter("ptid");
         String email = (String) req.getSession().getAttribute("email");
+
         List<Reservation> resses = rdao.listReservations();
 
 
@@ -48,16 +49,21 @@ public class DeleteController extends HttpServlet {
 
             if(timeCheck(playDate)){
                 List<Integer> seatNumbers = new ArrayList<>();
+                String seats = "";
 
                 for (Reservation r : resses) {
                     if (r.getEmail().equals(email) && r.getPlaytime_id() == intptid) {
-                        seatNumbers.add(r.getReserved_seat());
+                        seats += r.getReserved_seat();
+                        break;
                     }
                 }
+                String[] splitedSeats = seats.split(",");
 
-                for (Integer i : seatNumbers) {
-                    seatdao.updateOnDelete(intptid, i);
+                for (String splitedSeat : splitedSeats) {
+                    seatdao.updateOnDelete(intptid,Integer.parseInt(splitedSeat));
+
                 }
+
                 rdao.deleteReservationByUser(email, intptid);
                 isDeleted = "Sikeres törlés!";
             }else{

@@ -5,9 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hu.alkfejl.controller.room.RoomWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.room.RoomWindowController">
    <top>
       <Label text="Mozi termek beállítása" BorderPane.alignment="CENTER">
          <font>
@@ -22,7 +20,7 @@
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#backToMainWindow" text="Főmenü" />
-            <Button mnemonicParsing="false" text="Új terem" onAction="#onAddOrEditRoom"/>
+            <Button mnemonicParsing="false" onAction="#onAddOrEditRoom" text="Új terem" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -33,11 +31,11 @@
       </VBox>
    </left>
    <center>
-      <TableView  fx:id="roomTable" prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="roomTable" prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Teremnév" />
             <TableColumn fx:id="rowNumberColumn" prefWidth="83.20001220703125" text="Sorok száma" />
-            <TableColumn fx:id="colNumberColumn" prefWidth="103.20001220703125" text="Sor mérete" />
+            <TableColumn fx:id="colNumberColumn" prefWidth="103.20001220703125" text="Oszlopok száma" />
             <TableColumn fx:id="seatNumberColumn" prefWidth="84.79998779296875" text="Helyek száma" />
             <TableColumn fx:id="actionsColumn" prefWidth="153.5999755859375" text="Műveletek" />
         </columns>

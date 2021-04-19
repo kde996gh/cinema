@@ -49,6 +49,7 @@ String message = "";
             }
 
             req.setAttribute("usersPlaytimes", usersPlaytimes);
+            req.setAttribute("userReservations", userReservations);
 
 
 

@@ -10,6 +10,9 @@
 </head>
 <body>
 <jsp:include page="common/menu.jsp"/>
+<c:if test="${requestScope.seatsString != ''}">
+    <p id="reservedSeats">${requestScope.seatsString}</p>
+</c:if>
 <c:if test="${requestScope.message != ''}">
     ${requestScope.message}
 </c:if>
@@ -27,7 +30,9 @@
                     </button>
                 </c:if>
                 <c:if test="${seat.taken == 1}">
-                    <button class="taken">
+                    <button class="taken" id="id${seat.seat_id}"
+                            onclick="pickSeatFunction('id'+${seat.seat_id} , ${seat.seat_id})"
+                    >
                             ${seat.seat_id}
                     </button>
                 </c:if>
@@ -40,20 +45,23 @@
             <p id="lower_price"><c:out value="${requestScope.ticket.lowerPrice}"/></p>
             <br>
             <label for="lowerPriceCheck">Checkbox:</label>
+            <br>
+
             <input type="checkbox" id="lowerPriceCheck">
+            <br>
 
-
+            Végösszeg:
             <p id="finalPrice">
             </p>
         </div>
 
         <div class="form-group">
-            <form action="/reservation" method="post">
+            <form action="/editres" method="post">
                 <input type="hidden" id="formPtId" name="playTimeId"
                        value="<c:out value="${requestScope.playtime.id}"/>"/>
                 <input type="hidden" id="formSeatArray" name="seatPicked" value=""/>
-                <input type="hidden" id="finalPriceToServlet" name="finalPrice" value=""/>
-                <input type="hidden" id="finalSumPrice" name="finalSumPrice" value=""/>
+                    <%--                <input type="hidden" id="finalPriceToServlet" name="finalPrice" value=""/>--%>
+                <input type="hidden" id="formSumPrice" name="sumPrice" value=""/>
                 <button id="submit" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -62,46 +70,46 @@
 </c:if>
 
 <script type="text/javascript">
-    let glob = [];
-    let fprice;
-    let formSeatArray = document.getElementById('formSeatArray');
-    let formFinalPrice = document.getElementById('finalPriceToServlet');
-    let finalSumPrice = document.getElementById('finalSumPrice');
-
+    let picked_seats = [];
+    let formSeatArray = document.getElementById('formSeatArray'); // itt megy vissza a szervernek a választott szék/ek
+    //  let formFinalPrice = document.getElementById('finalPriceToServlet');
+    let formSumPrice = document.getElementById('formSumPrice');
     let lower_check_box = document.getElementById('lowerPriceCheck')
 
     let price = document.getElementById('price').innerHTML;
     let lower_price = document.getElementById('lower_price').innerHTML;
 
     let finalPrice = document.getElementById('finalPrice');
-    formFinalPrice.value = priceCheck();
+
+
+    // formFinalPrice.value = priceCheck();
+
+    //let fprice = picked_seats.length *  parseInt(price);
+    //formSumPrice.value = fprice;
+
 
     function pickSeatFunction(id, seat_id) {
         let currElem = document.getElementById(id);
-        if (currElem.style.backgroundColor === "yellow") {
+        if (currElem.style.backgroundColor === "yellow" || currElem.style.backgroundColor === "blue") {
             currElem.style.backgroundColor = "green"
-            currElem.style.backgroundColor = "green"
-            for (let i = 0; i < glob.length; i++) {
-                if (glob[i] === seat_id) {
-                    glob.splice(i, 1);
-                }
+            for (let i = 0; i < picked_seats.length; i++) {
+                if (picked_seats[i] == seat_id)
+                    picked_seats.splice(i, 1);
             }
         } else {
-            glob.push(seat_id);
+            picked_seats.push(seat_id);
             currElem.style.backgroundColor = "yellow"
         }
-        //check();
+
         formSeatArray.value = check();
-        finalPriceCounter();
-        finalSumPrice.value = fprice;
-        //console.log(a + " " + p);
-        //   sendBackPrice = priceCheck()
+        formSumPrice.value = priceCheck() * picked_seats.length
+        finalPrice.innerHTML =  priceCheck() * picked_seats.length;
     }
 
     $(lower_check_box).change(function () {
-        formFinalPrice.value = priceCheck()
+        formSumPrice.value = priceCheck() * picked_seats.length
+        finalPrice.innerHTML = priceCheck() * picked_seats.length;
 
-        finalPriceCounter();
     });
 
     function priceCheck() {
@@ -113,24 +121,39 @@
     }
 
     function finalPriceCounter() {
-
         if (lower_check_box.checked === true) {
-            fprice = parseInt(lower_price) * glob.length;
-            // sendBackPrice = parseInt(lower_price);
+            return parseInt(lower_price) * picked_seats.length;
         } else {
-            fprice = parseInt(price) * glob.length;
-            //  sendBackPrice = parseInt(price);
-
+            return  parseInt(price) * picked_seats.length;
         }
-        console.log("final proce: " + fprice);
-
-        finalPrice.innerHTML = "Végösszeg: " + fprice;
     }
-
     function check() {
-        return glob;
+        return picked_seats;
     }
 
+    let reservedSeats = document.getElementById('reservedSeats').innerHTML;
+    let reservedSeatsArray = reservedSeats.split(",");
+
+
+
+
+    for (let i = 0; i < reservedSeatsArray.length; i++) {
+        picked_seats.push(reservedSeatsArray[i]);
+        let idBuilder = "id" + reservedSeatsArray[i];
+        let currElem = document.getElementById(idBuilder);
+        currElem.style.backgroundColor = "blue";
+    }
+
+    formSumPrice.value = parseInt(price) * picked_seats.length
+    finalPrice.innerHTML =  parseInt(price) * picked_seats.length;
+    formSeatArray.value = picked_seats;
+
+
+
+    console.log(" lowerpice :" + parseInt(lower_price));
+    console.log(" lowerpice :" + parseInt(price));
+    console.log(" seatspicked :" + picked_seats);
+    console.log(" seatspicked :" + picked_seats.length);
 
 </script>
 </body>

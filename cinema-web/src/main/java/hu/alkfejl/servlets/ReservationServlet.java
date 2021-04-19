@@ -39,24 +39,32 @@ public class ReservationServlet extends HttpServlet {
             int summa = Integer.parseInt(req.getParameter("finalSumPrice"));
 
             String[] seatsPicked = req.getParameterValues("seatPicked");
-            String seatsPickedString = seatsPicked[0];
-            //int arrayyé konvertálás
-            ArrayList<Integer> seatsPickedIntArray = new ArrayList<>();
-            String[] arrOfStr = seatsPickedString.split(",");
 
-            for (String s : arrOfStr) {
-                seatsPickedIntArray.add(Integer.parseInt(s));
+            String seatsPickedString1 = "";
+            for(int i=0; i<seatsPicked.length; i++){
+                if(i==seatsPicked.length-1){
+                    seatsPickedString1 += seatsPicked[i];
+                }else{
+                    seatsPickedString1 += seatsPicked[i]+",";
+                }
+            }
+            String[] splitedSeats = seatsPickedString1.split(",");
+
+            System.out.println( "EZA  STRING:" + seatsPickedString1 );
+
+            Reservation r = new Reservation();
+            r.setPlaytime_id(ptid);
+            r.setPrice(priceInt);
+            r.setEmail(email);
+            r.setPrice_sum(summa);
+            r.setReserved_seat(seatsPickedString1);
+            reservationDAO.save(r);
+
+            for (String splitedSeat : splitedSeats) {
+                seatDao.reserve(ptid, Integer.parseInt(splitedSeat));
+                // System.out.println("ezaz: " + splitedSeats[i]);
             }
 
-            for (Integer integer : seatsPickedIntArray) {
-                Reservation r = new Reservation();
-                r.setPlaytime_id(ptid);
-                r.setPrice(priceInt);
-                r.setEmail(email);
-                r.setReserved_seat(integer);
-                reservationDAO.save(r);
-                seatDao.reserve(ptid, integer);
-            }
             message = "Sikeres foglalás!";
 
         } else {
@@ -76,11 +84,7 @@ public class ReservationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int playtimeid = Integer.parseInt(req.getParameter("ptid"));
-        // PlayTime pt = null;
-        //  PlayTime obj = (PlayTime) req.getAttribute("ptid");
-        // System.out.println(obj.getMovie_name());
 
-        // az adott vetítéshez tartozó terem székei
         String email = (String) req.getSession().getAttribute("email");
 
 

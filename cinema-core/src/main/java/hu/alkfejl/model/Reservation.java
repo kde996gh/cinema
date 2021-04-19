@@ -11,7 +11,21 @@ public class Reservation {
     private IntegerProperty playtime_id = new SimpleIntegerProperty(this, "playtime_id");
     private IntegerProperty price = new SimpleIntegerProperty(this, "price");
     private StringProperty email = new SimpleStringProperty(this, "email");
-    private IntegerProperty reserved_seat = new SimpleIntegerProperty(this, "reserved_seat");
+    private StringProperty reserved_seat = new SimpleStringProperty(this, "reserved_seat");
+    private IntegerProperty price_sum = new SimpleIntegerProperty(this, "price_sum");
+
+    public int getPrice_sum() {
+        return price_sum.get();
+    }
+
+    public IntegerProperty price_sumProperty() {
+        return price_sum;
+    }
+
+    public void setPrice_sum(int price_sum) {
+        this.price_sum.set(price_sum);
+    }
+
 
     public int getId() {
         return id.get();
@@ -62,15 +76,15 @@ public class Reservation {
         this.price.set(price);
     }
 
-    public int getReserved_seat() {
+    public String getReserved_seat() {
         return reserved_seat.get();
     }
 
-    public IntegerProperty reserved_seatProperty() {
+    public StringProperty reserved_seatProperty() {
         return reserved_seat;
     }
 
-    public void setReserved_seat(int reserved_seat) {
+    public void setReserved_seat(String reserved_seat) {
         this.reserved_seat.set(reserved_seat);
     }
 }
