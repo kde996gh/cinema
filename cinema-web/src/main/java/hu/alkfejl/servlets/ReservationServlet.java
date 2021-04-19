@@ -22,8 +22,7 @@ public class ReservationServlet extends HttpServlet {
     TicketDAO ticketDAO = TicketDAOImpl.getInstance();
     ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
     SeatDAOImpl seatDao = SeatDAOImpl.getInstance();
-
-
+    String message = "";
 
 
     @Override
@@ -31,35 +30,45 @@ public class ReservationServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
 
-
-        int priceInt = Integer.parseInt(req.getParameter("finalPrice"));
         String email = (String) req.getSession().getAttribute("email");
-        int ptid = Integer.parseInt(req.getParameter("playTimeId"));
-        String[] seatsPicked = req.getParameterValues("seatPicked");
-        String seatsPickedString = seatsPicked[0];
-        //int arrayyé konvertálás
-        ArrayList<Integer> seatsPickedIntArray = new ArrayList<>();
-        String[] arrOfStr = seatsPickedString.split(",");
 
-        for (String s : arrOfStr) {
-            seatsPickedIntArray.add(Integer.parseInt(s));
+
+        if (email != null) {
+            int priceInt = Integer.parseInt(req.getParameter("finalPrice"));
+            int ptid = Integer.parseInt(req.getParameter("playTimeId"));
+            int summa = Integer.parseInt(req.getParameter("finalSumPrice"));
+
+            String[] seatsPicked = req.getParameterValues("seatPicked");
+            String seatsPickedString = seatsPicked[0];
+            //int arrayyé konvertálás
+            ArrayList<Integer> seatsPickedIntArray = new ArrayList<>();
+            String[] arrOfStr = seatsPickedString.split(",");
+
+            for (String s : arrOfStr) {
+                seatsPickedIntArray.add(Integer.parseInt(s));
+            }
+
+            for (Integer integer : seatsPickedIntArray) {
+                Reservation r = new Reservation();
+                r.setPlaytime_id(ptid);
+                r.setPrice(priceInt);
+                r.setEmail(email);
+                r.setReserved_seat(integer);
+                reservationDAO.save(r);
+                seatDao.reserve(ptid, integer);
+            }
+            message = "Sikeres foglalás!";
+
+        } else {
+            message = "Jelentkezz be a foglaláshoz!";
+
         }
-
-        for (Integer integer : seatsPickedIntArray) {
-            Reservation r = new Reservation();
-            r.setPlaytime_id(ptid);
-            r.setPrice(priceInt);
-            r.setEmail(email);
-            r.setReserved_seat(integer);
-            reservationDAO.save(r);
-            seatDao.reserve(ptid, integer);
-        }
-
-
 
 
         //seateknél update
-
+        //String url = "/pages/reservation?ptid="+ptid;
+        req.setAttribute("message", message);
+        getServletContext().getRequestDispatcher("/pages/reservation.jsp").forward(req, resp);
 
     }
 
@@ -67,7 +76,6 @@ public class ReservationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int playtimeid = Integer.parseInt(req.getParameter("ptid"));
-        String message = "";
         // PlayTime pt = null;
         //  PlayTime obj = (PlayTime) req.getAttribute("ptid");
         // System.out.println(obj.getMovie_name());
@@ -85,13 +93,14 @@ public class ReservationServlet extends HttpServlet {
         Ticket ticket = ticketDAO.getTicketByType(playTime.getTicket_type());
 
         boolean alreadyBooked = reservationDAO.checkIfAlreadyBooked(email, playtimeid);
-        System.out.println("alreadyBooked??? : " + alreadyBooked + ", email: " +email + ", ptid: " +playtimeid);
+        System.out.println("alreadyBooked??? : " + alreadyBooked + ", email: " + email + ", ptid: " + playtimeid);
 
         if (alreadyBooked) {
             message = "Már foglaltál erre a filmre, a profilodon megtekinheted vagy módosíthatod!";
             req.setAttribute("message", message);
 
-        }else {
+        } else {
+            message="";
             req.setAttribute("message", message);
             req.setAttribute("seats", seats);
             req.setAttribute("room", currentRoom);

@@ -59,7 +59,7 @@
                     <td>${playtime.room_name}</td>
                     <td>${playtime.playTimeDate}</td>
                     <td>${playtime.playTimeHours}</td>
-                    <td>                    <a href="/reservation?ptid=${playtime.id}"> Foglal </a>
+                    <td><a href="/reservation?ptid=${playtime.id}"> Foglal </a>
                     </td>
                 </tr>
             </c:forEach>
