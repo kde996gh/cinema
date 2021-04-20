@@ -30,7 +30,7 @@ public class ReservationEditController implements Initializable {
     //  SeatDAO seatDAO = SeatDAOImpl.getInstance();
     RoomDAO roomDAO = RoomDAOImpl.getInstance();
     //TicketDAO ticketDAO = TicketDAOImpl.getInstance();
-    //  ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
+    ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
     SeatDAOImpl seatDao = SeatDAOImpl.getInstance();
     //  MovieDAO moviedao = MovieDAOImpl.getInstance();
     //  UserDAO userDao = UserDAOImpl.getInstance();
@@ -42,6 +42,8 @@ public class ReservationEditController implements Initializable {
 
     private List<Seat> seats;
 
+    List<Integer> seatsList = new ArrayList<>();
+
     public void setReservation(Reservation res) {
 
         this.res = res;
@@ -51,8 +53,7 @@ public class ReservationEditController implements Initializable {
 
         String[] splitedSeats = res.getReserved_seat().split(",");
         int[] intSeats = Stream.of(splitedSeats).mapToInt(Integer::parseInt).toArray();
-        List<Integer> seatsList = new ArrayList<>();
-        for(String s : splitedSeats){
+        for (String s : splitedSeats) {
             seatsList.add(Integer.parseInt(s));
         }
 
@@ -88,45 +89,50 @@ public class ReservationEditController implements Initializable {
 
             int index = i;
             movieButton[i].setOnAction(actionEvent -> {
-                if(movieButton[index].getId().equals("green")){
+                if (movieButton[index].getId().equals("green")) {
                     movieButton[index].setStyle("-fx-background-color: #c3be4d");
                     movieButton[index].setId("yellow");
-                    System.out.println("Zöld vagyok!");
-                }
-                else if(movieButton[index].getId().equals("yellow")){
+                    seatsList.add(Integer.parseInt(movieButton[index].textProperty().getValue()));
+                    System.out.println("LISTA: " + seatsList);
+                } else if (movieButton[index].getId().equals("yellow")) {
                     movieButton[index].setStyle("-fx-background-color: #5fbc5f");
                     movieButton[index].setId("green");
+                    seatsList.remove(Integer.valueOf(Integer.parseInt(movieButton[index].textProperty().getValue())));
+                    System.out.println("LISTA: " + seatsList);
+                    //System.out.println("liststring : " + listString);
 
-                }
-                else if(movieButton[index].getId().equals("blue")){
-                    System.out.println("Kék vagyok!");
-                }
-                else if(movieButton[index].getId().equals("red")){
-                    System.out.println("Piros vagyok!");
+                } else if (movieButton[index].getId().equals("blue")) {
+                    movieButton[index].setStyle("-fx-background-color: #5fbc5f");
+                    movieButton[index].setId("green");
+                    seatsList.remove(Integer.valueOf(Integer.parseInt(movieButton[index].textProperty().getValue())));
+                } else if (movieButton[index].getId().equals("red")) {
+                    System.out.println("ez foglalt");
                 }
 
             });
 
             gridPane.add(movieButton[i], colHelper, rowHelper);
 
-            if (col == 3) {
-                col = 0;
-                row++;
-            }
-
 
         }
+
+     //   this.res.setReserved_seat(listString);
+
 
         //System.out.println("res adatok: " + res.getEmail() + ", seats: "  + res.getReserved_seat());
         // System.out.println("res col: " + room.getColNumber());
     }
 
-    private boolean contains(int[] arr, int value) {
-        for (Integer i : arr) {
-            if (i == value)
-                return true;
+    private String toList(List<Integer> intlist) {
+        String listString = "";
+        for (int i = 0; i < intlist.size(); i++) {
+            if (i == intlist.size() - 1) {
+                listString += intlist.get(i);
+            } else {
+                listString += intlist.get(i) + ",";
+            }
         }
-        return false;
+        return listString;
     }
 
     @Override
@@ -150,11 +156,27 @@ public class ReservationEditController implements Initializable {
         }*/
     }
 
-    public void onSave(ActionEvent actionEvent) {
-    }
 
     public void onCancel(ActionEvent actionEvent) {
         App.loadFXML("/fxml/reservation/reservation_window.fxml");
 
+    }
+
+    public void onSave(ActionEvent actionEvent) {
+        String[] old = this.res.getReserved_seat().split(",");
+        for (String string : old) {
+           // System.out.println("Splitted seat acc:  " + integer);
+            seatDao.updateOnDelete(this.res.getPlaytime_id(), Integer.parseInt(string));
+        }
+        reservationDAO.deleteReservationByUser(this.res.getEmail(), this.res.getPlaytime_id());
+
+        for (Integer integer : seatsList) {
+            seatDao.reserve(this.res.getPlaytime_id(), integer);
+            // System.out.println("ezaz: " + splitedSeats[i]);
+        }
+
+        this.res.setReserved_seat(toList(seatsList));
+        reservationDAO.save(this.res);
+        System.out.println();
     }
 }

@@ -43,8 +43,8 @@
                 <TableColumn fx:id="email_col" prefWidth="97.60003662109375" text="Email" />
                 <TableColumn fx:id="movie_col" prefWidth="64.79998779296875" text="Film" />
                 <TableColumn fx:id="price_col" minWidth="0.0" prefWidth="51.20001220703125" text="Összeg" />
-            <TableColumn fx:id="seats_col" text="Székek" />
-            <TableColumn fx:id="date_col" prefWidth="95.199951171875" text="Dátum" />
+                <TableColumn fx:id="seats_col" text="Székek" />
+                <TableColumn fx:id="date_col" prefWidth="95.199951171875" text="Dátum" />
                 <TableColumn fx:id="actions_col" prefWidth="88.0" text="Műveletek" />
             </columns>
         </TableView>
