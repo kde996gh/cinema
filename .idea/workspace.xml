@@ -10,10 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac1cbdf-765c-46dd-98b1-82f36a1c94c4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationEditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/reservation/reservation_edit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ca64df07-d126-4751-bbe9-38915c705b41.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ca64df07-d126-4751-bbe9-38915c705b41.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/ReservationDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/ReservationDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/model/Reservation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/target/classes/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/classes/cinema" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/reservation/reservation_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/reservation/reservation_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/EditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ReservationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ReservationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/edit_reservation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/edit_reservation.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +42,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -93,13 +108,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -307,7 +324,8 @@
       <workItem from="1618645315016" duration="20000" />
       <workItem from="1618648939071" duration="35836000" />
       <workItem from="1618736998460" duration="4747000" />
-      <workItem from="1618815779283" duration="45733000" />
+      <workItem from="1618815779283" duration="46559000" />
+      <workItem from="1618915091420" duration="21444000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton">
       <created>1617386989614</created>
@@ -491,14 +509,20 @@
       <option name="project" value="LOCAL" />
       <updated>1618867273008</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="web - foglalás módosítás működik 100">
+      <created>1618868489258</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1618868489258</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="skeleton" />
     <MESSAGE value="fooldalak kozotti valtas" />
     <MESSAGE value="sqlite táblák megírása" />
     <MESSAGE value="bean osztályok leimplementálása" />
@@ -523,7 +547,8 @@
     <MESSAGE value="web - foglalás törlés, időhöz mérve" />
     <MESSAGE value="web - foglalás módosítás 50%, pár bugfix" />
     <MESSAGE value="web - foglalás módosítás működik" />
-    <option name="LAST_COMMIT_MESSAGE" value="web - foglalás módosítás működik" />
+    <MESSAGE value="web - foglalás módosítás működik 100" />
+    <option name="LAST_COMMIT_MESSAGE" value="web - foglalás módosítás működik 100" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -2,8 +2,10 @@ hu\alkfejl\controller\movie\MovieWindowController.class
 hu\alkfejl\SystemInfo.class
 hu\alkfejl\controller\playtime\PlaytimeController.class
 hu\alkfejl\controller\MainWindowController.class
+hu\alkfejl\controller\reservation\ReservationEditController.class
 hu\alkfejl\controller\playtime\PlayTimeAddEditController.class
 hu\alkfejl\controller\room\RoomAddEditController.class
+hu\alkfejl\controller\reservation\ReservationWindowController$1.class
 hu\alkfejl\controller\room\RoomWindowController.class
 hu\alkfejl\controller\playtime\PlaytimeController$1.class
 hu\alkfejl\controller\Utils.class

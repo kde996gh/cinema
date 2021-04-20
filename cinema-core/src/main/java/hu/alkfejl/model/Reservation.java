@@ -12,6 +12,33 @@ public class Reservation {
     private StringProperty email = new SimpleStringProperty(this, "email");
     private StringProperty reserved_seat = new SimpleStringProperty(this, "reserved_seat");
     private IntegerProperty price_sum = new SimpleIntegerProperty(this, "price_sum");
+    private StringProperty movie_name = new SimpleStringProperty(this, "movie_name");
+    private StringProperty playtimedate = new SimpleStringProperty(this, "playtimedate");
+
+
+    public String getMovie_name() {
+        return movie_name.get();
+    }
+
+    public StringProperty movie_nameProperty() {
+        return movie_name;
+    }
+
+    public void setMovie_name(String movie_name) {
+        this.movie_name.set(movie_name);
+    }
+
+    public String getPlaytimedate() {
+        return playtimedate.get();
+    }
+
+    public StringProperty playtimedateProperty() {
+        return playtimedate;
+    }
+
+    public void setPlaytimedate(String playtimedate) {
+        this.playtimedate.set(playtimedate);
+    }
 
     public int getPrice_sum() {
         return price_sum.get();

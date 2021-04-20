@@ -22,6 +22,8 @@ public class ReservationServlet extends HttpServlet {
     TicketDAO ticketDAO = TicketDAOImpl.getInstance();
     ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
     SeatDAOImpl seatDao = SeatDAOImpl.getInstance();
+    MovieDAO moviedao = MovieDAOImpl.getInstance();
+    UserDAO userDao = UserDAOImpl.getInstance();
     String message = "";
 
 
@@ -52,7 +54,12 @@ public class ReservationServlet extends HttpServlet {
 
             System.out.println("EZA  STRING:" + seatsPickedString1);
 
+            PlayTime currPt = playtimedao.getPlayTimeById(ptid);
+          //  User user = userDao.getUserByEmail(email);
+
             Reservation r = new Reservation();
+            r.setMovie_name(currPt.getMovie_name());
+            r.setPlaytimedate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
             r.setPlaytime_id(ptid);
             r.setPrice_sum(priceInt);
             r.setEmail(email);

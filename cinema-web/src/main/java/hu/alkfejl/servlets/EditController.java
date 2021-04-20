@@ -51,17 +51,7 @@ public class EditController extends HttpServlet {
                 break;
             }
         }
-        PlayTime pt = playtimedao.getPlayTimeById(playtimeid);
-        String playDate = pt.getPlayTimeDate() + " " + pt.getPlayTimeHours();
 
-
-        if (!timeCheck(playDate)) {
-
-            message = "Már nem tudod módosítani a foglalást, csak 24 órával a kezdés előtt!";
-            req.setAttribute("message", message);
-
-
-        } else {
             message = "";
             req.setAttribute("message", message);
             req.setAttribute("seats", seats);
@@ -69,7 +59,6 @@ public class EditController extends HttpServlet {
             req.setAttribute("playtime", playTime);
             req.setAttribute("ticket", ticket);
             req.setAttribute("seatsString", seatsString);
-        }
 
 
         // System.out.println(playtimeid + " +++PLAYTIMEID");
@@ -121,8 +110,12 @@ public class EditController extends HttpServlet {
                 seatDao.updateOnDelete(ptid, Integer.parseInt(splitedSeat));
             }
             ///régiek kitörölve, jövet az uj mentés
+            PlayTime currPt = playtimedao.getPlayTimeById(ptid);
+
 
             Reservation r = new Reservation();
+            r.setMovie_name(currPt.getMovie_name());
+            r.setPlaytimedate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
             r.setPlaytime_id(ptid);
             r.setPrice_sum(sumPrice);
             r.setEmail(email);
@@ -147,26 +140,5 @@ public class EditController extends HttpServlet {
 
     }
 
-    public boolean timeCheck(String playTime_time) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date date = new Date();
-        String currentDate = formatter.format(date);
 
-        DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd H:m");
-
-        LocalDateTime dateTime1 = LocalDateTime.parse(playTime_time, dateformatter);
-        LocalDateTime dateTime2 = LocalDateTime.parse(currentDate, dateformatter);
-        // System.out.println("dateTime1 " + dateTime1);
-        //System.out.println("dateTime2 " + dateTime2);
-
-        long diffInMinutes = Math.abs(java.time.Duration.between(dateTime1, dateTime2).toMinutes());
-        // System.out.println("percek hátra: " + diffInMinutes);
-
-        if (diffInMinutes >= 1440) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
 }

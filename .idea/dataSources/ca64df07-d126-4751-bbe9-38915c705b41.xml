@@ -1442,158 +1442,166 @@
       <Position>5</Position>
       <DataType>int|0s</DataType>
     </column>
-    <key id="520" parent="172" name="reservation_pk">
+    <column id="520" parent="172" name="playtimedate">
+      <Position>6</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="521" parent="172" name="movie_name">
+      <Position>7</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="522" parent="172" name="reservation_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="521" parent="172">
+    <foreign-key id="523" parent="172">
       <ColNames>playtime_id</ColNames>
       <RefTableName>playtime</RefTableName>
       <RefKeyName>playtime_pk</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="522" parent="173" name="id">
+    <column id="524" parent="173" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="523" parent="173" name="rowNumber">
+    <column id="525" parent="173" name="rowNumber">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="524" parent="173" name="colNumber">
+    <column id="526" parent="173" name="colNumber">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="525" parent="173" name="name">
+    <column id="527" parent="173" name="name">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="526" parent="173" name="seatNumber">
+    <column id="528" parent="173" name="seatNumber">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="527" parent="173" name="rooms_pk">
+    <key id="529" parent="173" name="rooms_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="528" parent="174" name="id">
+    <column id="530" parent="174" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="529" parent="174" name="playtime_id">
+    <column id="531" parent="174" name="playtime_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="530" parent="174" name="seat_id">
+    <column id="532" parent="174" name="seat_id">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="531" parent="174" name="taken">
+    <column id="533" parent="174" name="taken">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <key id="532" parent="174" name="seat_pk">
+    <key id="534" parent="174" name="seat_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="533" parent="174">
+    <foreign-key id="535" parent="174">
       <ColNames>playtime_id</ColNames>
       <RefTableName>playtime</RefTableName>
       <RefKeyName>playtime_pk</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="534" parent="175" name="type">
+    <column id="536" parent="175" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="535" parent="175" name="name">
+    <column id="537" parent="175" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="536" parent="175" name="tbl_name">
+    <column id="538" parent="175" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="537" parent="175" name="rootpage">
+    <column id="539" parent="175" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="538" parent="175" name="sql">
+    <column id="540" parent="175" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="539" parent="176" name="name">
+    <column id="541" parent="176" name="name">
       <Position>1</Position>
     </column>
-    <column id="540" parent="176" name="seq">
+    <column id="542" parent="176" name="seq">
       <Position>2</Position>
     </column>
-    <column id="541" parent="177" name="id">
+    <column id="543" parent="177" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="542" parent="177" name="price">
+    <column id="544" parent="177" name="price">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="543" parent="177" name="lowerPrice">
+    <column id="545" parent="177" name="lowerPrice">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="544" parent="177" name="ticketType">
+    <column id="546" parent="177" name="ticketType">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="545" parent="177" name="ticket_pk">
+    <key id="547" parent="177" name="ticket_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="546" parent="178" name="id">
+    <column id="548" parent="178" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="547" parent="178" name="userName">
+    <column id="549" parent="178" name="userName">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="548" parent="178" name="password">
+    <column id="550" parent="178" name="password">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="549" parent="178" name="email">
+    <column id="551" parent="178" name="email">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="550" parent="178" name="user_userName_uindex">
+    <index id="552" parent="178" name="user_userName_uindex">
       <ColNames>userName</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="551" parent="178" name="user_email_uindex">
+    <index id="553" parent="178" name="user_email_uindex">
       <ColNames>email</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="552" parent="178" name="user_pk">
+    <key id="554" parent="178" name="user_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

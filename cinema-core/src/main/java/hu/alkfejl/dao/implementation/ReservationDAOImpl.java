@@ -13,7 +13,7 @@ import java.util.List;
 public class ReservationDAOImpl implements ReservationDAO {
 
     private static final String SELECT_ALL_RESERVATIONS = "SELECT * FROM RESERVATION";
-    private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtime_id, email, reserved_seat, price_sum) VALUES (?,?,?,?)";
+    private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtime_id, email, reserved_seat, price_sum, movie_name, playtimedate) VALUES (?,?,?,?,?,?)";
     private static final String UPDATE_RESERVATION = "UPDATE RESERVATION SET playtime_id=?, email=?, reserved_seat=?, price_sum=? WHERE id=?";
     private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtime_id=? AND email=?";
 
@@ -59,6 +59,8 @@ public class ReservationDAOImpl implements ReservationDAO {
                 currRes.setEmail(rs.getString("email"));
                 currRes.setReserved_seat(rs.getString("reserved_seat"));
                 currRes.setPrice_sum(rs.getInt("price_sum"));
+                currRes.setPlaytimedate(rs.getString("playtimedate"));
+                currRes.setMovie_name(rs.getString("movie_name"));
                 ress.add(currRes);
             }
             return ress;
@@ -84,6 +86,8 @@ public class ReservationDAOImpl implements ReservationDAO {
             stmt.setString(2, reservation.getEmail());
             stmt.setString(3, reservation.getReserved_seat());
             stmt.setInt(4, reservation.getPrice_sum());
+            stmt.setString(5, reservation.getMovie_name());
+            stmt.setString(6, reservation.getPlaytimedate());
             stmt.executeUpdate();
 
             if (reservation.getId() <= 0) {

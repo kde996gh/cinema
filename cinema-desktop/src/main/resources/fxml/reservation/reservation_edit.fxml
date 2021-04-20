@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.alkfejl.controller.reservation.ReservationEditController">
+    <top>
+        <Label text="Filmek beállítása" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0" top="10.0"/>
+            </padding>
+        </Label>
+    </top>
+    <left>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onCancel" text="Vissza"/>
+<!--                <Button mnemonicParsing="false" text="Új film" onAction="#addNewMovie" />-->
+                <Label text="Film keresése"/>
+<!--                <TextField fx:id="searchByTitle" onKeyReleased="#onSearch"/>-->
+            </children>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets top="25.0"/>
+            </padding>
+        </VBox>
+    </left>
+    <center>
+        <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <content>
+                <GridPane fx:id="gridPane" prefHeight="325.0" prefWidth="494.0">
+
+                </GridPane>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
+
+
+
+
+
