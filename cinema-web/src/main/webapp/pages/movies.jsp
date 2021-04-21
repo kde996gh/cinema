@@ -7,6 +7,12 @@
 </head>
 <body>
 <jsp:include page="common/menu.jsp"/>
+<form action="/movies" method="post">
+<div class="form-group form-check">
+    <input type="text" class="form-control" id="searchInput" name="searchInput"  placeholder="Keresés">
+</div>
+<button type="submit" class="btn btn-primary">Keresés</button>
+</form>
 
 <div class="container">
     <table class="table">
