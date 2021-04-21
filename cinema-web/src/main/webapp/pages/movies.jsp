@@ -14,42 +14,55 @@
     <button type="submit" class="btn btn-primary">Keresés</button>
 </form>
 
-<div class="container">
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Borítókép</th>
-            <th scope="col">Cím</th>
-            <th scope="col">Hossz (percben)</th>
-            <th scope="col">Korhatár</th>
-            <th scope="col">Rendező</th>
-            <th scope="col">Szereplők</th>
-            <th scope="col">Leírás</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="item" items="${requestScope.movies}">
-            <tr>
-                <td>
-                    <a href="/movie?movid=${item.id}">
-                        <img src="data:image/jpg;base64,${item.coverImage}"
-                             onclick=""
-                             width="100" height="100"/>
-                    </a>
 
 
-                </td>
-                <td>${item.title}</td>
-                <td>${item.lengthMin}</td>
-                <td>${item.ageLimit}</td>
-                <td>${item.director}</td>
-                <td>${item.actors}</td>
-                <td>${item.description}</td>
+<div class="container container2">
+    <c:forEach var="item" items="${requestScope.movies}">
+        <div class="card" style="width: 18rem;">
+            <a href="/movie?movid=${item.id}">
+            <img class="card-img-top imgRadius" src="data:image/jpg;base64,${item.coverImage}" alt="Card image cap">
+            </a>
+            <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                    content.</p>
+            </div>
+        </div>
+    </c:forEach>
+<%--    <table class="table">--%>
+<%--        <thead class="thead-dark">--%>
+<%--        <tr>--%>
+<%--            <th scope="col">Borítókép</th>--%>
+<%--            <th scope="col">Cím</th>--%>
+<%--            <th scope="col">Hossz (percben)</th>--%>
+<%--            <th scope="col">Korhatár</th>--%>
+<%--            <th scope="col">Rendező</th>--%>
+<%--            <th scope="col">Szereplők</th>--%>
+<%--            <th scope="col">Leírás</th>--%>
+<%--        </tr>--%>
+<%--        </thead>--%>
+<%--        <tbody>--%>
+<%--        <c:forEach var="item" items="${requestScope.movies}">--%>
+<%--            <tr>--%>
+<%--                <td>--%>
+<%--                    <a href="/movie?movid=${item.id}">--%>
+<%--                        <img src="data:image/jpg;base64,${item.coverImage}"--%>
+<%--                             onclick=""--%>
+<%--                             width="100" height="100"/>--%>
+<%--                    </a>--%>
 
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+
+<%--                </td>--%>
+<%--                <td>${item.title}</td>--%>
+<%--                <td>${item.lengthMin}</td>--%>
+<%--                <td>${item.ageLimit}</td>--%>
+<%--                <td>${item.director}</td>--%>
+<%--                <td>${item.actors}</td>--%>
+<%--                <td>${item.description}</td>--%>
+
+<%--            </tr>--%>
+<%--        </c:forEach>--%>
+<%--        </tbody>--%>
+<%--    </table>--%>
 
 </div>
 </body>

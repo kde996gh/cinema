@@ -9,32 +9,38 @@
 <body>
 <jsp:include page="common/menu.jsp"/>
 
+
+<div class="container">
+    <div class="card flex-row flex-wrap">
+        <div class="card-header border-0">
+            <img src="data:image/jpg;base64,${requestScope.movie.coverImage}" alt="">
+        </div>
+        <div class="card-block px-2">
+            <h4 class="card-title"><c:out value="${requestScope.movie.title}"/></h4>
+            <p class="card-text">
+                Hossz: <c:out value="${requestScope.movie.lengthMin}" />
+            </p>
+            <p class="card-text">
+                Korhatár: <c:out value="${requestScope.movie.ageLimit}"/>
+            </p> <p class="card-text">
+                Rendező: <c:out value="${requestScope.movie.director}"/>
+            </p> <p class="card-text">
+                Színészek: <c:out value="${requestScope.movie.actors}"/>
+            </p>
+            <p class="card-text">
+                Leírás: <c:out value="${requestScope.movie.description}"/>
+            </p>
+
+        </div>
+    </div>
+    <br>
+</div>
+
 <div class="container">
 
-    <p>
-        <c:out value="${requestScope.movie.title}"/>
-    </p>
 
-    <img src="data:image/jpg;base64,${requestScope.movie.coverImage}"
-         onclick=""
-         width="100" height="100" alt="cover"/>
-    <p>
-        Hossz: <c:out value="${requestScope.movie.lengthMin}"/>
-    </p>
-    <p>
-        Hossz: <c:out value="${requestScope.movie.ageLimit}"/>
-    </p>
-    <p>
-        Hossz: <c:out value="${requestScope.movie.director}"/>
-    </p>
-    <p>
-        Hossz: <c:out value="${requestScope.movie.actors}"/>
-    </p>
-    <p>
-        Hossz: <c:out value="${requestScope.movie.description}"/>
-    </p>
 </div>
-<div id="playtimes">
+<div class="container">
     <table class="table">
         <thead class="thead-dark">
         <tr>

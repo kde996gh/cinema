@@ -11,16 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0ac1cbdf-765c-46dd-98b1-82f36a1c94c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/target/classes/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/classes/cinema" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/ticket/TicketAddEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/ticket/TicketAddEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/RegistrationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/showtimes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/showtimes.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +78,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pub/gyakorlat/10/03-contacts-delete-modify" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -100,19 +95,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 9.0.45" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.45" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -319,7 +301,9 @@
       <workItem from="1618815779283" duration="46559000" />
       <workItem from="1618915091420" duration="25628000" />
       <workItem from="1618946680450" duration="3648000" />
-      <workItem from="1618993257602" duration="28607000" />
+      <workItem from="1618993257602" duration="28633000" />
+      <workItem from="1619028557228" duration="5264000" />
+      <workItem from="1619036080841" duration="859000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton">
       <created>1617386989614</created>
@@ -559,14 +543,20 @@
       <option name="project" value="LOCAL" />
       <updated>1619015933001</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="refactor v4 + kersés javítás">
+      <created>1619026507887</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1619026507888</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="room 99% + szék db feltölése megfelelően" />
     <MESSAGE value="filmek listázás + szerkesztés basic működés" />
     <MESSAGE value="film szerkesztés binding" />
     <MESSAGE value="jegyek listázása/beállítása" />
@@ -591,6 +581,7 @@
     <MESSAGE value="osztály refactor" />
     <MESSAGE value="refactor v2" />
     <MESSAGE value="refactor v3" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor v3" />
+    <MESSAGE value="refactor v4 + kersés javítás" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor v4 + kersés javítás" />
   </component>
 </project>
