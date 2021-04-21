@@ -14,7 +14,6 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     private static final String SELECT_ALL_RESERVATIONS = "SELECT * FROM RESERVATION";
     private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtimeId, email, reservedSeat, priceSum, movieName, playtimeDate) VALUES (?,?,?,?,?,?)";
-    private static final String UPDATE_RESERVATION = "UPDATE RESERVATION SET playtime_id=?, email=?, reserved_seat=?, price_sum=? WHERE id=?";
     private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtimeId=? AND email=?";
 
     private String connectionURL;
@@ -36,7 +35,6 @@ public class ReservationDAOImpl implements ReservationDAO {
     public ReservationDAOImpl() {
         connectionURL = CinemaConfiguration.getValue("db.url");
         try {
-
             conn = DriverManager.getConnection(connectionURL);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -55,7 +53,6 @@ public class ReservationDAOImpl implements ReservationDAO {
 
                 currRes.setId(rs.getInt("id"));
                 currRes.setPlaytimeId(rs.getInt("playtimeId"));
-                // currRes.setPrice(rs.getInt("price"));
                 currRes.setEmail(rs.getString("email"));
                 currRes.setReservedSeat(rs.getString("reservedSeat"));
                 currRes.setPriceSum(rs.getInt("priceSum"));
@@ -82,7 +79,6 @@ public class ReservationDAOImpl implements ReservationDAO {
             }
             stmt = conn.prepareStatement(INSERT_RESERVATION);
             stmt.setInt(1, reservation.getPlaytimeId());
-            // stmt.setInt(2, reservation.getPrice());
             stmt.setString(2, reservation.getEmail());
             stmt.setString(3, reservation.getReservedSeat());
             stmt.setInt(4, reservation.getPriceSum());

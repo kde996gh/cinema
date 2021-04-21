@@ -8,12 +8,12 @@ import java.util.List;
 public interface TicketDAO {
 
     List<Ticket> findAllTicket();
-    Ticket save(Ticket ticket);
-    void delete(Ticket ticket);
-    ObservableList<Integer> findTicketTypes();
-    public Integer findTicketTypeById(int room_id);
 
-    int getIdByTicketType(Integer newV);
+    Ticket save(Ticket ticket);
+
+    void delete(Ticket ticket);
+
+    ObservableList<Integer> findTicketTypes();
 
     Ticket getTicketByType(int ticket_type);
 }

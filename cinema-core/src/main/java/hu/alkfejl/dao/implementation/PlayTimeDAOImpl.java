@@ -6,7 +6,6 @@ import hu.alkfejl.model.PlayTime;
 import hu.alkfejl.model.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +19,6 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE playtimeId=?";
     private static final String INSERT_SEATS = "INSERT INTO SEAT (playtimeId, seatId, taken) VALUES (?,?,?)";
-    private static final String SELECT_SPEC_MOVIES = "SELECT * FROM PLAYTIME WHERE movie_name=?";
     private String connectionURL;
     private Connection conn;
 
@@ -82,7 +80,6 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
         try (
                 PreparedStatement stmt = playTime.getId() <= 0 ? conn.prepareStatement(INSERT_PLAYTIME, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_PLAYTIME)
         ) {
-            //INSERT INTO PLAYTIME (room_name, movie_name, ticket_type, playTimeDate, playTimeHours) values (?,?,?,?,?)
             if (playTime.getId() > 0) {
                 stmt.setInt(6, playTime.getId());
             }
@@ -99,7 +96,6 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     playTime.setId(rs.getInt(1));
                 }
             }
-
 
         } catch (SQLException s) {
             s.printStackTrace();
@@ -123,8 +119,8 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     public ObservableList<PlayTime> getMoviePlayTimes(String movieName) {
         ObservableList<PlayTime> result = FXCollections.observableArrayList();
         ObservableList<PlayTime> pts = this.listPlayTimes();
-        for(PlayTime ptit : pts){
-            if(ptit.getMovieName().equals(movieName)){
+        for (PlayTime ptit : pts) {
+            if (ptit.getMovieName().equals(movieName)) {
                 result.add(ptit);
             }
         }
@@ -143,14 +139,11 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                 stmt.executeUpdate();
                 stmt = conn.prepareStatement(INSERT_SEATS);
                 for (int i = 1; i < r.getSeatNumber() + 1; i++) {
-                    //"INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
-
                     stmt.setInt(1, playTime.getId());
                     stmt.setInt(2, i);
                     stmt.setInt(3, 0);
                     stmt.executeUpdate();
                 }
-                //System.out.println("Megtaláltam!");
             } else {
                 stmt = conn.prepareStatement(INSERT_SEATS);
                 for (int i = 1; i < r.getSeatNumber() + 1; i++) {
@@ -158,14 +151,11 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     stmt.setInt(2, i);
                     stmt.setInt(3, 0);
                     stmt.executeUpdate();
-
                 }
-                //  System.out.println("Nem találtam meg a szobát!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        // return room;
     }
 
     public void deleteRoomSeat(PlayTime pt) {
@@ -179,10 +169,9 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     @Override
     public PlayTime getPlayTimeById(int playtimeid) {
-        for(PlayTime pt : this.listPlayTimes()){
-            if(pt.getId() == playtimeid){
+        for (PlayTime pt : this.listPlayTimes()) {
+            if (pt.getId() == playtimeid)
                 return pt;
-            }
         }
         return null;
     }
@@ -190,9 +179,8 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     private boolean findPlayTimeById(PlayTime playtime) {
         List<PlayTime> playTimeList = this.listPlayTimes();
         for (PlayTime pt : playTimeList) {
-            if (pt.getId() == playtime.getId()) {
+            if (pt.getId() == playtime.getId())
                 return true;
-            }
         }
         return false;
     }

@@ -2,12 +2,9 @@ package hu.alkfejl.dao.implementation;
 
 import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.TicketDAO;
-import hu.alkfejl.model.Room;
 import hu.alkfejl.model.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import javax.management.relation.RelationSupport;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +64,6 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
 
-
     @Override
     public ObservableList<Integer> findTicketTypes() {
         ObservableList<Integer> result = FXCollections.observableArrayList();
@@ -78,7 +74,6 @@ public class TicketDAOImpl implements TicketDAO {
                 Integer a = rs.getInt("ticketType");
                 result.add(a);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,9 +83,7 @@ public class TicketDAOImpl implements TicketDAO {
 
     @Override
     public Ticket save(Ticket ticket) {
-        try (//PDATE TICKET SET price=?, lowerPrice=?, ticketType=? where id=?
-             PreparedStatement stmt = ticket.getId() <= 0 ? conn.prepareStatement(INSERT_TICKET, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_TICKET)
-        ) {
+        try (PreparedStatement stmt = ticket.getId() <= 0 ? conn.prepareStatement(INSERT_TICKET, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_TICKET)) {
             if (ticket.getId() > 0) {
                 stmt.setInt(4, ticket.getId());
             }
@@ -125,35 +118,10 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     @Override
-    public Integer findTicketTypeById(int ticket_id) {
-        Integer result = 0;
-        List<Ticket> ticketList = this.findAllTicket();
-        for (int i = 0; i < ticketList.size(); i++) {
-            if (ticketList.get(i).getId() == ticket_id) {
-                result = ticketList.get(i).getTicketType();
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public int getIdByTicketType(Integer newV) {
-        int result = 0;
-        List<Ticket> ticketList = this.findAllTicket();
-        for (Ticket ticket : ticketList) {
-            if (ticket.getTicketType() == newV) {
-                result = ticket.getId();
-            }
-        }
-        return result;
-    }
-
-    @Override
     public Ticket getTicketByType(int ticket_type) {
-        for(Ticket ticket : this.findAllTicket()){
-            if(ticket.getTicketType() == ticket_type){
+        for (Ticket ticket : this.findAllTicket()) {
+            if (ticket.getTicketType() == ticket_type)
                 return ticket;
-            }
         }
         return null;
     }

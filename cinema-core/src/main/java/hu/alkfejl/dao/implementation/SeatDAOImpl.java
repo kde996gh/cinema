@@ -41,16 +41,13 @@ public class SeatDAOImpl implements SeatDAO {
 
     @Override
     public void reserve(int playtimeId, int seatId) {
-        //    private static final String UPDATE_RESERVE =
-        //    "UPDATE SEAT SET taken=1 WHERE playtime_id=? AND seat_id=?";
-        try(PreparedStatement stmt = conn.prepareStatement(UPDATE_RESERVE)){
+        try (PreparedStatement stmt = conn.prepareStatement(UPDATE_RESERVE)) {
             stmt.setInt(1, playtimeId);
             stmt.setInt(2, seatId);
             stmt.executeUpdate();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.err.println("Hiba szék updatekor");
         }
-
     }
 
     @Override
@@ -79,24 +76,23 @@ public class SeatDAOImpl implements SeatDAO {
 
 
     @Override
-    public ObservableList<Seat> getPlayTimeSeats(int ptId){
+    public ObservableList<Seat> getPlayTimeSeats(int ptId) {
         ObservableList<Seat> result = FXCollections.observableArrayList();
         ObservableList<Seat> sts = this.getAllSeats();
-        for(Seat s : sts){
-            if(s.getPlaytimeId() == ptId){
+        for (Seat s : sts) {
+            if (s.getPlaytimeId() == ptId)
                 result.add(s);
-            }
         }
         return result;
     }
 
     @Override
     public void updateOnDelete(int ptid, int seatid) {
-        try(PreparedStatement stmt = conn.prepareStatement(UPDATE_ON_DELETE)){
+        try (PreparedStatement stmt = conn.prepareStatement(UPDATE_ON_DELETE)) {
             stmt.setInt(1, ptid);
             stmt.setInt(2, seatid);
             stmt.executeUpdate();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.err.println("Hiba szék updatekor");
         }
     }

@@ -13,13 +13,7 @@ public interface RoomDAO {
 
     void delete(Room room);
 
-    boolean findRoomById(Room room);
-
-    String findRoomNameById(int room_id);
-
     ObservableList<String> listByName();
-
-    int getIdByRoomName(String newV);
 
     Room getRoomByName(String room_name);
 }

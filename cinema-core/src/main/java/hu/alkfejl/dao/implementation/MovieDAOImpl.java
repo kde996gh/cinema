@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MovieDAOImpl implements MovieDAO {
@@ -17,17 +16,10 @@ public class MovieDAOImpl implements MovieDAO {
     private static final String INSERT_MOVIE = "INSERT INTO MOVIE (title, lengthMin, ageLimit, director, actors, description, coverImage, movieType) VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETE_MOVIE = "DELETE FROM MOVIE WHERE id=?";
     private static final String SELECT_ONLY_TITLES = "SELECT title FROM MOVIE";
-    private static final String FIND_MOVIE_BY_ID = "SELECT title FROM MOVIE WHERE id=?";
     private String connectionURL;
     private Connection conn;
     private static MovieDAOImpl instance;
 
-//    public static MovieDAOImpl getInstance() {
-//        return instance;
-//    }
-
-
-    ///QUERIES
 
     public static MovieDAOImpl getInstance() {
         if (instance == null) {
@@ -44,7 +36,6 @@ public class MovieDAOImpl implements MovieDAO {
     public MovieDAOImpl() {
         connectionURL = CinemaConfiguration.getValue("db.url");
         try {
-
             conn = DriverManager.getConnection(connectionURL);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -90,7 +81,6 @@ public class MovieDAOImpl implements MovieDAO {
                 String a = rs.getString("title");
                 result.add(a);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -129,7 +119,6 @@ public class MovieDAOImpl implements MovieDAO {
 
         }
         return movie;
-
     }
 
     @Override
@@ -144,35 +133,10 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     @Override
-    public String findMovieNameById(int movie_id) {
-        String result = "";
-        List<Movie> movieList = this.listMovies();
-        for (int i = 0; i < movieList.size(); i++) {
-            if (movieList.get(i).getId() == movie_id) {
-                result = movieList.get(i).getTitle();
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public int getIdByTitle(String title) {
-        int result = 0;
-        List<Movie> movieList = this.listMovies();
-        for (Movie movie : movieList) {
-            if (movie.getTitle().toLowerCase().equals(title.toLowerCase())) {
-                result = movie.getId();
-            }
-        }
-        //System.out.println(result);
-        return result;
-    }
-
-    @Override
     public Movie findMovie(int id) {
         List<Movie> movieList = this.listMovies();
-        for(Movie it : movieList){
-            if(it.getId() == id){
+        for (Movie it : movieList) {
+            if (it.getId() == id) {
                 return it;
             }
         }

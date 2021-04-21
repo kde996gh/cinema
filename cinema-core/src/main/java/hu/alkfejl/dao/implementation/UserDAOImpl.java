@@ -43,21 +43,8 @@ public class UserDAOImpl implements UserDAO {
 
 
     @Override
-    public List<User> listAllUser() {
-        return null;
-    }
-
-    @Override
-    public User getUserById(int id) {
-        return null;
-    }
-
-    @Override
     public void addNewUser(User user) {
-        try (//Connection conn = DriverManager.getConnection(connectionURL);
-             PreparedStatement stmt = conn.prepareStatement(ADD_USER);
-
-        ) {
+        try (PreparedStatement stmt = conn.prepareStatement(ADD_USER)) {
 
             String encodedPassword = BCrypt.withDefaults().hashToString(12, user.getPassword().toCharArray());
             user.setPassword(encodedPassword);
@@ -76,7 +63,7 @@ public class UserDAOImpl implements UserDAO {
     public User loginCheck(String email, String password) {
 
         try (
-             PreparedStatement pst = conn.prepareStatement(USER_CHECK)
+                PreparedStatement pst = conn.prepareStatement(USER_CHECK)
         ) {
             pst.setString(1, email);
 
@@ -86,7 +73,7 @@ public class UserDAOImpl implements UserDAO {
                 String dbPass = rs.getString("password");
 
                 BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), dbPass);
-                if(result.verified){
+                if (result.verified) {
                     User user = new User();
                     user.setUserName(rs.getString("userName"));
                     user.setPassword(rs.getString("password"));
@@ -103,20 +90,5 @@ public class UserDAOImpl implements UserDAO {
         System.out.println("nem sikerült!");
         return null;
     }
-
-    @Override
-    public void deleteUser(User user) {
-
-    }
-
-    @Override
-    public User getUserByEmail(String email) {
-        for(User u : this.listAllUser()){
-            if(u.getEmail().equals(email))
-                return u;
-        }
-        return null;
-    }
-
 
 }
