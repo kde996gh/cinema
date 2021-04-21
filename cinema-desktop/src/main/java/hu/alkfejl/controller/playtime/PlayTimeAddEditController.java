@@ -87,7 +87,7 @@ public class PlayTimeAddEditController implements Initializable {
             playTime.room_nameProperty().bindBidirectional(sp);
         });
 
-        //System.out.println(playTime.getTicket_type() + " jegy tipusa!");
+        //System.out. ntln(playTime.getTicket_type() + " jegy tipusa!");
         ticketTypeComboBox.setItems(ticketTypes);
         if (playTime.getTicket_type() != 0) {
 

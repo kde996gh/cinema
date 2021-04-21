@@ -44,7 +44,7 @@ public class PlaytimeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-     //   playTimeTable.getItems().setAll()
+        //   playTimeTable.getItems().setAll()
         refreshTable();
         playTimeTable.getItems().setAll(all);
 
@@ -54,7 +54,7 @@ public class PlaytimeController implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("playTimeDate"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("playTimeHours"));
 
-        actionsColumn.setCellFactory(param -> new TableCell<>(){
+        actionsColumn.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Törlés");
             private final Button editButton = new Button("Módosítás");
 
@@ -66,10 +66,10 @@ public class PlaytimeController implements Initializable {
                     refreshTable(); // táblafrissites
                 });
 
-                editButton.setOnAction(event ->{
+                editButton.setOnAction(event -> {
                     PlayTime playtime = getTableRow().getItem();
                     editPlayTime(playtime);
-                   // System.out.println("megnyomták a módosítás gombot");
+                    // System.out.println("megnyomták a módosítás gombot");
 
                     refreshTable();
                 });
@@ -78,9 +78,9 @@ public class PlaytimeController implements Initializable {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if(empty){
+                if (empty) {
                     setGraphic(null);
-                }else{
+                } else {
                     HBox container = new HBox();
                     container.getChildren().addAll(editButton, deleteButton);
                     container.setSpacing(10.0);
@@ -97,9 +97,9 @@ public class PlaytimeController implements Initializable {
     }
 
     private void deletePlayTime(PlayTime playtime) {
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,"Biztosan törlöd a következő termet? ", ButtonType.YES, ButtonType.NO);
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Biztosan törlöd a következő termet? ", ButtonType.YES, ButtonType.NO);
         confirm.showAndWait().ifPresent(buttonType -> {
-            if(buttonType.equals(buttonType.YES)){
+            if (buttonType.equals(buttonType.YES)) {
                 playtimedao.delete(playtime);
                 playtimedao.deleteRoomSeat(playtime);
             }
@@ -108,7 +108,7 @@ public class PlaytimeController implements Initializable {
 
     }
 
-    private void editPlayTime(PlayTime playtime){
+    private void editPlayTime(PlayTime playtime) {
         FXMLLoader fxmlLoader = App.loadFXML(("/fxml/playtime/playtime_add_edit.fxml"));
         PlayTimeAddEditController controller = fxmlLoader.getController();
         controller.setPlayTime(playtime);
