@@ -9,42 +9,44 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.playtime.PlaytimeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.alkfejl.controller.playtime.PlaytimeController">
     <top>
         <Label text="Műsorlista" BorderPane.alignment="CENTER">
             <font>
-                <Font size="20.0" />
+                <Font size="20.0"/>
             </font>
             <padding>
-                <Insets bottom="10.0" top="10.0" />
+                <Insets bottom="10.0" top="10.0"/>
             </padding>
         </Label>
     </top>
     <left>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" onAction="#backToMainWindow" text="Főmenü" />
-                <Button mnemonicParsing="false" onAction="#newPlayTime" text="Új vetítés" />
+                <Button mnemonicParsing="false" onAction="#backToMainWindow" text="Főmenü"/>
+                <Button mnemonicParsing="false" onAction="#newPlayTime" text="Új vetítés"/>
             </children>
             <BorderPane.margin>
-                <Insets />
+                <Insets/>
             </BorderPane.margin>
             <padding>
-                <Insets top="25.0" />
+                <Insets top="25.0"/>
             </padding>
         </VBox>
     </left>
     <center>
         <TableView fx:id="playTimeTable" prefHeight="335.0" prefWidth="486.0" BorderPane.alignment="CENTER">
-         <columns>
-            <TableColumn fx:id="movieNameColumn" prefWidth="75.0" text="Film" />
-            <TableColumn fx:id="roomColumn" prefWidth="74.39996337890625" text="Terem" />
-            <TableColumn fx:id="ticketTypeColumn" prefWidth="69.60003662109375" text="Jegy Típus" />
-            <TableColumn fx:id="dateColumn" prefWidth="67.20001220703125" text="Dátum" />
-            <TableColumn fx:id="timeColumn" prefWidth="70.4000244140625" text="Idő" />
-            <TableColumn fx:id="actionsColumn" prefWidth="140.79998779296875" text="Műveletek" />
-         </columns>
+            <columns>
+                <TableColumn fx:id="movieNameColumn" prefWidth="75.0" text="Film"/>
+                <TableColumn fx:id="roomColumn" prefWidth="74.39996337890625" text="Terem"/>
+                <TableColumn fx:id="ticketTypeColumn" prefWidth="69.60003662109375" text="Jegy Típus"/>
+                <TableColumn fx:id="dateColumn" prefWidth="67.20001220703125" text="Dátum"/>
+                <TableColumn fx:id="timeColumn" prefWidth="70.4000244140625" text="Idő"/>
+                <TableColumn fx:id="actionsColumn" prefWidth="140.79998779296875" text="Műveletek"/>
+            </columns>
         </TableView>
     </center>
 </BorderPane>

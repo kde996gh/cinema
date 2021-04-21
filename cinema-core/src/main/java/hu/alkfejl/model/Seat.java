@@ -6,8 +6,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Seat {
 
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
-    private IntegerProperty playtime_id = new SimpleIntegerProperty(this, "playtime_id");
-    private IntegerProperty seat_id = new SimpleIntegerProperty(this, "seat_id");
+    private IntegerProperty playtimeId = new SimpleIntegerProperty(this, "playtimeId");
+    private IntegerProperty seatId = new SimpleIntegerProperty(this, "seatId");
     private IntegerProperty taken = new SimpleIntegerProperty(this, "taken");
 
     public int getTaken() {
@@ -22,16 +22,16 @@ public class Seat {
         this.taken.set(taken);
     }
 
-    public int getSeat_id() {
-        return seat_id.get();
+    public int getSeatId() {
+        return seatId.get();
     }
 
-    public IntegerProperty seat_idProperty() {
-        return seat_id;
+    public IntegerProperty seatIdProperty() {
+        return seatId;
     }
 
-    public void setSeat_id(int seat_id) {
-        this.seat_id.set(seat_id);
+    public void setSeatId(int seatId) {
+        this.seatId.set(seatId);
     }
 
     public int getId() {
@@ -46,15 +46,15 @@ public class Seat {
         this.id.set(id);
     }
 
-    public int getPlaytime_id() {
-        return playtime_id.get();
+    public int getPlaytimeId() {
+        return playtimeId.get();
     }
 
-    public IntegerProperty playtime_idProperty() {
-        return playtime_id;
+    public IntegerProperty playtimeIdProperty() {
+        return playtimeId;
     }
 
-    public void setPlaytime_id(int playtime_id) {
-        this.playtime_id.set(playtime_id);
+    public void setPlaytimeId(int playtimeId) {
+        this.playtimeId.set(playtimeId);
     }
 }

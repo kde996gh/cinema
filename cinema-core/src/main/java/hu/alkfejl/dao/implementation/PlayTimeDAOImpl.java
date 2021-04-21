@@ -2,12 +2,10 @@ package hu.alkfejl.dao.implementation;
 
 import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.PlayTimeDAO;
-import hu.alkfejl.model.Movie;
 import hu.alkfejl.model.PlayTime;
 import hu.alkfejl.model.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -15,13 +13,12 @@ import java.util.List;
 public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     private static final String SELECT_ALL_PLAYTIME = "SELECT * FROM PLAYTIME";
-    private static final String INSERT_PLAYTIME = "INSERT INTO PLAYTIME (room_name, movie_name, ticket_type, playTimeDate, playTimeHours) values (?,?,?,?,?)";
-    private static final String UPDATE_PLAYTIME = "UPDATE PLAYTIME SET room_name=?, movie_name=?, ticket_type=?, playTimeDate=?, playTimeHours=? WHERE id=?";
+    private static final String INSERT_PLAYTIME = "INSERT INTO PLAYTIME (roomName, movieName, ticketType, playTimeDate, playTimeHours) values (?,?,?,?,?)";
+    private static final String UPDATE_PLAYTIME = "UPDATE PLAYTIME SET roomName=?, movieName=?, ticketType=?, playTimeDate=?, playTimeHours=? WHERE id=?";
     private static final String DELETE_PLAYTIME = "DELETE FROM PLAYTIME WHERE id=?";
 
-    private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE playtime_id=?";
-    private static final String INSERT_SEATS = "INSERT INTO SEAT (playtime_id, seat_id, taken) VALUES (?,?,?)";
-    private static final String SELECT_SPEC_MOVIES = "SELECT * FROM PLAYTIME WHERE movie_name=?";
+    private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE playtimeId=?";
+    private static final String INSERT_SEATS = "INSERT INTO SEAT (playtimeId, seatId, taken) VALUES (?,?,?)";
     private String connectionURL;
     private Connection conn;
 
@@ -59,9 +56,9 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                 PlayTime pt = new PlayTime();
 
                 pt.setId(rs.getInt("id"));
-                pt.setRoom_name(rs.getString("room_name"));
-                pt.setMovie_name(rs.getString("movie_name"));
-                pt.setTicket_type(rs.getInt("ticket_type"));
+                pt.setRoomName(rs.getString("roomName"));
+                pt.setMovieName(rs.getString("movieName"));
+                pt.setTicketType(rs.getInt("ticketType"));
 
                 Date date = Date.valueOf(rs.getString("playTimeDate"));
                 pt.setPlayTimeDate(date == null ? LocalDate.now() : date.toLocalDate());
@@ -81,17 +78,14 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     @Override
     public PlayTime save(PlayTime playTime) {
         try (
-                //    private static final String UPDATE_PLAYTIME = "UPDATE PLAYTIME SET room_id=?,
-                //    movie_id=?, ticket_id=?, playTimeDate=?, playTimeHours=? WHERE id=?";
                 PreparedStatement stmt = playTime.getId() <= 0 ? conn.prepareStatement(INSERT_PLAYTIME, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_PLAYTIME)
         ) {
-            //INSERT INTO PLAYTIME (room_name, movie_name, ticket_type, playTimeDate, playTimeHours) values (?,?,?,?,?)
             if (playTime.getId() > 0) {
                 stmt.setInt(6, playTime.getId());
             }
-            stmt.setString(1, playTime.getRoom_name());
-            stmt.setString(2, playTime.getMovie_name());
-            stmt.setInt(3, playTime.getTicket_type());
+            stmt.setString(1, playTime.getRoomName());
+            stmt.setString(2, playTime.getMovieName());
+            stmt.setInt(3, playTime.getTicketType());
             stmt.setString(4, playTime.getPlayTimeDate().toString());
             stmt.setString(5, playTime.getPlayTimeHours());
             stmt.executeUpdate();
@@ -102,7 +96,6 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     playTime.setId(rs.getInt(1));
                 }
             }
-
 
         } catch (SQLException s) {
             s.printStackTrace();
@@ -126,8 +119,8 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     public ObservableList<PlayTime> getMoviePlayTimes(String movieName) {
         ObservableList<PlayTime> result = FXCollections.observableArrayList();
         ObservableList<PlayTime> pts = this.listPlayTimes();
-        for(PlayTime ptit : pts){
-            if(ptit.getMovie_name().equals(movieName)){
+        for (PlayTime ptit : pts) {
+            if (ptit.getMovieName().equals(movieName)) {
                 result.add(ptit);
             }
         }
@@ -138,7 +131,7 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     public void addRoomSeats(PlayTime playTime) {
         try {
             PreparedStatement stmt;
-            Room r = RoomDAOImpl.getInstance().getRoomByName(playTime.getRoom_name());
+            Room r = RoomDAOImpl.getInstance().getRoomByName(playTime.getRoomName());
 
             if (findPlayTimeById(playTime)) {
                 stmt = conn.prepareStatement(DELETE_SEAT_WITH_ID);
@@ -146,14 +139,11 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                 stmt.executeUpdate();
                 stmt = conn.prepareStatement(INSERT_SEATS);
                 for (int i = 1; i < r.getSeatNumber() + 1; i++) {
-                    //"INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
-
                     stmt.setInt(1, playTime.getId());
                     stmt.setInt(2, i);
                     stmt.setInt(3, 0);
                     stmt.executeUpdate();
                 }
-                //System.out.println("Megtaláltam!");
             } else {
                 stmt = conn.prepareStatement(INSERT_SEATS);
                 for (int i = 1; i < r.getSeatNumber() + 1; i++) {
@@ -161,14 +151,11 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     stmt.setInt(2, i);
                     stmt.setInt(3, 0);
                     stmt.executeUpdate();
-
                 }
-                //  System.out.println("Nem találtam meg a szobát!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        // return room;
     }
 
     public void deleteRoomSeat(PlayTime pt) {
@@ -182,10 +169,9 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     @Override
     public PlayTime getPlayTimeById(int playtimeid) {
-        for(PlayTime pt : this.listPlayTimes()){
-            if(pt.getId() == playtimeid){
+        for (PlayTime pt : this.listPlayTimes()) {
+            if (pt.getId() == playtimeid)
                 return pt;
-            }
         }
         return null;
     }
@@ -193,9 +179,8 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     private boolean findPlayTimeById(PlayTime playtime) {
         List<PlayTime> playTimeList = this.listPlayTimes();
         for (PlayTime pt : playTimeList) {
-            if (pt.getId() == playtime.getId()) {
+            if (pt.getId() == playtime.getId())
                 return true;
-            }
         }
         return false;
     }

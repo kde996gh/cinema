@@ -68,41 +68,32 @@ public class PlayTimeAddEditController implements Initializable {
         roomNames = RoomDAOImpl.getInstance().listByName();
         ticketTypes = TicketDAOImpl.getInstance().findTicketTypes();
 
-        //System.out.println(pt.getMovie_name());
-        //System.out.println(pt.getRoom_name());
-      //  System.out.println(pt.getTicket_type());
-
-
-        titleComboBox.getSelectionModel().select(playTime.getMovie_name());
+        titleComboBox.getSelectionModel().select(playTime.getMovieName());
         titleComboBox.setItems(movieNames);
         titleComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
             StringProperty sp = new SimpleStringProperty(newV);
-            playTime.movie_nameProperty().bindBidirectional(sp);
+            playTime.movieNameProperty().bindBidirectional(sp);
         });
 
-        roomComboBox.getSelectionModel().select(playTime.getRoom_name());
+        roomComboBox.getSelectionModel().select(playTime.getRoomName());
         roomComboBox.setItems(roomNames);
         roomComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
             StringProperty sp = new SimpleStringProperty(newV);
-            playTime.room_nameProperty().bindBidirectional(sp);
+            playTime.roomNameProperty().bindBidirectional(sp);
         });
 
-        //System.out. ntln(playTime.getTicket_type() + " jegy tipusa!");
         ticketTypeComboBox.setItems(ticketTypes);
-        if (playTime.getTicket_type() != 0) {
-
-           // ticketTypeComboBox.getSelectionModel().select(playTime.getTicket_type());
+        if (playTime.getTicketType() != 0) {
             ticketTypeComboBox.getSelectionModel().selectNext();
         }
 
         ticketTypeComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
             IntegerProperty ip = new SimpleIntegerProperty(newV);
-            playTime.ticket_typeProperty().bindBidirectional(ip);
+            playTime.ticketTypeProperty().bindBidirectional(ip);
         });
 
         datePicker.valueProperty().bindBidirectional(playTime.playTimeDateProperty());
 
-//////
         StringProperty minute = new SimpleStringProperty("0");
         StringProperty hour = new SimpleStringProperty("8");
         StringProperty complete = new SimpleStringProperty();
@@ -112,27 +103,21 @@ public class PlayTimeAddEditController implements Initializable {
         //óra beállítása
         SpinnerValueFactory<Integer> hourValueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(8, 22, 8, 1);
-        //hourValueFactory.setValue(8);
         hourSpinner.setValueFactory(hourValueFactory); // spinner értékek beállítása
         hourSpinner.valueProperty().addListener((observableValue, oldV, newV) -> {
             StringProperty innerHour = new SimpleStringProperty(newV.toString());
             hour.bindBidirectional(innerHour);
-            // int a = hour.getValue();
             complete.setValue(((Integer.parseInt(hour.getValue()) > 9) ? hour.getValue() : "0" + hour.getValue()) + ":" + ((Integer.parseInt(minute.getValue()) > 9) ? minute.getValue() : "0" + minute.getValue()));
-            //System.out.println(complete.getValue());
         });
 
         //perc beállítása
         SpinnerValueFactory<Integer> minuteValueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 55, 0, 5);
-        // minuteValueFactory.setValue(0);
         minuteSpinner.setValueFactory(minuteValueFactory); // spinner értékek beállítása
         minuteSpinner.valueProperty().addListener((observableValue, oldV, newV) -> {
             StringProperty innerMin = new SimpleStringProperty(newV.toString());
             minute.bindBidirectional(innerMin);
             complete.setValue(((Integer.parseInt(hour.getValue()) > 9) ? hour.getValue() : "0" + hour.getValue()) + ":" + ((Integer.parseInt(minute.getValue()) > 9) ? minute.getValue() : "0" + minute.getValue()));
-         //   System.out.println(complete.getValue());
-
         });
     }
 

@@ -6,8 +6,8 @@ import javafx.collections.ObservableList;
 public interface SeatDAO {
 
     void reserve(int roomId, int seatId); //helyet lefoglaló metódus
-    public ObservableList<Seat> getAllSeats();
 
+    ObservableList<Seat> getAllSeats();
 
     ObservableList<Seat> getPlayTimeSeats(int ptId);
 

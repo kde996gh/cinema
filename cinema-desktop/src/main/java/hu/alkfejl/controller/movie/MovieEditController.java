@@ -16,11 +16,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import javafx.util.converter.NumberStringConverter;
-
 import java.io.*;
 import java.net.URL;
-import java.rmi.ServerError;
 import java.util.Base64;
 import java.util.ResourceBundle;
 
@@ -59,18 +56,16 @@ public class MovieEditController implements Initializable {
 
         title.textProperty().bindBidirectional(movie.titleProperty());
 
-        //  length.textProperty().bindBidirectional(movie.lengthMinProperty(), new NumberStringConverter());
         if (movie.lengthMinProperty().getValue() > 0)
             length.setText(movie.lengthMinProperty().getValue().toString());
         else
             length.setText("");
-        //movieType.textProperty().bindBidirectional(movie.movieTypeProperty(), new NumberStringConverter());
         if (movie.movieTypeProperty().getValue() > 0)
             movieType.setText(movie.movieTypeProperty().getValue().toString());
         else
             movieType.setText("");
 
-        // ageLimit.textProperty().bindBidirectional(movie.ageLimitProperty(), new NumberStringConverter());
+
         if(movie.ageLimitProperty().getValue()>0)
             ageLimit.setText(movie.ageLimitProperty().getValue().toString());
         else
@@ -82,12 +77,10 @@ public class MovieEditController implements Initializable {
         newImage.bindBidirectional(movie.coverImageProperty());
         if (newImage.getValue() != null) {
             try {
-
                 coverImage.setImage(getImageFromBase64String(newImage.getValue()));
             } catch (IOException e) {
                 System.err.println("Hiba a kép betöltésekor!");
                 Utils.showWarning("Hiba a kép betöltésekor!");
-                //e.printStackTrace();
             }
         }
         newImage.addListener((observable, oldV, newV) -> {
@@ -96,7 +89,6 @@ public class MovieEditController implements Initializable {
             } catch (IOException e) {
                 System.err.println("Hiba az új kép betöltésekor!!");
                 Utils.showWarning("Hiba az új kép betöltésekor!");
-                //  e.printStackTrace();
             }
         });
     }
@@ -159,7 +151,6 @@ public class MovieEditController implements Initializable {
                     Utils.showWarning("A filmtípus csak számot tartalmazhat!!");
                     movieType.textProperty().setValue("");
                 }
-             //   System.out.println("ez igy nem jo!");
             }
         });
 

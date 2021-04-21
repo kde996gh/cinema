@@ -2,14 +2,9 @@ package hu.alkfejl.controller.playtime;
 
 import hu.alkfejl.App;
 import hu.alkfejl.controller.Utils;
-import hu.alkfejl.controller.movie.MovieEditController;
-import hu.alkfejl.controller.room.RoomAddEditController;
 import hu.alkfejl.dao.implementation.PlayTimeDAOImpl;
 import hu.alkfejl.dao.interfaces.PlayTimeDAO;
-import hu.alkfejl.model.Movie;
 import hu.alkfejl.model.PlayTime;
-import hu.alkfejl.model.Room;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -44,13 +39,12 @@ public class PlaytimeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //   playTimeTable.getItems().setAll()
         refreshTable();
         playTimeTable.getItems().setAll(all);
 
-        movieNameColumn.setCellValueFactory(new PropertyValueFactory<>("movie_name"));
-        roomColumn.setCellValueFactory(new PropertyValueFactory<>("room_name"));
-        ticketTypeColumn.setCellValueFactory(new PropertyValueFactory<>("ticket_type"));
+        movieNameColumn.setCellValueFactory(new PropertyValueFactory<>("movieName"));
+        roomColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+        ticketTypeColumn.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("playTimeDate"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("playTimeHours"));
 
@@ -61,7 +55,6 @@ public class PlaytimeController implements Initializable {
             {
                 deleteButton.setOnAction(event -> {
                     PlayTime playtime = getTableRow().getItem();
-                    //System.out.println("megnyomták a törlés gombot");
                     deletePlayTime(playtime);// törlés
                     refreshTable(); // táblafrissites
                 });
@@ -69,8 +62,6 @@ public class PlaytimeController implements Initializable {
                 editButton.setOnAction(event -> {
                     PlayTime playtime = getTableRow().getItem();
                     editPlayTime(playtime);
-                    // System.out.println("megnyomták a módosítás gombot");
-
                     refreshTable();
                 });
             }

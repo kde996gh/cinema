@@ -1,19 +1,16 @@
 package hu.alkfejl.dao.interfaces;
 
 import hu.alkfejl.model.User;
-
-import java.util.List;
+import javafx.collections.ObservableList;
 
 public interface UserDAO {
 
-    public List<User> listAllUser();
-    public User getUserById(int id);
-    public void addNewUser(User user);
+    ObservableList<User> listUser();
+
+    void addNewUser(User user);
 
     User loginCheck(String username, String password);
 
-    public void deleteUser(User user);
 
-
-    User getUserByEmail(String email);
+    boolean emailExistCheck(String email);
 }

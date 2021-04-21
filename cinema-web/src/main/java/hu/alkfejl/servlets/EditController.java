@@ -10,11 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "EditServlet", urlPatterns = "/editres")
@@ -30,7 +25,7 @@ public class EditController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        message="";
+        message = "";
         int playtimeid = Integer.parseInt(req.getParameter("ptid"));
 
         String email = (String) req.getSession().getAttribute("email");
@@ -39,29 +34,26 @@ public class EditController extends HttpServlet {
 
         List<Seat> seats = seatDAO.getPlayTimeSeats(playtimeid);
 
-        Room currentRoom = roomDAO.getRoomByName(playTime.getRoom_name());
+        Room currentRoom = roomDAO.getRoomByName(playTime.getRoomName());
 
-        Ticket ticket = ticketDAO.getTicketByType(playTime.getTicket_type());
+        Ticket ticket = ticketDAO.getTicketByType(playTime.getTicketType());
 
         List<Reservation> resses = reservationDAO.listReservations();
         String seatsString = "";
         for (Reservation r : resses) {
-            if (r.getEmail().equals(email) && r.getPlaytime_id() == playtimeid) {
-                seatsString += r.getReserved_seat();
+            if (r.getEmail().equals(email) && r.getPlaytimeId() == playtimeid) {
+                seatsString += r.getReservedSeat();
                 break;
             }
         }
 
-            message = "";
-            req.setAttribute("message", message);
-            req.setAttribute("seats", seats);
-            req.setAttribute("room", currentRoom);
-            req.setAttribute("playtime", playTime);
-            req.setAttribute("ticket", ticket);
-            req.setAttribute("seatsString", seatsString);
-
-
-        // System.out.println(playtimeid + " +++PLAYTIMEID");
+        message = "";
+        req.setAttribute("message", message);
+        req.setAttribute("seats", seats);
+        req.setAttribute("room", currentRoom);
+        req.setAttribute("playtime", playTime);
+        req.setAttribute("ticket", ticket);
+        req.setAttribute("seatsString", seatsString);
 
         getServletContext().getRequestDispatcher("/pages/edit_reservation.jsp").forward(req, resp);
 
@@ -70,7 +62,6 @@ public class EditController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
@@ -88,10 +79,9 @@ public class EditController extends HttpServlet {
             Reservation rOld = reservationDAO.getReservationByIdEmail(ptid, email);
 
 
-            String seatPickedOld = rOld.getReserved_seat();
+            String seatPickedOld = rOld.getReservedSeat();
 
             String seatsPickedString1 = "";
-            //    String seatsPickedStringOld = "";
             for (int i = 0; i < seatsPicked.length; i++) {
                 if (i == seatsPicked.length - 1) {
                     seatsPickedString1 += seatsPicked[i];
@@ -99,7 +89,7 @@ public class EditController extends HttpServlet {
                     seatsPickedString1 += seatsPicked[i] + ",";
                 }
             }
-            // seatsPickedStringOld += seatPickedOld[0];
+
             String[] splitedSeats = seatsPickedString1.split(",");
             String[] splitedSeatsOld = seatPickedOld.split(",");
 
@@ -109,17 +99,17 @@ public class EditController extends HttpServlet {
                 System.out.println("Splitted seat acc:  " + splitedSeat);
                 seatDao.updateOnDelete(ptid, Integer.parseInt(splitedSeat));
             }
-            ///régiek kitörölve, jövet az uj mentés
+
             PlayTime currPt = playtimedao.getPlayTimeById(ptid);
 
 
             Reservation r = new Reservation();
-            r.setMovie_name(currPt.getMovie_name());
-            r.setPlaytimedate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
-            r.setPlaytime_id(ptid);
-            r.setPrice_sum(sumPrice);
+            r.setMovieName(currPt.getMovieName());
+            r.setPlaytimeDate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
+            r.setPlaytimeId(ptid);
+            r.setPriceSum(sumPrice);
             r.setEmail(email);
-            r.setReserved_seat(seatsPickedString1);
+            r.setReservedSeat(seatsPickedString1);
             reservationDAO.save(r);
 
             for (String splitedSeat : splitedSeats) {
@@ -131,10 +121,6 @@ public class EditController extends HttpServlet {
             message = "Nem sikerült a módosítás!";
 
         }
-
-
-        //seateknél update
-        //String url = "/pages/reservation?ptid="+ptid;
         req.setAttribute("message", message);
         getServletContext().getRequestDispatcher("/pages/reservation.jsp").forward(req, resp);
 

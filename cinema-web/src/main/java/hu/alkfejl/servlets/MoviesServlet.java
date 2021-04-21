@@ -3,8 +3,6 @@ package hu.alkfejl.servlets;
 import hu.alkfejl.dao.implementation.MovieDAOImpl;
 import hu.alkfejl.dao.interfaces.MovieDAO;
 import hu.alkfejl.model.Movie;
-import hu.alkfejl.model.Reservation;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,16 +15,14 @@ import java.util.stream.Collectors;
 @WebServlet(name = "MoviesServlet", urlPatterns = "/movies")
 public class MoviesServlet extends HttpServlet {
     MovieDAO movideDao = MovieDAOImpl.getInstance();
-    private List<Movie> movies = movideDao.listMovies();;
+    private List<Movie> movies = movideDao.listMovies();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        resp.setCharacterEncoding("utf-8");
         String searchInput = req.getParameter("searchInput");
-    //    System.out.println(searchInput);
-       // List<Movie> all = movideDao.listMovies();
-
-
-
+        System.out.println("kereső szó: " + searchInput);
         List<Movie> filtered = movies.stream().filter(movie -> (movie.getTitle().toLowerCase().contains(searchInput.toLowerCase()))
                 || (movie.getActors().toLowerCase().contains(searchInput.toLowerCase()))
                 || (movie.getDirector().toLowerCase().contains(searchInput.toLowerCase()))
@@ -35,24 +31,13 @@ public class MoviesServlet extends HttpServlet {
 
         req.setAttribute("movies", filtered);
         getServletContext().getRequestDispatcher("/pages/movies.jsp").forward(req, resp);
-
-
     }
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-//????? ez mi
-        if(req.getParameter("movieName") != null){
-            String movieName = req.getParameter("movieName");
-           // System.out.println(movieName);
-        }
-
         MovieDAO movideDao = MovieDAOImpl.getInstance();
         List<Movie> all = movideDao.listMovies();
-      //  System.out.println(all);
 
         req.setAttribute("movies", all);
 

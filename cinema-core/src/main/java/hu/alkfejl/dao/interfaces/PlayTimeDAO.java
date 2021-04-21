@@ -1,6 +1,5 @@
 package hu.alkfejl.dao.interfaces;
 
-import hu.alkfejl.model.Movie;
 import hu.alkfejl.model.PlayTime;
 import javafx.collections.ObservableList;
 

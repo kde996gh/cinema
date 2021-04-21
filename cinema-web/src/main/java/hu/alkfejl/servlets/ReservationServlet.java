@@ -20,8 +20,6 @@ public class ReservationServlet extends HttpServlet {
     TicketDAO ticketDAO = TicketDAOImpl.getInstance();
     ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
     SeatDAOImpl seatDao = SeatDAOImpl.getInstance();
-    MovieDAO moviedao = MovieDAOImpl.getInstance();
-    UserDAO userDao = UserDAOImpl.getInstance();
     String message = "";
 
 
@@ -31,7 +29,6 @@ public class ReservationServlet extends HttpServlet {
         resp.setCharacterEncoding("utf-8");
 
         String email = (String) req.getSession().getAttribute("email");
-
 
         if (email != null) {
             int priceInt = Integer.parseInt(req.getParameter("finalPrice"));
@@ -53,21 +50,19 @@ public class ReservationServlet extends HttpServlet {
             System.out.println("EZA  STRING:" + seatsPickedString1);
 
             PlayTime currPt = playtimedao.getPlayTimeById(ptid);
-          //  User user = userDao.getUserByEmail(email);
 
             Reservation r = new Reservation();
-            r.setMovie_name(currPt.getMovie_name());
-            r.setPlaytimedate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
-            r.setPlaytime_id(ptid);
-            r.setPrice_sum(priceInt);
+            r.setMovieName(currPt.getMovieName());
+            r.setPlaytimeDate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
+            r.setPlaytimeId(ptid);
+            r.setPriceSum(priceInt);
             r.setEmail(email);
-            r.setPrice_sum(summa);
-            r.setReserved_seat(seatsPickedString1);
+            r.setPriceSum(summa);
+            r.setReservedSeat(seatsPickedString1);
             reservationDAO.save(r);
 
             for (String splitedSeat : splitedSeats) {
                 seatDao.reserve(ptid, Integer.parseInt(splitedSeat));
-                // System.out.println("ezaz: " + splitedSeats[i]);
             }
 
             message = "Sikeres foglalás!";
@@ -77,9 +72,6 @@ public class ReservationServlet extends HttpServlet {
 
         }
 
-
-        //seateknél update
-        //String url = "/pages/reservation?ptid="+ptid;
         req.setAttribute("message", message);
         getServletContext().getRequestDispatcher("/pages/reservation.jsp").forward(req, resp);
 
@@ -97,9 +89,9 @@ public class ReservationServlet extends HttpServlet {
 
         List<Seat> seats = seatDAO.getPlayTimeSeats(playtimeid);
 
-        Room currentRoom = roomDAO.getRoomByName(playTime.getRoom_name());
+        Room currentRoom = roomDAO.getRoomByName(playTime.getRoomName());
 
-        Ticket ticket = ticketDAO.getTicketByType(playTime.getTicket_type());
+        Ticket ticket = ticketDAO.getTicketByType(playTime.getTicketType());
 
         boolean alreadyBooked = reservationDAO.checkIfAlreadyBooked(email, playtimeid);
         System.out.println("alreadyBooked??? : " + alreadyBooked + ", email: " + email + ", ptid: " + playtimeid);
@@ -117,11 +109,6 @@ public class ReservationServlet extends HttpServlet {
             req.setAttribute("ticket", ticket);
         }
 
-        // System.out.println(playtimeid + " +++PLAYTIMEID");
-
         getServletContext().getRequestDispatcher("/pages/reservation.jsp").forward(req, resp);
-
-
     }
-
 }

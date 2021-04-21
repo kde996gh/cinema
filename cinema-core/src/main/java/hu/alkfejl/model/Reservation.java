@@ -8,48 +8,48 @@ import javafx.beans.property.StringProperty;
 public class Reservation {
 
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
-    private IntegerProperty playtime_id = new SimpleIntegerProperty(this, "playtime_id");
+    private IntegerProperty playtimeId = new SimpleIntegerProperty(this, "playtimeId");
     private StringProperty email = new SimpleStringProperty(this, "email");
-    private StringProperty reserved_seat = new SimpleStringProperty(this, "reserved_seat");
-    private IntegerProperty price_sum = new SimpleIntegerProperty(this, "price_sum");
-    private StringProperty movie_name = new SimpleStringProperty(this, "movie_name");
-    private StringProperty playtimedate = new SimpleStringProperty(this, "playtimedate");
+    private StringProperty reservedSeat = new SimpleStringProperty(this, "reservedSeat");
+    private IntegerProperty priceSum = new SimpleIntegerProperty(this, "priceSum");
+    private StringProperty movieName = new SimpleStringProperty(this, "movieName");
+    private StringProperty playtimeDate = new SimpleStringProperty(this, "playtimeDate");
 
 
-    public String getMovie_name() {
-        return movie_name.get();
+    public String getMovieName() {
+        return movieName.get();
     }
 
-    public StringProperty movie_nameProperty() {
-        return movie_name;
+    public StringProperty movieNameProperty() {
+        return movieName;
     }
 
-    public void setMovie_name(String movie_name) {
-        this.movie_name.set(movie_name);
+    public void setMovieName(String movieName) {
+        this.movieName.set(movieName);
     }
 
-    public String getPlaytimedate() {
-        return playtimedate.get();
+    public String getPlaytimeDate() {
+        return playtimeDate.get();
     }
 
-    public StringProperty playtimedateProperty() {
-        return playtimedate;
+    public StringProperty playtimeDateProperty() {
+        return playtimeDate;
     }
 
-    public void setPlaytimedate(String playtimedate) {
-        this.playtimedate.set(playtimedate);
+    public void setPlaytimeDate(String playtimeDate) {
+        this.playtimeDate.set(playtimeDate);
     }
 
-    public int getPrice_sum() {
-        return price_sum.get();
+    public int getPriceSum() {
+        return priceSum.get();
     }
 
-    public IntegerProperty price_sumProperty() {
-        return price_sum;
+    public IntegerProperty priceSumProperty() {
+        return priceSum;
     }
 
-    public void setPrice_sum(int price_sum) {
-        this.price_sum.set(price_sum);
+    public void setPriceSum(int priceSum) {
+        this.priceSum.set(priceSum);
     }
 
 
@@ -65,16 +65,16 @@ public class Reservation {
         this.id.set(id);
     }
 
-    public int getPlaytime_id() {
-        return playtime_id.get();
+    public int getPlaytimeId() {
+        return playtimeId.get();
     }
 
-    public IntegerProperty playtime_idProperty() {
-        return playtime_id;
+    public IntegerProperty playtimeIdProperty() {
+        return playtimeId;
     }
 
-    public void setPlaytime_id(int playtime_id) {
-        this.playtime_id.set(playtime_id);
+    public void setPlaytimeId(int playtimeId) {
+        this.playtimeId.set(playtimeId);
     }
 
 
@@ -90,16 +90,16 @@ public class Reservation {
         this.email.set(email);
     }
 
-    public String getReserved_seat() {
-        return reserved_seat.get();
+    public String getReservedSeat() {
+        return reservedSeat.get();
     }
 
-    public StringProperty reserved_seatProperty() {
-        return reserved_seat;
+    public StringProperty reservedSeatProperty() {
+        return reservedSeat;
     }
 
-    public void setReserved_seat(String reserved_seat) {
-        this.reserved_seat.set(reserved_seat);
+    public void setReservedSeat(String reservedSeat) {
+        this.reservedSeat.set(reservedSeat);
     }
 }
 

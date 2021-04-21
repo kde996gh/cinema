@@ -5,22 +5,44 @@ html body {
     background: #487c7c;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-top: 10%;
+.container2 {
+    display: grid !important;
+    grid-template-columns: auto auto auto !important;
+    /* display: flex;*/
+    justify-content: center !important;
+    text-align: center !important;
+    margin-top: 10% !important;
+
 }
 
-.playtime{
+.table {
+    margin-top: 10px;
+}
+
+.card {
+    margin: 10px;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: 7px 7px 10px 0px rgba(50, 50, 50, 0.9);
+
+}
+
+.imgRadius {
+    border-radius: 20px;
+}
+
+.playtime {
     width: 70%;
 }
 
-.taken{
- background-color: red;
+.taken {
+    background-color: red;
 }
 
-.notTaken{
+.notTaken {
     background-color: green;
 }
 
+.container2 {
+
+}
