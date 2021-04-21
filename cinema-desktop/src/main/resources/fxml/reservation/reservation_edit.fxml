@@ -12,48 +12,50 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.controller.reservation.ReservationEditController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.alkfejl.controller.reservation.ReservationEditController">
     <top>
         <Label text="Foglalás módosítása" BorderPane.alignment="CENTER">
             <font>
-                <Font size="20.0" />
+                <Font size="20.0"/>
             </font>
             <padding>
-                <Insets bottom="10.0" top="10.0" />
+                <Insets bottom="10.0" top="10.0"/>
             </padding>
         </Label>
     </top>
     <left>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" onAction="#onCancel" text="Vissza" />
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSave" text="Mentés" />
-<!--                <TextField fx:id="searchByTitle" onKeyReleased="#onSearch"/>-->
+                <Button mnemonicParsing="false" onAction="#onCancel" text="Vissza"/>
+                <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSave" text="Mentés"/>
+                <!--                <TextField fx:id="searchByTitle" onKeyReleased="#onSearch"/>-->
             </children>
             <BorderPane.margin>
-                <Insets />
+                <Insets/>
             </BorderPane.margin>
             <padding>
-                <Insets top="25.0" />
+                <Insets top="25.0"/>
             </padding>
         </VBox>
     </left>
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
-         <children>
-            <CheckBox fx:id="discountCheck" mnemonicParsing="false" text="Kedvezmény" />
-            <Label fx:id="priceLabel" text="Ár" />
-         </children>
-      </HBox>
-   </bottom>
-   <center>
-          <GridPane fx:id="gridPane" prefHeight="325.0" prefWidth="494.0" BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-         </rowConstraints>
-      </GridPane>
-   </center>
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
+            <children>
+                <CheckBox fx:id="discountCheck" mnemonicParsing="false" text="Kedvezmény"/>
+                <Label fx:id="priceLabel" text="Ár"/>
+            </children>
+        </HBox>
+    </bottom>
+    <center>
+        <GridPane fx:id="gridPane" prefHeight="325.0" prefWidth="494.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints/>
+            </rowConstraints>
+        </GridPane>
+    </center>
 </BorderPane>

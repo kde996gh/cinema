@@ -1,13 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%--
-  Created by IntelliJ IDEA.
-  User: Deniel
-  Date: 2021. 04. 15.
-  Time: 21:43
-  To change this template use File | Settings | File Templates.
---%>
 <html>
 <head>
     <jsp:include page="common/header.jsp"/>

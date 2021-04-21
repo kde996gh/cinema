@@ -3,7 +3,6 @@ package hu.alkfejl.controller.movie;
 import hu.alkfejl.App;
 import hu.alkfejl.dao.implementation.MovieDAOImpl;
 import hu.alkfejl.model.Movie;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,16 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import org.apache.commons.io.FileUtils;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Base64;
@@ -47,11 +39,8 @@ public class MovieWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //gridPane.add(x, 0, 0);
-        //System.out.println(MovieDAOImpl.getInstance().listByName());
         movies = MovieDAOImpl.getInstance().listMovies();
         imageDrawer(movies);
-
     }
 
     private void imageDrawer(List<Movie> movies){
@@ -82,13 +71,12 @@ public class MovieWindowController implements Initializable {
 
             VBox container = new VBox();
             container.setAlignment(Pos.CENTER);
-            //container.setSpacing(5d);
+
             container.setPadding(new Insets(5));
 
             container.getChildren().addAll(titleLabel,movieButton[i]);
 
             gridPane.add(container, col, row);
-           // gridPane.add(titleLabel,col,row);
             col++;
 
             if (col == 3) {

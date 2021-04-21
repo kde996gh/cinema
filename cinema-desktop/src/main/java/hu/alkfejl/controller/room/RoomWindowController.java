@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RoomWindowController implements Initializable{
+public class RoomWindowController implements Initializable {
 
     RoomDAO roomDAO = new RoomDAOImpl();
     private List<Room> all;
@@ -60,23 +60,20 @@ public class RoomWindowController implements Initializable{
         colNumberColumn.setCellValueFactory(new PropertyValueFactory<>("colNumber"));
         seatNumberColumn.setCellValueFactory(new PropertyValueFactory<>("seatNumber"));
 
-        actionsColumn.setCellFactory(param -> new TableCell<>(){
+        actionsColumn.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Törlés");
             private final Button editButton = new Button("Módosítás");
 
             {
                 deleteButton.setOnAction(event -> {
                     Room room = getTableRow().getItem();
-                    //System.out.println("megnyomták a törlés gombot");
                     deleteRoom(room);// törlés
                     refreshTable(); // táblafrissites
                 });
 
-                editButton.setOnAction(event ->{
+                editButton.setOnAction(event -> {
                     Room c = getTableRow().getItem();
                     editRoom(c);
-                    //System.out.println("megnyomták a módosítás gombot");
-
                     refreshTable();
                 });
             }
@@ -84,9 +81,9 @@ public class RoomWindowController implements Initializable{
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if(empty){
+                if (empty) {
                     setGraphic(null);
-                }else{
+                } else {
                     HBox container = new HBox();
                     container.getChildren().addAll(editButton, deleteButton);
                     container.setSpacing(10.0);
@@ -94,7 +91,7 @@ public class RoomWindowController implements Initializable{
                 }
             }
         });
-    }//init vége
+    }
 
     private void refreshTable() {
         all = roomDAO.listRooms();
@@ -102,16 +99,16 @@ public class RoomWindowController implements Initializable{
     }
 
     private void deleteRoom(Room room) {
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,"Biztosan törlöd a következő termet? " + room.getName(), ButtonType.YES, ButtonType.NO);
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Biztosan törlöd a következő termet? " + room.getName(), ButtonType.YES, ButtonType.NO);
         confirm.showAndWait().ifPresent(buttonType -> {
-            if(buttonType.equals(buttonType.YES)){
+            if (buttonType.equals(ButtonType.YES)) {
                 roomDAO.delete(room);
             }
         });
         Utils.showInfo("Sikeres törlés!");
     }
 
-    private void editRoom(Room room){
+    private void editRoom(Room room) {
         FXMLLoader fxmlLoader = App.loadFXML(("/fxml/room/room_add_edit.fxml"));
         RoomAddEditController controller = fxmlLoader.getController();
         controller.setRoom(room);

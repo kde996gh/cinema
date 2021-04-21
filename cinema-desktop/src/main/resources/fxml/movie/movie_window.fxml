@@ -23,7 +23,7 @@
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
                 <Button mnemonicParsing="false" onAction="#backToMainWindow" text="Főmenü"/>
-                <Button mnemonicParsing="false" text="Új film" onAction="#addNewMovie" />
+                <Button mnemonicParsing="false" text="Új film" onAction="#addNewMovie"/>
                 <Label text="Film keresése"/>
                 <TextField fx:id="searchByTitle" onKeyReleased="#onSearch"/>
             </children>

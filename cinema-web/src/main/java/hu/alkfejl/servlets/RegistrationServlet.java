@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 @WebServlet(name = "RegistrationServlet", urlPatterns = "/registration")
 public class RegistrationServlet extends HttpServlet {
 
     UserDAO dao = UserDAOImpl.getInstance();
-String message = "";
+    String message = "";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,12 +37,12 @@ String message = "";
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = (String) req.getSession().getAttribute("email");
         System.out.println("email : " + email);
-        if(email != null){
+        if (email != null) {
             System.out.println("bejöttem!");
             message = "Jelentkezz ki ha új felhasználót szeretnél regisztrálni!";
 
-        }else{
-            message="";
+        } else {
+            message = "";
         }
 
         req.setAttribute("message", message);

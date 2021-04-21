@@ -2,11 +2,8 @@ package hu.alkfejl.controller.ticket;
 
 import hu.alkfejl.App;
 import hu.alkfejl.controller.Utils;
-import hu.alkfejl.dao.implementation.RoomDAOImpl;
 import hu.alkfejl.dao.implementation.TicketDAOImpl;
-import hu.alkfejl.dao.interfaces.RoomDAO;
 import hu.alkfejl.dao.interfaces.TicketDAO;
-import hu.alkfejl.model.Room;
 import hu.alkfejl.model.Ticket;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,15 +38,14 @@ public class TicketWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         refreshTable();
 
-//        ticketTable.getItems().setAll(tickets);
-
         ticketTypeColumn.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         lowerPriceColumn.setCellValueFactory(new PropertyValueFactory<>("lowerPrice"));
 
-        actionsColumn.setCellFactory(param -> new TableCell<>(){
+        actionsColumn.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Törlés");
             private final Button editButton = new Button("Módosítás");
+
             {
                 deleteButton.setOnAction(event -> {
                     Ticket ticket = getTableRow().getItem();
@@ -57,20 +53,20 @@ public class TicketWindowController implements Initializable {
                     refreshTable(); // táblafrissites
                 });
 
-                editButton.setOnAction(event ->{
-                   Ticket ticket = getTableRow().getItem();
+                editButton.setOnAction(event -> {
+                    Ticket ticket = getTableRow().getItem();
                     editRoom(ticket);
-                    //System.out.println("megnyomták a módosítás gombot");
 
                     refreshTable();
                 });
             }
+
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if(empty){
+                if (empty) {
                     setGraphic(null);
-                }else{
+                } else {
                     HBox container = new HBox();
                     container.getChildren().addAll(editButton, deleteButton);
                     container.setSpacing(10.0);
@@ -86,21 +82,23 @@ public class TicketWindowController implements Initializable {
         TicketAddEditController controller = fxmlLoader.getController();
         controller.setTicket(ticket);
     }
-    public void newTicket(){
+
+    public void newTicket() {
         FXMLLoader fxmlLoader = App.loadFXML(("/fxml/ticket/ticket_add_edit.fxml"));
         TicketAddEditController controller = fxmlLoader.getController();
         controller.setTicket(new Ticket());
     }
 
     private void deleteTicket(Ticket ticket) {
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,"Biztosan törlöd a jegy típust?", ButtonType.YES, ButtonType.NO);
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Biztosan törlöd a jegy típust?", ButtonType.YES, ButtonType.NO);
         confirm.showAndWait().ifPresent(buttonType -> {
-            if(buttonType.equals(buttonType.YES)){
+            if (buttonType.equals(buttonType.YES)) {
                 ticketDAO.delete(ticket);
             }
         });
         Utils.showInfo("Sikeres törlés");
     }
+
     private void refreshTable() {
         tickets = ticketDAO.findAllTicket();
         ticketTable.getItems().setAll(tickets);

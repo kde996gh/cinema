@@ -15,29 +15,28 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name="MovieServlet", urlPatterns = "/movie")
+@WebServlet(name = "MovieServlet", urlPatterns = "/movie")
 public class MovieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getParameter("movid") != null){
+        if (req.getParameter("movid") != null) {
             int movid = Integer.parseInt(req.getParameter("movid"));
             String message = "";
             MovieDAO movideDao = MovieDAOImpl.getInstance();
             Movie movie = movideDao.findMovie(movid);
 
-            if(movie != null){
+            if (movie != null) {
                 req.setAttribute("movie", movie);
                 PlayTimeDAO ptdao = PlayTimeDAOImpl.getInstance();
 
                 List<PlayTime> playTimesResult = ptdao.getMoviePlayTimes(movie.getTitle());
                 req.setAttribute("playTimes", playTimesResult);
 
-            }
-            else{
+            } else {
                 message = "Nincs találat!";
                 req.setAttribute("message", message);
             }
-        }else{
+        } else {
             System.out.println("Nem létezik!");
         }
 

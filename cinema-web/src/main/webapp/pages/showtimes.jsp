@@ -41,8 +41,8 @@
         <thead class="thead-dark">
         <tr>
             <th scope="col">Típus</th>
-            <th scope="col">Ár (Forint) </th>
-            <th scope="col">Kedvezményes ár (Forint) </th>
+            <th scope="col">Ár (Forint)</th>
+            <th scope="col">Kedvezményes ár (Forint)</th>
         </tr>
         </thead>
         <tbody>

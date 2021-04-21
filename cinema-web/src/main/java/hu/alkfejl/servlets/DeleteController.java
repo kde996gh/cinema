@@ -26,10 +26,10 @@ import java.util.List;
 @WebServlet(name = "DeleteController", urlPatterns = "/deleteres")
 public class DeleteController extends HttpServlet {
     SeatDAO seatdao = SeatDAOImpl.getInstance();
-    List<Seat> seats = seatdao.getAllSeats();
+    // List<Seat> seats = seatdao.getAllSeats();
     PlayTimeDAO playtimedao = PlayTimeDAOImpl.getInstance();
-
     ReservationDAO rdao = ReservationDAOImpl.getInstance();
+
     String isDeleted = "";
 
     @Override
@@ -39,7 +39,6 @@ public class DeleteController extends HttpServlet {
 
         List<Reservation> resses = rdao.listReservations();
 
-
         if (ptid != null && !ptid.isEmpty()) {
             int intptid = Integer.parseInt(ptid);
 
@@ -48,7 +47,7 @@ public class DeleteController extends HttpServlet {
             String playDate = pt.getPlayTimeDate() + " " + pt.getPlayTimeHours();
 
             if (timeCheck(playDate)) {
-                List<Integer> seatNumbers = new ArrayList<>();
+                // List<Integer> seatNumbers = new ArrayList<>();
                 String seats = "";
 
                 for (Reservation r : resses) {
@@ -61,7 +60,6 @@ public class DeleteController extends HttpServlet {
 
                 for (String splitedSeat : splitedSeats) {
                     seatdao.updateOnDelete(intptid, Integer.parseInt(splitedSeat));
-
                 }
 
                 rdao.deleteReservationByUser(email, intptid);
@@ -69,7 +67,6 @@ public class DeleteController extends HttpServlet {
             } else {
                 isDeleted = "Sajnos már nem mondhatod le a foglalást, csak 24 órával előbb mint az előadás kezdete!";
             }
-
         } else {
             isDeleted = "";
         }
@@ -90,18 +87,14 @@ public class DeleteController extends HttpServlet {
 
         LocalDateTime dateTime1 = LocalDateTime.parse(playTime_time, dateformatter);
         LocalDateTime dateTime2 = LocalDateTime.parse(currentDate, dateformatter);
-        // System.out.println("dateTime1 " + dateTime1);
-        //System.out.println("dateTime2 " + dateTime2);
 
         long diffInMinutes = Math.abs(java.time.Duration.between(dateTime1, dateTime2).toMinutes());
-        // System.out.println("percek hátra: " + diffInMinutes);
 
         if (diffInMinutes >= 1440) {
             return true;
         } else {
             return false;
         }
-
     }
 
 }

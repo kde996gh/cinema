@@ -73,9 +73,6 @@ public class ReservationEditController implements Initializable {
         int row = room.getRowNumber();
 
         Button[] movieButton = new Button[seats.size()];
-//        System.out.println("meret: " + movieButton.length);
-//        System.out.println("col: " + col);
-//        System.out.println("row: " + row);
         int rowHelper = 0;
         int colHelper = 0;
         for (int i = 0; i < seats.size(); i++) {
@@ -105,15 +102,11 @@ public class ReservationEditController implements Initializable {
                     movieButton[index].setId("yellow");
                     seatsList.add(Integer.parseInt(movieButton[index].textProperty().getValue()));
                     priceUpdate();
-                    // System.out.println("LISTA: " + seatsList);
                 } else if (movieButton[index].getId().equals("yellow")) {
                     movieButton[index].setStyle("-fx-background-color: #5fbc5f");
                     movieButton[index].setId("green");
                     seatsList.remove(Integer.valueOf(Integer.parseInt(movieButton[index].textProperty().getValue())));
                     priceUpdate();
-                    //System.out.println("LISTA: " + seatsList);
-                    //System.out.println("liststring : " + listString);
-
                 } else if (movieButton[index].getId().equals("blue")) {
                     movieButton[index].setStyle("-fx-background-color: #5fbc5f");
                     movieButton[index].setId("green");
@@ -154,7 +147,6 @@ public class ReservationEditController implements Initializable {
             price = seatsList.size() * (this.ticket.getPrice());
         }
         priceLabel.setText("Ár: " + price);
-        //System.out.println("Price: " + price);
     }
 
     @Override

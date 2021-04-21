@@ -12,36 +12,15 @@
     ${requestScope.message}
 </c:if>
 <c:if test="${requestScope.message == ''}">
+    <h1>Foglalások</h1>
+    <br>
 
     <div class="container">
-        <h1>Foglalások</h1>
-        <br>
         <table class="table">
             <thead class="thead-dark">
             <tr>
-                <th scope="col">Cím</th>
-                <th scope="col">Terem</th>
+                <th scope="col">Film cím</th>
                 <th scope="col">Dátum</th>
-                <th scope="col">Óra</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="playtime" items="${requestScope.usersPlaytimes}">
-                <tr>
-                    <td>${playtime.movieName}</td>
-                    <td>${playtime.roomName}</td>
-                    <td>${playtime.playTimeDate}</td>
-                    <td>${playtime.playTimeHours}</td>
-<%--                    <td><a href="/reservation?ptid=${playtime.id}"> Módosít </a></td>--%>
-<%--                    <td><a href="/deleteres?ptid=${playtime.id}"> Törlés </a></td>--%>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-        <table class="table">
-            <thead class="thead-dark">
-            <tr>
                 <th scope="col">Foglalt helyek</th>
                 <th scope="col">Összeg (Forint)</th>
                 <th scope="col">Módosítás</th>
@@ -51,6 +30,8 @@
             <tbody>
             <c:forEach var="reserve" items="${requestScope.userReservations}">
                 <tr>
+                    <td>${reserve.movieName}</td>
+                    <td>${reserve.playtimeDate}</td>
                     <td>${reserve.reservedSeat}</td>
                     <td>${reserve.priceSum}</td>
                     <td><a href="/editres?ptid=${reserve.playtimeId}"> Módosít </a></td>

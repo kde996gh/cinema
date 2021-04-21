@@ -59,7 +59,6 @@ public class ReservationWindowController implements Initializable {
     @FXML
     private TextField searchText;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         refreshTable();
@@ -123,15 +122,12 @@ public class ReservationWindowController implements Initializable {
 
                     String[] old = res.getReservedSeat().split(",");
                     for (String string : old) {
-                        // System.out.println("Splitted seat acc:  " + integer);
                         seatDao.updateOnDelete(res.getPlaytimeId(), Integer.parseInt(string));
                     }
-
                     Utils.showInfo("Sikeres törlés!");
                 } else {
                     Utils.showWarning("Nem törölhető, csak 24 órával a vetítés előtt!");
                 }
-                //   roomDAO.delete(room);
             }
         });
     }

@@ -25,7 +25,7 @@ public class EditController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        message="";
+        message = "";
         int playtimeid = Integer.parseInt(req.getParameter("ptid"));
 
         String email = (String) req.getSession().getAttribute("email");
@@ -47,16 +47,13 @@ public class EditController extends HttpServlet {
             }
         }
 
-            message = "";
-            req.setAttribute("message", message);
-            req.setAttribute("seats", seats);
-            req.setAttribute("room", currentRoom);
-            req.setAttribute("playtime", playTime);
-            req.setAttribute("ticket", ticket);
-            req.setAttribute("seatsString", seatsString);
-
-
-        // System.out.println(playtimeid + " +++PLAYTIMEID");
+        message = "";
+        req.setAttribute("message", message);
+        req.setAttribute("seats", seats);
+        req.setAttribute("room", currentRoom);
+        req.setAttribute("playtime", playTime);
+        req.setAttribute("ticket", ticket);
+        req.setAttribute("seatsString", seatsString);
 
         getServletContext().getRequestDispatcher("/pages/edit_reservation.jsp").forward(req, resp);
 
@@ -65,7 +62,6 @@ public class EditController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
@@ -86,7 +82,6 @@ public class EditController extends HttpServlet {
             String seatPickedOld = rOld.getReservedSeat();
 
             String seatsPickedString1 = "";
-            //    String seatsPickedStringOld = "";
             for (int i = 0; i < seatsPicked.length; i++) {
                 if (i == seatsPicked.length - 1) {
                     seatsPickedString1 += seatsPicked[i];
@@ -94,7 +89,7 @@ public class EditController extends HttpServlet {
                     seatsPickedString1 += seatsPicked[i] + ",";
                 }
             }
-            // seatsPickedStringOld += seatPickedOld[0];
+
             String[] splitedSeats = seatsPickedString1.split(",");
             String[] splitedSeatsOld = seatPickedOld.split(",");
 
@@ -104,7 +99,7 @@ public class EditController extends HttpServlet {
                 System.out.println("Splitted seat acc:  " + splitedSeat);
                 seatDao.updateOnDelete(ptid, Integer.parseInt(splitedSeat));
             }
-            ///régiek kitörölve, jövet az uj mentés
+
             PlayTime currPt = playtimedao.getPlayTimeById(ptid);
 
 
@@ -126,10 +121,6 @@ public class EditController extends HttpServlet {
             message = "Nem sikerült a módosítás!";
 
         }
-
-
-        //seateknél update
-        //String url = "/pages/reservation?ptid="+ptid;
         req.setAttribute("message", message);
         getServletContext().getRequestDispatcher("/pages/reservation.jsp").forward(req, resp);
 
