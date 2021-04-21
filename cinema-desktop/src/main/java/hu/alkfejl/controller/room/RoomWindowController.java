@@ -6,7 +6,6 @@ import hu.alkfejl.dao.implementation.ReservationDAOImpl;
 import hu.alkfejl.dao.implementation.RoomDAOImpl;
 import hu.alkfejl.dao.interfaces.ReservationDAO;
 import hu.alkfejl.dao.interfaces.RoomDAO;
-import hu.alkfejl.model.Reservation;
 import hu.alkfejl.model.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -56,7 +54,7 @@ public class RoomWindowController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         refreshTable();
-        roomTable.getItems().setAll(roomDAO.findAll());
+        roomTable.getItems().setAll(roomDAO.listRooms());
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         rowNumberColumn.setCellValueFactory(new PropertyValueFactory<>("rowNumber"));
         colNumberColumn.setCellValueFactory(new PropertyValueFactory<>("colNumber"));
@@ -99,7 +97,7 @@ public class RoomWindowController implements Initializable{
     }//init vége
 
     private void refreshTable() {
-        all = roomDAO.findAll();
+        all = roomDAO.listRooms();
         roomTable.getItems().setAll(all);
     }
 

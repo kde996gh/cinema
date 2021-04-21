@@ -10,11 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "EditServlet", urlPatterns = "/editres")
@@ -39,15 +34,15 @@ public class EditController extends HttpServlet {
 
         List<Seat> seats = seatDAO.getPlayTimeSeats(playtimeid);
 
-        Room currentRoom = roomDAO.getRoomByName(playTime.getRoom_name());
+        Room currentRoom = roomDAO.getRoomByName(playTime.getRoomName());
 
-        Ticket ticket = ticketDAO.getTicketByType(playTime.getTicket_type());
+        Ticket ticket = ticketDAO.getTicketByType(playTime.getTicketType());
 
         List<Reservation> resses = reservationDAO.listReservations();
         String seatsString = "";
         for (Reservation r : resses) {
-            if (r.getEmail().equals(email) && r.getPlaytime_id() == playtimeid) {
-                seatsString += r.getReserved_seat();
+            if (r.getEmail().equals(email) && r.getPlaytimeId() == playtimeid) {
+                seatsString += r.getReservedSeat();
                 break;
             }
         }
@@ -88,7 +83,7 @@ public class EditController extends HttpServlet {
             Reservation rOld = reservationDAO.getReservationByIdEmail(ptid, email);
 
 
-            String seatPickedOld = rOld.getReserved_seat();
+            String seatPickedOld = rOld.getReservedSeat();
 
             String seatsPickedString1 = "";
             //    String seatsPickedStringOld = "";
@@ -114,12 +109,12 @@ public class EditController extends HttpServlet {
 
 
             Reservation r = new Reservation();
-            r.setMovie_name(currPt.getMovie_name());
-            r.setPlaytimedate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
-            r.setPlaytime_id(ptid);
-            r.setPrice_sum(sumPrice);
+            r.setMovieName(currPt.getMovieName());
+            r.setPlaytimeDate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
+            r.setPlaytimeId(ptid);
+            r.setPriceSum(sumPrice);
             r.setEmail(email);
-            r.setReserved_seat(seatsPickedString1);
+            r.setReservedSeat(seatsPickedString1);
             reservationDAO.save(r);
 
             for (String splitedSeat : splitedSeats) {

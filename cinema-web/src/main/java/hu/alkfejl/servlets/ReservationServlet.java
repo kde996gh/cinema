@@ -56,13 +56,13 @@ public class ReservationServlet extends HttpServlet {
           //  User user = userDao.getUserByEmail(email);
 
             Reservation r = new Reservation();
-            r.setMovie_name(currPt.getMovie_name());
-            r.setPlaytimedate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
-            r.setPlaytime_id(ptid);
-            r.setPrice_sum(priceInt);
+            r.setMovieName(currPt.getMovieName());
+            r.setPlaytimeDate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
+            r.setPlaytimeId(ptid);
+            r.setPriceSum(priceInt);
             r.setEmail(email);
-            r.setPrice_sum(summa);
-            r.setReserved_seat(seatsPickedString1);
+            r.setPriceSum(summa);
+            r.setReservedSeat(seatsPickedString1);
             reservationDAO.save(r);
 
             for (String splitedSeat : splitedSeats) {
@@ -97,9 +97,9 @@ public class ReservationServlet extends HttpServlet {
 
         List<Seat> seats = seatDAO.getPlayTimeSeats(playtimeid);
 
-        Room currentRoom = roomDAO.getRoomByName(playTime.getRoom_name());
+        Room currentRoom = roomDAO.getRoomByName(playTime.getRoomName());
 
-        Ticket ticket = ticketDAO.getTicketByType(playTime.getTicket_type());
+        Ticket ticket = ticketDAO.getTicketByType(playTime.getTicketType());
 
         boolean alreadyBooked = reservationDAO.checkIfAlreadyBooked(email, playtimeid);
         System.out.println("alreadyBooked??? : " + alreadyBooked + ", email: " + email + ", ptid: " + playtimeid);

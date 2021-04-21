@@ -17,18 +17,18 @@
     <div class="container">
         <div class="content">
             <c:forEach var="seat" items="${requestScope.seats}">
-                <c:if test="${(seat.seat_id-1) % requestScope.room.colNumber == 0}">
+                <c:if test="${(seat.seatId-1) % requestScope.room.colNumber == 0}">
                     <br>
                 </c:if>
                 <c:if test="${seat.taken == 0}">
-                    <button class="notTaken" id="id${seat.seat_id}"
-                            onclick="pickSeatFunction('id'+${seat.seat_id} , ${seat.seat_id})">
-                            ${seat.seat_id}
+                    <button class="notTaken" id="id${seat.seatId}"
+                            onclick="pickSeatFunction('id'+${seat.seatId} , ${seat.seatId})">
+                            ${seat.seatId}
                     </button>
                 </c:if>
                 <c:if test="${seat.taken == 1}">
                     <button class="taken">
-                            ${seat.seat_id}
+                            ${seat.seatId}
                     </button>
                 </c:if>
 

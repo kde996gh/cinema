@@ -29,7 +29,6 @@ public class Movie {
         this.actors.set(actors);
     }
 
-
     public int getId() {
         return id.get();
     }
@@ -53,7 +52,6 @@ public class Movie {
     public void setTitle(String title) {
         this.title.set(title);
     }
-
 
     public int getLengthMin() {
         return lengthMin.get();

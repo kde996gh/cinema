@@ -7,15 +7,11 @@ import java.util.List;
 
 public interface RoomDAO {
 
-    List<Room> findAll();
+    List<Room> listRooms();
 
     Room save(Room room);
 
     void delete(Room room);
-
-    void fillSeats();
-
-    Room addRoomSeats(Room room);
 
     boolean findRoomById(Room room);
 

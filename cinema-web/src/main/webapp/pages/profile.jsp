@@ -29,8 +29,8 @@
             <tbody>
             <c:forEach var="playtime" items="${requestScope.usersPlaytimes}">
                 <tr>
-                    <td>${playtime.movie_name}</td>
-                    <td>${playtime.room_name}</td>
+                    <td>${playtime.movieName}</td>
+                    <td>${playtime.roomName}</td>
                     <td>${playtime.playTimeDate}</td>
                     <td>${playtime.playTimeHours}</td>
 <%--                    <td><a href="/reservation?ptid=${playtime.id}"> Módosít </a></td>--%>
@@ -51,10 +51,10 @@
             <tbody>
             <c:forEach var="reserve" items="${requestScope.userReservations}">
                 <tr>
-                    <td>${reserve.reserved_seat}</td>
-                    <td>${reserve.price_sum}</td>
-                    <td><a href="/editres?ptid=${reserve.playtime_id}"> Módosít </a></td>
-                    <td><a href="/deleteres?ptid=${reserve.playtime_id}"> Törlés </a></td>
+                    <td>${reserve.reservedSeat}</td>
+                    <td>${reserve.priceSum}</td>
+                    <td><a href="/editres?ptid=${reserve.playtimeId}"> Módosít </a></td>
+                    <td><a href="/deleteres?ptid=${reserve.playtimeId}"> Törlés </a></td>
                 </tr>
             </c:forEach>
             </tbody>

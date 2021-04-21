@@ -35,7 +35,7 @@ public class RoomAddEditController implements Initializable {
 
     public void setRoom(Room r) {
         this.room = r;
-        List<Room> roomList = roomdao.findAll();
+        List<Room> roomList = roomdao.listRooms();
 
         room_name.textProperty().bindBidirectional(room.nameProperty());//szoba nevének betölése 2way bindinggel
         IntegerProperty seatProp = new SimpleIntegerProperty(room.getSeatNumber());// uj prop létrehozása a szoba méretével

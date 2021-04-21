@@ -7,9 +7,9 @@ import java.time.LocalDate;
 public class PlayTime {
 
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
-    private StringProperty room_name = new SimpleStringProperty(this, "room_name");
-    private StringProperty movie_name = new SimpleStringProperty(this, "movie_name");
-    private IntegerProperty ticket_type = new SimpleIntegerProperty(this, "ticket_type");
+    private StringProperty roomName = new SimpleStringProperty(this, "roomName");
+    private StringProperty movieName = new SimpleStringProperty(this, "movieName");
+    private IntegerProperty ticketType = new SimpleIntegerProperty(this, "ticketType");
     private ObjectProperty<LocalDate> playTimeDate = new SimpleObjectProperty<>(this, "playTimeDate");
     private StringProperty playTimeHours = new SimpleStringProperty(this, "playTimeHours");
 
@@ -37,40 +37,40 @@ public class PlayTime {
         this.id.set(id);
     }
 
-    public String getRoom_name() {
-        return room_name.get();
+    public String getRoomName() {
+        return roomName.get();
     }
 
-    public StringProperty room_nameProperty() {
-        return room_name;
+    public StringProperty roomNameProperty() {
+        return roomName;
     }
 
-    public void setRoom_name(String room_name) {
-        this.room_name.set(room_name);
+    public void setRoomName(String roomName) {
+        this.roomName.set(roomName);
     }
 
-    public String getMovie_name() {
-        return movie_name.get();
+    public String getMovieName() {
+        return movieName.get();
     }
 
-    public StringProperty movie_nameProperty() {
-        return movie_name;
+    public StringProperty movieNameProperty() {
+        return movieName;
     }
 
-    public void setMovie_name(String movie_name) {
-        this.movie_name.set(movie_name);
+    public void setMovieName(String movieName) {
+        this.movieName.set(movieName);
     }
 
-    public int getTicket_type() {
-        return ticket_type.get();
+    public int getTicketType() {
+        return ticketType.get();
     }
 
-    public IntegerProperty ticket_typeProperty() {
-        return ticket_type;
+    public IntegerProperty ticketTypeProperty() {
+        return ticketType;
     }
 
-    public void setTicket_type(int ticket_type) {
-        this.ticket_type.set(ticket_type);
+    public void setTicketType(int ticketType) {
+        this.ticketType.set(ticketType);
     }
 
     public LocalDate getPlayTimeDate() {

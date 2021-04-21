@@ -2,13 +2,10 @@ package hu.alkfejl.controller.reservation;
 
 import hu.alkfejl.App;
 import hu.alkfejl.controller.Utils;
-import hu.alkfejl.controller.room.RoomAddEditController;
-import hu.alkfejl.dao.implementation.PlayTimeDAOImpl;
 import hu.alkfejl.dao.implementation.ReservationDAOImpl;
-import hu.alkfejl.dao.interfaces.PlayTimeDAO;
+import hu.alkfejl.dao.implementation.SeatDAOImpl;
 import hu.alkfejl.dao.interfaces.ReservationDAO;
 import hu.alkfejl.model.Reservation;
-import hu.alkfejl.model.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -33,6 +28,8 @@ import java.util.stream.Collectors;
 public class ReservationWindowController implements Initializable {
 
     ReservationDAO reservationDao = ReservationDAOImpl.getInstance();
+    SeatDAOImpl seatDao = SeatDAOImpl.getInstance();
+
     private List<Reservation> reservationList;
 
     @FXML
@@ -68,12 +65,12 @@ public class ReservationWindowController implements Initializable {
         refreshTable();
 
         reserve_table.getItems().setAll(reservationDao.listReservations());
-        playtimeid_col.setCellValueFactory(new PropertyValueFactory<>("playtime_id"));
+        playtimeid_col.setCellValueFactory(new PropertyValueFactory<>("playtimeId"));
         email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
-        movie_col.setCellValueFactory(new PropertyValueFactory<>("movie_name"));
-        price_col.setCellValueFactory(new PropertyValueFactory<>("price_sum"));
-        seats_col.setCellValueFactory(new PropertyValueFactory<>("reserved_seat"));
-        date_col.setCellValueFactory(new PropertyValueFactory<>("playtimedate"));
+        movie_col.setCellValueFactory(new PropertyValueFactory<>("movieName"));
+        price_col.setCellValueFactory(new PropertyValueFactory<>("priceSum"));
+        seats_col.setCellValueFactory(new PropertyValueFactory<>("reservedSeat"));
+        date_col.setCellValueFactory(new PropertyValueFactory<>("playtimeDate"));
 
         actions_col.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Törlés");
@@ -120,8 +117,16 @@ public class ReservationWindowController implements Initializable {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Biztosan törlöd a foglalást?", ButtonType.YES, ButtonType.NO);
         confirm.showAndWait().ifPresent(buttonType -> {
             if (buttonType.equals(ButtonType.YES)) {
-                if (timeCheck(res.getPlaytimedate())) {
-                    reservationDao.deleteReservationByUser(res.getEmail(), res.getPlaytime_id());
+                if (timeCheck(res.getPlaytimeDate())) {
+                    reservationDao.deleteReservationByUser(res.getEmail(), res.getPlaytimeId());
+
+
+                    String[] old = res.getReservedSeat().split(",");
+                    for (String string : old) {
+                        // System.out.println("Splitted seat acc:  " + integer);
+                        seatDao.updateOnDelete(res.getPlaytimeId(), Integer.parseInt(string));
+                    }
+
                     Utils.showInfo("Sikeres törlés!");
                 } else {
                     Utils.showWarning("Nem törölhető, csak 24 órával a vetítés előtt!");
@@ -167,7 +172,7 @@ public class ReservationWindowController implements Initializable {
 
     public void onSearch(KeyEvent keyEvent) {
         List<Reservation> filtered = reservationList.stream().filter(reservation -> (reservation.getEmail().toLowerCase().contains(searchText.getText().toLowerCase()))
-                || (reservation.getMovie_name().toLowerCase().contains(searchText.getText().toLowerCase()))
+                || (reservation.getMovieName().toLowerCase().contains(searchText.getText().toLowerCase()))
         ).collect(Collectors.toList());
         reserve_table.getItems().setAll(filtered);
     }

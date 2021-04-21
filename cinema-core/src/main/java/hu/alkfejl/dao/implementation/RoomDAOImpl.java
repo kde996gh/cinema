@@ -2,7 +2,6 @@ package hu.alkfejl.dao.implementation;
 
 import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.RoomDAO;
-import hu.alkfejl.model.Movie;
 import hu.alkfejl.model.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,19 +14,16 @@ public class RoomDAOImpl implements RoomDAO {
 
     private static final String INSERT_ROOM = "INSERT INTO ROOM (rowNumber, colNumber, name, seatNumber) VALUES (?,?,?,?)";
     private static final String UPDATE_ROOM = "UPDATE ROOM SET rowNumber=?, colNumber=?, name=?, seatNumber=? WHERE id=?";
-
-
     private static final String SELECT_ONLY_NAMES = "SELECT name FROM ROOM";
-    private String connectionURL;
     private static final String SELECT_ALL_ROOM = "SELECT * FROM ROOM";
     private static final String DELETE_ROOM = "DELETE FROM ROOM WHERE id = ?";
-    private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE room_id=?";
-    private static final String INSERT_SEATS = "INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
+    // private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE room_id=?";
+    // private static final String INSERT_SEATS = "INSERT INTO SEAT (room_id, seat_id, taken) VALUES (?,?,?)";
 
+    private String connectionURL;
     private Connection conn;
 
     private static RoomDAOImpl instance;
-
 
     public static RoomDAOImpl getInstance() {
         if (instance == null) {
@@ -53,43 +49,8 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public void fillSeats() {
-      /*  try (
-                Connection conn = DriverManager.getConnection(connectionURL);
-                PreparedStatement stmt = conn.prepareStatement(INSERT_SEATS);
-               // PreparedStatement stmtDrop = conn.prepareStatement("DELETE FROM SEAT");
-              // PreparedStatement stmtResetId = conn.prepareStatement("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='seat'")
-        ){
-
-          //  stmtDrop.executeUpdate();
-          //  stmtResetId.executeUpdate();
-
-            this.findAll().forEach(x -> {
-                int a = x.getSeatNumber();
-                for(int i=1; i<a+1; i++){
-                    try {
-                        stmt.setInt(3, i);
-                        stmt.setInt(2, x.getId());
-                        stmt.setInt(4, 1);
-                      //  System.out.println("szek: " + i + "roomID : " + x.getId());
-                        stmt.executeUpdate();
-
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    }
-                }
-            });
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }*/
-    }
-
-    @Override
-    public List<Room> findAll() {
-
+    public List<Room> listRooms() {
         List<Room> result = new ArrayList<>();
-
         try (
                 //Connection conn = DriverManager.getConnection(connectionURL);
                 Statement stmt = conn.createStatement();
@@ -158,12 +119,10 @@ public class RoomDAOImpl implements RoomDAO {
             throwables.printStackTrace();
         }
     }
-
+/*
     @Override
     public Room addRoomSeats(Room room) {
-
-
-        try/*(    Connection conn = DriverManager.getConnection(connectionURL))*/ {
+        try/*(    Connection conn = DriverManager.getConnection(connectionURL)) {
             PreparedStatement stmt;
             if (findRoomById(room)) {
                 stmt = conn.prepareStatement(DELETE_SEAT_WITH_ID);
@@ -192,11 +151,11 @@ public class RoomDAOImpl implements RoomDAO {
             throwables.printStackTrace();
         }
         return room;
-    }
+    } */
 
     @Override
     public boolean findRoomById(Room room) {
-        List<Room> roomList = this.findAll();
+        List<Room> roomList = this.listRooms();
         for (Room value : roomList) {
             if (value.getId() == (room.getId())) {
                 return true;
@@ -209,7 +168,7 @@ public class RoomDAOImpl implements RoomDAO {
     @Override
     public String findRoomNameById(int room_id) {
         String result = "";
-        List<Room> roomList = this.findAll();
+        List<Room> roomList = this.listRooms();
         for (int i = 0; i < roomList.size(); i++) {
             if (roomList.get(i).getId() == room_id) {
                 result = roomList.get(i).getName();
@@ -239,7 +198,7 @@ public class RoomDAOImpl implements RoomDAO {
     @Override
     public int getIdByRoomName(String newV) {
         int result = 0;
-        List<Room> roomList = this.findAll();
+        List<Room> roomList = this.listRooms();
         for (Room room : roomList) {
             if (room.getName().equals(newV))
                 result = room.getId();
@@ -250,7 +209,7 @@ public class RoomDAOImpl implements RoomDAO {
     @Override
     public Room getRoomByName(String name) {
         Room result = null;
-        List<Room> roomList = this.findAll();
+        List<Room> roomList = this.listRooms();
         for (Room room : roomList) {
             if (room.getName().equals(name))
                 result = room;

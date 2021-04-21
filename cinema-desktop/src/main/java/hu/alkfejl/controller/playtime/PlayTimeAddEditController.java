@@ -73,23 +73,23 @@ public class PlayTimeAddEditController implements Initializable {
       //  System.out.println(pt.getTicket_type());
 
 
-        titleComboBox.getSelectionModel().select(playTime.getMovie_name());
+        titleComboBox.getSelectionModel().select(playTime.getMovieName());
         titleComboBox.setItems(movieNames);
         titleComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
             StringProperty sp = new SimpleStringProperty(newV);
-            playTime.movie_nameProperty().bindBidirectional(sp);
+            playTime.movieNameProperty().bindBidirectional(sp);
         });
 
-        roomComboBox.getSelectionModel().select(playTime.getRoom_name());
+        roomComboBox.getSelectionModel().select(playTime.getRoomName());
         roomComboBox.setItems(roomNames);
         roomComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
             StringProperty sp = new SimpleStringProperty(newV);
-            playTime.room_nameProperty().bindBidirectional(sp);
+            playTime.roomNameProperty().bindBidirectional(sp);
         });
 
         //System.out. ntln(playTime.getTicket_type() + " jegy tipusa!");
         ticketTypeComboBox.setItems(ticketTypes);
-        if (playTime.getTicket_type() != 0) {
+        if (playTime.getTicketType() != 0) {
 
            // ticketTypeComboBox.getSelectionModel().select(playTime.getTicket_type());
             ticketTypeComboBox.getSelectionModel().selectNext();
@@ -97,7 +97,7 @@ public class PlayTimeAddEditController implements Initializable {
 
         ticketTypeComboBox.valueProperty().addListener((observableValue, oldV, newV) -> {
             IntegerProperty ip = new SimpleIntegerProperty(newV);
-            playTime.ticket_typeProperty().bindBidirectional(ip);
+            playTime.ticketTypeProperty().bindBidirectional(ip);
         });
 
         datePicker.valueProperty().bindBidirectional(playTime.playTimeDateProperty());

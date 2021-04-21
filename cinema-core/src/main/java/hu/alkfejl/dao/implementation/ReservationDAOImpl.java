@@ -13,9 +13,9 @@ import java.util.List;
 public class ReservationDAOImpl implements ReservationDAO {
 
     private static final String SELECT_ALL_RESERVATIONS = "SELECT * FROM RESERVATION";
-    private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtime_id, email, reserved_seat, price_sum, movie_name, playtimedate) VALUES (?,?,?,?,?,?)";
+    private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtimeId, email, reservedSeat, priceSum, movieName, playtimeDate) VALUES (?,?,?,?,?,?)";
     private static final String UPDATE_RESERVATION = "UPDATE RESERVATION SET playtime_id=?, email=?, reserved_seat=?, price_sum=? WHERE id=?";
-    private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtime_id=? AND email=?";
+    private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtimeId=? AND email=?";
 
     private String connectionURL;
     private Connection conn;
@@ -54,13 +54,13 @@ public class ReservationDAOImpl implements ReservationDAO {
                 Reservation currRes = new Reservation();
 
                 currRes.setId(rs.getInt("id"));
-                currRes.setPlaytime_id(rs.getInt("playtime_id"));
+                currRes.setPlaytimeId(rs.getInt("playtimeId"));
                 // currRes.setPrice(rs.getInt("price"));
                 currRes.setEmail(rs.getString("email"));
-                currRes.setReserved_seat(rs.getString("reserved_seat"));
-                currRes.setPrice_sum(rs.getInt("price_sum"));
-                currRes.setPlaytimedate(rs.getString("playtimedate"));
-                currRes.setMovie_name(rs.getString("movie_name"));
+                currRes.setReservedSeat(rs.getString("reservedSeat"));
+                currRes.setPriceSum(rs.getInt("priceSum"));
+                currRes.setPlaytimeDate(rs.getString("playtimeDate"));
+                currRes.setMovieName(rs.getString("movieName"));
                 ress.add(currRes);
             }
             return ress;
@@ -76,18 +76,18 @@ public class ReservationDAOImpl implements ReservationDAO {
             PreparedStatement stmt;
             if (checkIfAlreadyExists(reservation)) {
                 stmt = conn.prepareStatement(DELETE_WITH_ID_EMAIL);
-                stmt.setInt(1, reservation.getPlaytime_id());
+                stmt.setInt(1, reservation.getPlaytimeId());
                 stmt.setString(2, reservation.getEmail());
                 stmt.executeUpdate();
             }
             stmt = conn.prepareStatement(INSERT_RESERVATION);
-            stmt.setInt(1, reservation.getPlaytime_id());
+            stmt.setInt(1, reservation.getPlaytimeId());
             // stmt.setInt(2, reservation.getPrice());
             stmt.setString(2, reservation.getEmail());
-            stmt.setString(3, reservation.getReserved_seat());
-            stmt.setInt(4, reservation.getPrice_sum());
-            stmt.setString(5, reservation.getMovie_name());
-            stmt.setString(6, reservation.getPlaytimedate());
+            stmt.setString(3, reservation.getReservedSeat());
+            stmt.setInt(4, reservation.getPriceSum());
+            stmt.setString(5, reservation.getMovieName());
+            stmt.setString(6, reservation.getPlaytimeDate());
             stmt.executeUpdate();
 
             if (reservation.getId() <= 0) {
@@ -110,7 +110,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     @Override
     public boolean checkIfAlreadyExists(Reservation r) {
         for (Reservation res : this.listReservations()) {
-            if (r.emailProperty().equals(res.emailProperty()) && r.getPlaytime_id() == res.getPlaytime_id()) {
+            if (r.emailProperty().equals(res.emailProperty()) && r.getPlaytimeId() == res.getPlaytimeId()) {
                 return true;
             }
         }
@@ -120,7 +120,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     @Override
     public boolean checkIfAlreadyBooked(String email, int ptid) {
         for (Reservation res : this.listReservations()) {
-            if (res.getEmail().equals(email) && res.getPlaytime_id() == ptid) {
+            if (res.getEmail().equals(email) && res.getPlaytimeId() == ptid) {
                 return true;
             }
         }
@@ -154,7 +154,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     @Override
     public Reservation getReservationByIdEmail(int ptid, String email) {
         for(Reservation r : this.listReservations()){
-            if(r.getEmail().equals(email) && r.getPlaytime_id() == ptid){
+            if(r.getEmail().equals(email) && r.getPlaytimeId() == ptid){
                 return r;
             }
         }

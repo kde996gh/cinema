@@ -1393,15 +1393,15 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="509" parent="171" name="room_name">
+    <column id="509" parent="171" name="roomName">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="510" parent="171" name="movie_name">
+    <column id="510" parent="171" name="movieName">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="511" parent="171" name="ticket_type">
+    <column id="511" parent="171" name="ticketType">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
@@ -1424,7 +1424,7 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="516" parent="172" name="playtime_id">
+    <column id="516" parent="172" name="playtimeId">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </column>
@@ -1433,20 +1433,20 @@
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="518" parent="172" name="reserved_seat">
+    <column id="518" parent="172" name="reservedSeat">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="519" parent="172" name="price_sum">
+    <column id="519" parent="172" name="priceSum">
       <Position>5</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="520" parent="172" name="playtimedate">
+    <column id="520" parent="172" name="playtimeDate">
       <Position>6</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="521" parent="172" name="movie_name">
+    <column id="521" parent="172" name="movieName">
       <Position>7</Position>
       <DataType>text|0s</DataType>
     </column>
@@ -1455,7 +1455,7 @@
       <Primary>1</Primary>
     </key>
     <foreign-key id="523" parent="172">
-      <ColNames>playtime_id</ColNames>
+      <ColNames>playtimeId</ColNames>
       <RefTableName>playtime</RefTableName>
       <RefKeyName>playtime_pk</RefKeyName>
       <RefColNames>id</RefColNames>
@@ -1496,11 +1496,11 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="531" parent="174" name="playtime_id">
+    <column id="531" parent="174" name="playtimeId">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="532" parent="174" name="seat_id">
+    <column id="532" parent="174" name="seatId">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
@@ -1514,7 +1514,7 @@
       <Primary>1</Primary>
     </key>
     <foreign-key id="535" parent="174">
-      <ColNames>playtime_id</ColNames>
+      <ColNames>playtimeId</ColNames>
       <RefTableName>playtime</RefTableName>
       <RefKeyName>playtime_pk</RefKeyName>
       <RefColNames>id</RefColNames>

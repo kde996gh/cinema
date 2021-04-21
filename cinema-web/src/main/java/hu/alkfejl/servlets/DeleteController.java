@@ -52,8 +52,8 @@ public class DeleteController extends HttpServlet {
                 String seats = "";
 
                 for (Reservation r : resses) {
-                    if (r.getEmail().equals(email) && r.getPlaytime_id() == intptid) {
-                        seats += r.getReserved_seat();
+                    if (r.getEmail().equals(email) && r.getPlaytimeId() == intptid) {
+                        seats += r.getReservedSeat();
                         break;
                     }
                 }

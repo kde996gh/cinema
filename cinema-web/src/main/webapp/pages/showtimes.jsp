@@ -23,9 +23,9 @@
         <tbody>
         <c:forEach var="pt" items="${requestScope.playtimes}">
             <tr>
-                <td>${pt.movie_name}</td>
-                <td>${pt.room_name}</td>
-                <td>${pt.ticket_type}</td>
+                <td>${pt.movieName}</td>
+                <td>${pt.roomName}</td>
+                <td>${pt.ticketType}</td>
                 <td>${pt.playTimeDate}</td>
                 <td>${pt.playTimeHours}</td>
                 <td><a href="/reservation?ptid=${pt.id}"> Foglal </a>

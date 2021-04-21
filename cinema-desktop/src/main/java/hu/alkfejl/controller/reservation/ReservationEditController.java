@@ -2,27 +2,21 @@ package hu.alkfejl.controller.reservation;
 
 import hu.alkfejl.App;
 import hu.alkfejl.controller.Utils;
-import hu.alkfejl.controller.movie.MovieEditController;
 import hu.alkfejl.dao.implementation.*;
 import hu.alkfejl.dao.interfaces.*;
 import hu.alkfejl.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ReservationEditController implements Initializable {
     @FXML
@@ -62,12 +56,12 @@ public class ReservationEditController implements Initializable {
     public void setReservation(Reservation res) {
 
         this.res = res;
-        this.playtime = playtimedao.getPlayTimeById(res.getPlaytime_id());
-        this.room = roomDAO.getRoomByName(playtime.getRoom_name());
-        this.seats = seatDao.getPlayTimeSeats(res.getPlaytime_id());
-        this.ticket = ticketDAO.getTicketByType(this.playtime.getTicket_type());
+        this.playtime = playtimedao.getPlayTimeById(res.getPlaytimeId());
+        this.room = roomDAO.getRoomByName(playtime.getRoomName());
+        this.seats = seatDao.getPlayTimeSeats(res.getPlaytimeId());
+        this.ticket = ticketDAO.getTicketByType(this.playtime.getTicketType());
 
-        String[] splitedSeats = res.getReserved_seat().split(",");
+        String[] splitedSeats = res.getReservedSeat().split(",");
         for (String s : splitedSeats) {
             seatsList.add(Integer.parseInt(s));
         }
@@ -85,7 +79,7 @@ public class ReservationEditController implements Initializable {
         int rowHelper = 0;
         int colHelper = 0;
         for (int i = 0; i < seats.size(); i++) {
-            String s = String.valueOf(seats.get(i).getSeat_id());
+            String s = String.valueOf(seats.get(i).getSeatId());
             System.out.println("Stringben a székid: " + s);
             movieButton[i] = new Button(s);
             colHelper++;
@@ -96,7 +90,7 @@ public class ReservationEditController implements Initializable {
             if (seats.get(i).getTaken() == 0) {
                 movieButton[i].setStyle("-fx-background-color: #5fbc5f");
                 movieButton[i].setId("green");
-            } else if (seatsList.contains(seats.get(i).getSeat_id())) {
+            } else if (seatsList.contains(seats.get(i).getSeatId())) {
                 movieButton[i].setStyle("-fx-background-color: #7a7aff");
                 movieButton[i].setId("blue");
             } else {
@@ -174,19 +168,19 @@ public class ReservationEditController implements Initializable {
     }
 
     public void onSave(ActionEvent actionEvent) {
-        String[] old = this.res.getReserved_seat().split(",");
+        String[] old = this.res.getReservedSeat().split(",");
         for (String string : old) {
             // System.out.println("Splitted seat acc:  " + integer);
-            seatDao.updateOnDelete(this.res.getPlaytime_id(), Integer.parseInt(string));
+            seatDao.updateOnDelete(this.res.getPlaytimeId(), Integer.parseInt(string));
         }
-        reservationDAO.deleteReservationByUser(this.res.getEmail(), this.res.getPlaytime_id());
+        reservationDAO.deleteReservationByUser(this.res.getEmail(), this.res.getPlaytimeId());
 
         for (Integer integer : seatsList) {
-            seatDao.reserve(this.res.getPlaytime_id(), integer);
+            seatDao.reserve(this.res.getPlaytimeId(), integer);
         }
 
-        this.res.setReserved_seat(toList(seatsList));
-        this.res.setPrice_sum(price);
+        this.res.setReservedSeat(toList(seatsList));
+        this.res.setPriceSum(price);
         reservationDAO.save(this.res);
         Utils.showInfo("Sikeres módosítás!");
         App.loadFXML("/fxml/reservation/reservation_window.fxml");

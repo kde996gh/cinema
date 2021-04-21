@@ -48,9 +48,9 @@ public class PlaytimeController implements Initializable {
         refreshTable();
         playTimeTable.getItems().setAll(all);
 
-        movieNameColumn.setCellValueFactory(new PropertyValueFactory<>("movie_name"));
-        roomColumn.setCellValueFactory(new PropertyValueFactory<>("room_name"));
-        ticketTypeColumn.setCellValueFactory(new PropertyValueFactory<>("ticket_type"));
+        movieNameColumn.setCellValueFactory(new PropertyValueFactory<>("movieName"));
+        roomColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+        ticketTypeColumn.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("playTimeDate"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("playTimeHours"));
 

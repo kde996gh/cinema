@@ -39,8 +39,8 @@ public class ProfileServlet extends HttpServlet {
 
             List<Integer> userPtResIds = new ArrayList<>();
             for (Reservation r : userReservations) {
-                if (!userPtResIds.contains(r.getPlaytime_id())) {
-                    userPtResIds.add(r.getPlaytime_id());
+                if (!userPtResIds.contains(r.getPlaytimeId())) {
+                    userPtResIds.add(r.getPlaytimeId());
                 }
             }
 
