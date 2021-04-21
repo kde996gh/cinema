@@ -2,8 +2,11 @@ package hu.alkfejl.dao.implementation;
 
 import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.UserDAO;
+import hu.alkfejl.model.Movie;
 import hu.alkfejl.model.User;
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 import java.sql.*;
@@ -12,6 +15,7 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO {
     private static final String ADD_USER = "INSERT INTO USER (userName, password, email) VALUES  (?,?,?)";
     private static final String USER_CHECK = "SELECT * FROM USER WHERE email = ?";
+    private static final String SELECT_ALL_USER = "SELECT * FROM USER";
     private String connectionURL;
 
     private Connection conn;
@@ -41,6 +45,28 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    @Override
+    public ObservableList<User> listUser(){
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(SELECT_ALL_USER);
+        ) {
+            ObservableList<User> users = FXCollections.observableArrayList();
+
+            while (rs.next()) {
+                User currUser = new User();
+
+                currUser.setId(rs.getInt("id"));
+                currUser.setUserName(rs.getString("userName"));
+                currUser.setPassword(rs.getString("password"));
+                currUser.setEmail(rs.getString("email"));
+                users.add(currUser);
+            }
+            return users;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
 
     @Override
     public void addNewUser(User user) {
@@ -89,6 +115,15 @@ public class UserDAOImpl implements UserDAO {
         }
         System.out.println("nem sikerült!");
         return null;
+    }
+
+    @Override
+    public boolean emailExistCheck(String email){
+        for(User user : this.listUser()){
+            if(user.getEmail().equals(email))
+                return true;
+        }
+        return false;
     }
 
 }

@@ -19,8 +19,10 @@ public class MoviesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        resp.setCharacterEncoding("utf-8");
         String searchInput = req.getParameter("searchInput");
-
+        System.out.println("kereső szó: " + searchInput);
         List<Movie> filtered = movies.stream().filter(movie -> (movie.getTitle().toLowerCase().contains(searchInput.toLowerCase()))
                 || (movie.getActors().toLowerCase().contains(searchInput.toLowerCase()))
                 || (movie.getDirector().toLowerCase().contains(searchInput.toLowerCase()))

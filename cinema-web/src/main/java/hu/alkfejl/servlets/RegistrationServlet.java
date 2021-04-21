@@ -19,15 +19,25 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        message = "";
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
-        User user = new User();
-        user.setUserName(req.getParameter("realname"));
-        user.setPassword(req.getParameter("password"));
-        user.setEmail(req.getParameter("email"));
 
-        dao.addNewUser(user);
-        resp.sendRedirect("/login");
+        if (dao.emailExistCheck(req.getParameter("email"))) {
+            message = "Az email cím már foglalt!";
+            req.setAttribute("message", message);
+            getServletContext().getRequestDispatcher("/pages/registration.jsp").forward(req, resp);
+        } else {
+            User user = new User();
+            user.setUserName(req.getParameter("realname"));
+            user.setPassword(req.getParameter("password"));
+            user.setEmail(req.getParameter("email"));
+            dao.addNewUser(user);
+            req.setAttribute("message", message);
+
+            getServletContext().getRequestDispatcher("/pages/login.jsp").forward(req, resp);
+        }
+
 
 
     }

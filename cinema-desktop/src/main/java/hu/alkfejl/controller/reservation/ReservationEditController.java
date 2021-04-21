@@ -160,22 +160,29 @@ public class ReservationEditController implements Initializable {
     }
 
     public void onSave(ActionEvent actionEvent) {
-        String[] old = this.res.getReservedSeat().split(",");
-        for (String string : old) {
-            // System.out.println("Splitted seat acc:  " + integer);
-            seatDao.updateOnDelete(this.res.getPlaytimeId(), Integer.parseInt(string));
-        }
-        reservationDAO.deleteReservationByUser(this.res.getEmail(), this.res.getPlaytimeId());
 
-        for (Integer integer : seatsList) {
-            seatDao.reserve(this.res.getPlaytimeId(), integer);
-        }
+        if(seatsList.size() == 0){
+            Utils.showWarning("Nem lehetséges a módosítás!");
+        }else {
 
-        this.res.setReservedSeat(toList(seatsList));
-        this.res.setPriceSum(price);
-        reservationDAO.save(this.res);
-        Utils.showInfo("Sikeres módosítás!");
-        App.loadFXML("/fxml/reservation/reservation_window.fxml");
+
+            String[] old = this.res.getReservedSeat().split(",");
+            for (String string : old) {
+                // System.out.println("Splitted seat acc:  " + integer);
+                seatDao.updateOnDelete(this.res.getPlaytimeId(), Integer.parseInt(string));
+            }
+            reservationDAO.deleteReservationByUser(this.res.getEmail(), this.res.getPlaytimeId());
+
+            for (Integer integer : seatsList) {
+                seatDao.reserve(this.res.getPlaytimeId(), integer);
+            }
+
+            this.res.setReservedSeat(toList(seatsList));
+            this.res.setPriceSum(price);
+            reservationDAO.save(this.res);
+            Utils.showInfo("Sikeres módosítás!");
+            App.loadFXML("/fxml/reservation/reservation_window.fxml");
+        }
 
     }
 

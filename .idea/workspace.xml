@@ -11,77 +11,16 @@
   <component name="ChangeListManager">
     <list default="true" id="0ac1cbdf-765c-46dd-98b1-82f36a1c94c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/interfaces/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/cinema-core-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/target/classes/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/classes/cinema" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/movie/MovieWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlayTimeAddEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlayTimeAddEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlaytimeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/playtime/PlaytimeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomAddEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomAddEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/room/RoomWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/ticket/TicketWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/ticket/TicketWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/main_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/movie_add_edit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/movie_add_edit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/movie_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/movie/movie_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/playtime/playtime_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/playtime/playtime_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/reservation/reservation_edit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/reservation/reservation_edit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/reservation/reservation_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/reservation/reservation_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/room/room_add_edit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/room/room_add_edit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/room/room_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/room/room_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/ticket/ticket_add_edit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/ticket/ticket_add_edit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/ticket/ticket_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/resources/fxml/ticket/ticket_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/A_Pogany_Madonna.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Avengers.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Avengers_Age_of_Ultron.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Avengers_Infinity_War.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Az_elvarazsolt_dollar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Csak_semmi_panik.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/HIMYM.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Matrix.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Skins.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Supernatural.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/Vikings.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/altered_carbon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/cover2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/cover3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/cover4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/cover5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/cover6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/dummyCover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/lost_in_space.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/mandalorian.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/matrix.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/simpsons.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/stranger_things.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/taboo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/the_100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/resources/img/covers/the_great.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/ticket/TicketAddEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/ticket/TicketAddEditController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/cinema-desktop-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/classes/fxml/main_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-desktop/target/classes/hu/alkfejl/controller/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/target/classes/hu/alkfejl/controller/MainWindowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/DeleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/DeleteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/EditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/HomeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MovieServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MovieServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/RegistrationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ReservationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ReservationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ShowTimesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ShowTimesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/registration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/reservation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/reservation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/showtimes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/showtimes.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,7 +319,7 @@
       <workItem from="1618815779283" duration="46559000" />
       <workItem from="1618915091420" duration="25628000" />
       <workItem from="1618946680450" duration="3648000" />
-      <workItem from="1618993257602" duration="20640000" />
+      <workItem from="1618993257602" duration="28607000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton">
       <created>1617386989614</created>
@@ -613,14 +552,20 @@
       <option name="project" value="LOCAL" />
       <updated>1619014228285</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="refactor v3">
+      <created>1619015933001</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1619015933001</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="room 95% + realtime meret szamitás és megjelenités" />
     <MESSAGE value="room 99% + szék db feltölése megfelelően" />
     <MESSAGE value="filmek listázás + szerkesztés basic működés" />
     <MESSAGE value="film szerkesztés binding" />
@@ -645,6 +590,7 @@
     <MESSAGE value="minden funkció működik" />
     <MESSAGE value="osztály refactor" />
     <MESSAGE value="refactor v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor v2" />
+    <MESSAGE value="refactor v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor v3" />
   </component>
 </project>
