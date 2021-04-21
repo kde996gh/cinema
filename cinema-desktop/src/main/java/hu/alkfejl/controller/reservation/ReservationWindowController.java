@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -26,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 
 public class ReservationWindowController implements Initializable {
@@ -57,7 +59,8 @@ public class ReservationWindowController implements Initializable {
     @FXML
     private TableColumn<Reservation, Void> actions_col;
 
-
+    @FXML
+    private TextField searchText;
 
 
     @Override
@@ -72,7 +75,7 @@ public class ReservationWindowController implements Initializable {
         seats_col.setCellValueFactory(new PropertyValueFactory<>("reserved_seat"));
         date_col.setCellValueFactory(new PropertyValueFactory<>("playtimedate"));
 
-        actions_col.setCellFactory(param -> new TableCell<>(){
+        actions_col.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Törlés");
             private final Button editButton = new Button("Módosítás");
 
@@ -83,7 +86,7 @@ public class ReservationWindowController implements Initializable {
                     refreshTable(); // táblafrissites
                 });
 
-                editButton.setOnAction(event ->{
+                editButton.setOnAction(event -> {
                     Reservation res = getTableRow().getItem();
                     editReservation(res);
                     refreshTable();
@@ -93,9 +96,9 @@ public class ReservationWindowController implements Initializable {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if(empty){
+                if (empty) {
                     setGraphic(null);
-                }else{
+                } else {
                     VBox container = new VBox();
                     container.getChildren().addAll(editButton, deleteButton);
                     container.setSpacing(10.0);
@@ -114,19 +117,18 @@ public class ReservationWindowController implements Initializable {
     }
 
     private void deleteReservation(Reservation res) {
-            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,"Biztosan törlöd a foglalást?", ButtonType.YES, ButtonType.NO);
-            confirm.showAndWait().ifPresent(buttonType -> {
-                if(buttonType.equals(ButtonType.YES)){
-                    if(timeCheck(res.getPlaytimedate())){
-                        reservationDao.deleteReservationByUser(res.getEmail(), res.getPlaytime_id());
-                        Utils.showInfo("Sikeres törlés!");
-                    }
-                    else{
-                        Utils.showWarning("Nem törölhető, csak 24 órával a vetítés előtt!");
-                    }
-                 //   roomDAO.delete(room);
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Biztosan törlöd a foglalást?", ButtonType.YES, ButtonType.NO);
+        confirm.showAndWait().ifPresent(buttonType -> {
+            if (buttonType.equals(ButtonType.YES)) {
+                if (timeCheck(res.getPlaytimedate())) {
+                    reservationDao.deleteReservationByUser(res.getEmail(), res.getPlaytime_id());
+                    Utils.showInfo("Sikeres törlés!");
+                } else {
+                    Utils.showWarning("Nem törölhető, csak 24 órával a vetítés előtt!");
                 }
-            });
+                //   roomDAO.delete(room);
+            }
+        });
     }
 
 
@@ -134,6 +136,7 @@ public class ReservationWindowController implements Initializable {
         App.loadFXML("/fxml/main_window.fxml");
 
     }
+
     private void refreshTable() {
         reservationList = reservationDao.listReservations();
         reserve_table.getItems().setAll(reservationList);
@@ -160,5 +163,12 @@ public class ReservationWindowController implements Initializable {
             return false;
         }
 
+    }
+
+    public void onSearch(KeyEvent keyEvent) {
+        List<Reservation> filtered = reservationList.stream().filter(reservation -> (reservation.getEmail().toLowerCase().contains(searchText.getText().toLowerCase()))
+                || (reservation.getMovie_name().toLowerCase().contains(searchText.getText().toLowerCase()))
+        ).collect(Collectors.toList());
+        reserve_table.getItems().setAll(filtered);
     }
 }
