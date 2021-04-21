@@ -12,9 +12,14 @@
     <list default="true" id="0ac1cbdf-765c-46dd-98b1-82f36a1c94c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/resources/cinema" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-core/target/classes/cinema" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/target/classes/cinema" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/reservation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/reservation.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/showtimes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/showtimes.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -303,7 +308,7 @@
       <workItem from="1618946680450" duration="3648000" />
       <workItem from="1618993257602" duration="28633000" />
       <workItem from="1619028557228" duration="5264000" />
-      <workItem from="1619036080841" duration="859000" />
+      <workItem from="1619036080841" duration="3184000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton">
       <created>1617386989614</created>
@@ -550,14 +555,20 @@
       <option name="project" value="LOCAL" />
       <updated>1619026507888</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="web css">
+      <created>1619036970657</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1619036970658</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filmek listázás + szerkesztés basic működés" />
     <MESSAGE value="film szerkesztés binding" />
     <MESSAGE value="jegyek listázása/beállítása" />
     <MESSAGE value="film törlés működik" />
@@ -582,6 +593,7 @@
     <MESSAGE value="refactor v2" />
     <MESSAGE value="refactor v3" />
     <MESSAGE value="refactor v4 + kersés javítás" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor v4 + kersés javítás" />
+    <MESSAGE value="web css" />
+    <option name="LAST_COMMIT_MESSAGE" value="web css" />
   </component>
 </project>

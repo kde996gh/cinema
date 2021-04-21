@@ -33,16 +33,16 @@
             </c:forEach>
             <br>
 
-            <p id="price"><c:out value="${requestScope.ticket.price}"/></p>
-            <br>
-            <p id="lower_price"><c:out value="${requestScope.ticket.lowerPrice}"/></p>
-            <br>
-            <label for="lowerPriceCheck">Checkbox:</label>
-            <input type="checkbox" id="lowerPriceCheck">
-
-
-            <p id="finalPrice">
-            </p>
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Ár: <c:out value="${requestScope.ticket.price}"/></li>
+                    <li class="list-group-item">Kedvezményes ár: <c:out value="${requestScope.ticket.lowerPrice}"/></li>
+                    <li class="list-group-item">Kedvezmény:
+                        <input type="checkbox" id="lowerPriceCheck">
+                    </li>
+                    <li><p id="finalPrice"></p></li>
+                </ul>
+            </div>
         </div>
 
         <div class="form-group">

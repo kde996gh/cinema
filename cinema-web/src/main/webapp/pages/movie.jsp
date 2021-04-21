@@ -18,13 +18,15 @@
         <div class="card-block px-2">
             <h4 class="card-title"><c:out value="${requestScope.movie.title}"/></h4>
             <p class="card-text">
-                Hossz: <c:out value="${requestScope.movie.lengthMin}" />
+                Hossz: <c:out value="${requestScope.movie.lengthMin}"/>
             </p>
             <p class="card-text">
                 Korhatár: <c:out value="${requestScope.movie.ageLimit}"/>
-            </p> <p class="card-text">
+            </p>
+            <p class="card-text">
                 Rendező: <c:out value="${requestScope.movie.director}"/>
-            </p> <p class="card-text">
+            </p>
+            <p class="card-text">
                 Színészek: <c:out value="${requestScope.movie.actors}"/>
             </p>
             <p class="card-text">
@@ -58,8 +60,7 @@
                 <td>${playtime.roomName}</td>
                 <td>${playtime.playTimeDate}</td>
                 <td>${playtime.playTimeHours}</td>
-                <td><a href="/reservation?ptid=${playtime.id}"> Foglal </a>
-                </td>
+                <td><a href="/reservation?ptid=${playtime.id}" class="btn btn-primary"> Foglal </a></td>
             </tr>
         </c:forEach>
         </tbody>

@@ -13,7 +13,7 @@
 </c:if>
 <c:if test="${requestScope.message == ''}">
 
-    <div class="container">
+    <div class="container container2">
         <form action="/registration" method="post">
 
             <div class="form-group">
