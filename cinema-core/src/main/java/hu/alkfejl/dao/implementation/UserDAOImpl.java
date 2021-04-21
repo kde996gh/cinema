@@ -109,6 +109,14 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    @Override
+    public User getUserByEmail(String email) {
+        for(User u : this.listAllUser()){
+            if(u.getEmail().equals(email))
+                return u;
+        }
+        return null;
+    }
 
 
 }

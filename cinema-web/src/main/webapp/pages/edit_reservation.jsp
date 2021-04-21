@@ -97,7 +97,7 @@
                 if (picked_seats[i] == seat_id)
                     picked_seats.splice(i, 1);
             }
-        } else if(currElem.style.backgroundColor === "green") {
+        } else if (currElem.style.backgroundColor === "green") {
             picked_seats.push(seat_id);
             currElem.style.backgroundColor = "yellow"
         }
@@ -155,7 +155,7 @@
     console.log(" picked seats: " + picked_seats)
     formSeatArray.value = picked_seats;
 
-      formSeatArrayOld.value = picked_seats;
+    formSeatArrayOld.value = picked_seats;
 
     console.log(" lowerpice :" + parseInt(lower_price));
     console.log(" lowerpice :" + parseInt(price));

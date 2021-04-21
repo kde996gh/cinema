@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "EditServlet", urlPatterns = "/editres")
@@ -26,6 +30,7 @@ public class EditController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        message="";
         int playtimeid = Integer.parseInt(req.getParameter("ptid"));
 
         String email = (String) req.getSession().getAttribute("email");
@@ -47,14 +52,14 @@ public class EditController extends HttpServlet {
             }
         }
 
+            message = "";
+            req.setAttribute("message", message);
+            req.setAttribute("seats", seats);
+            req.setAttribute("room", currentRoom);
+            req.setAttribute("playtime", playTime);
+            req.setAttribute("ticket", ticket);
+            req.setAttribute("seatsString", seatsString);
 
-        message = "";
-        req.setAttribute("message", message);
-        req.setAttribute("seats", seats);
-        req.setAttribute("room", currentRoom);
-        req.setAttribute("playtime", playTime);
-        req.setAttribute("ticket", ticket);
-        req.setAttribute("seatsString", seatsString);
 
         // System.out.println(playtimeid + " +++PLAYTIMEID");
 
@@ -70,7 +75,7 @@ public class EditController extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
 
-        System.out.println((req.getParameter("seatPicked").equals(""))?true:false);
+        System.out.println((req.getParameter("seatPicked").equals("")) ? true : false);
 
         String email = (String) req.getSession().getAttribute("email");
 
@@ -82,10 +87,11 @@ public class EditController extends HttpServlet {
 
             Reservation rOld = reservationDAO.getReservationByIdEmail(ptid, email);
 
+
             String seatPickedOld = rOld.getReserved_seat();
 
             String seatsPickedString1 = "";
-        //    String seatsPickedStringOld = "";
+            //    String seatsPickedStringOld = "";
             for (int i = 0; i < seatsPicked.length; i++) {
                 if (i == seatsPicked.length - 1) {
                     seatsPickedString1 += seatsPicked[i];
@@ -93,7 +99,7 @@ public class EditController extends HttpServlet {
                     seatsPickedString1 += seatsPicked[i] + ",";
                 }
             }
-           // seatsPickedStringOld += seatPickedOld[0];
+            // seatsPickedStringOld += seatPickedOld[0];
             String[] splitedSeats = seatsPickedString1.split(",");
             String[] splitedSeatsOld = seatPickedOld.split(",");
 
@@ -104,8 +110,12 @@ public class EditController extends HttpServlet {
                 seatDao.updateOnDelete(ptid, Integer.parseInt(splitedSeat));
             }
             ///régiek kitörölve, jövet az uj mentés
+            PlayTime currPt = playtimedao.getPlayTimeById(ptid);
+
 
             Reservation r = new Reservation();
+            r.setMovie_name(currPt.getMovie_name());
+            r.setPlaytimedate(currPt.getPlayTimeDate() + " " + currPt.getPlayTimeHours());
             r.setPlaytime_id(ptid);
             r.setPrice_sum(sumPrice);
             r.setEmail(email);
@@ -115,8 +125,6 @@ public class EditController extends HttpServlet {
             for (String splitedSeat : splitedSeats) {
                 seatDao.reserve(ptid, Integer.parseInt(splitedSeat));
             }
-
-
             message = "Sikeres módosítás!";
 
         } else {
@@ -131,4 +139,6 @@ public class EditController extends HttpServlet {
         getServletContext().getRequestDispatcher("/pages/reservation.jsp").forward(req, resp);
 
     }
+
+
 }
