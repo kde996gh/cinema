@@ -32,7 +32,6 @@
             <p class="card-text">
                 Leírás: <c:out value="${requestScope.movie.description}"/>
             </p>
-
         </div>
     </div>
     <br>
