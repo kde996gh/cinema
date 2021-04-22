@@ -11,7 +11,7 @@ html body {
     /* display: flex;*/
     justify-content: center !important;
     text-align: center !important;
-    margin-top: 10% !important;
+    /*margin-top: 10% !important;*/
 
 }
 
@@ -35,12 +35,51 @@ html body {
     width: 70%;
 }
 
-.taken {
+
+.taken{
+    border-radius: 20px 20px 0px 0px;
+    outline: none;
+    padding: 5px;
+    font-weight: bold;
     background-color: red;
+    border: 2px solid black;
+    padding: 13px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 90px;
+
 }
 
-.notTaken {
+.taken:focus{
+    outline: none;
+}
+
+
+.notTaken:focus{
+    outline: none;
+}
+
+
+.notTaken{
+    border-radius: 20px 20px 0px 0px;
+    outline: none;
+    width: 90px;
+    padding: 5px;
+    font-weight: bold;
     background-color: green;
+    border: 2px solid black;
+    color: white;
+    padding: 13px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 .container2 {

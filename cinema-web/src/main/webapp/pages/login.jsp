@@ -7,7 +7,7 @@
 <body>
 <jsp:include page="common/menu.jsp"/>
 
-<div class="container">
+<div class="container container2">
     <form action="/login" method="post">
         <div class="form-group">
             <label for="email">Email cím</label>

@@ -8,9 +8,11 @@ import hu.alkfejl.model.PlayTime;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.List;
@@ -72,7 +74,8 @@ public class PlaytimeController implements Initializable {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    HBox container = new HBox();
+                    VBox container = new VBox();
+                    container.setAlignment(Pos.CENTER);
                     container.getChildren().addAll(editButton, deleteButton);
                     container.setSpacing(10.0);
                     setGraphic(container);

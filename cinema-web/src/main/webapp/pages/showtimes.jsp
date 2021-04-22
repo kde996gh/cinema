@@ -50,7 +50,7 @@
                 <td>${pt.ticketType}</td>
                 <td>${pt.playTimeDate}</td>
                 <td>${pt.playTimeHours}</td>
-                <td><a href="/reservation?ptid=${pt.id}"> Foglal </a>
+                <td><a href="/reservation?ptid=${pt.id}" class="btn btn-primary"> Foglal </a></td>
 
             </tr>
         </c:forEach>

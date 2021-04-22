@@ -34,8 +34,8 @@
                     <td>${reserve.playtimeDate}</td>
                     <td>${reserve.reservedSeat}</td>
                     <td>${reserve.priceSum}</td>
-                    <td><a href="/editres?ptid=${reserve.playtimeId}"> Módosít </a></td>
-                    <td><a href="/deleteres?ptid=${reserve.playtimeId}"> Törlés </a></td>
+                    <td><a href="/editres?ptid=${reserve.playtimeId}" class="btn btn-primary"> Módosítás </a></td>
+                    <td><a href="/deleteres?ptid=${reserve.playtimeId}" class="btn btn-primary"> Törlés </a></td>
                 </tr>
             </c:forEach>
             </tbody>
