@@ -29,8 +29,8 @@ public class MovieEditController implements Initializable {
     @FXML
     private TextField length;
     @FXML
-    private TextField movieType;
-    @FXML
+//    private TextField movieType;
+//    @FXML
     private TextField ageLimit;
     @FXML
     private TextField director;
@@ -60,10 +60,10 @@ public class MovieEditController implements Initializable {
             length.setText(movie.lengthMinProperty().getValue().toString());
         else
             length.setText("");
-        if (movie.movieTypeProperty().getValue() > 0)
-            movieType.setText(movie.movieTypeProperty().getValue().toString());
-        else
-            movieType.setText("");
+//        if (movie.movieTypeProperty().getValue() > 0)
+//            movieType.setText(movie.movieTypeProperty().getValue().toString());
+//        else
+//            movieType.setText("");
 
 
         if(movie.ageLimitProperty().getValue()>0)
@@ -140,24 +140,24 @@ public class MovieEditController implements Initializable {
             }
         });
 
-        movieType.textProperty().addListener((observableValue, s, t1) -> {
-            if (t1.matches("[0-9]+")) {
-                //System.out.println("Ez igy oké!");
-                IntegerProperty ip = new SimpleIntegerProperty(Integer.parseInt(t1));
-                movieType.textProperty().setValue(t1);
-                movie.movieTypeProperty().bind(ip);
-            } else {
-                if (t1.length() != 0) {
-                    Utils.showWarning("A filmtípus csak számot tartalmazhat!!");
-                    movieType.textProperty().setValue("");
-                }
-            }
-        });
+//        movieType.textProperty().addListener((observableValue, s, t1) -> {
+//            if (t1.matches("[0-9]+")) {
+//                //System.out.println("Ez igy oké!");
+//                IntegerProperty ip = new SimpleIntegerProperty(Integer.parseInt(t1));
+//                movieType.textProperty().setValue(t1);
+//                movie.movieTypeProperty().bind(ip);
+//            } else {
+//                if (t1.length() != 0) {
+//                    Utils.showWarning("A filmtípus csak számot tartalmazhat!!");
+//                    movieType.textProperty().setValue("");
+//                }
+//            }
+//        });
 
         saveButton.disableProperty().bind(title.textProperty().isEmpty()
                 .or(length.textProperty().isEmpty())
                 .or(ageLimit.textProperty().isEmpty())
-                .or(movieType.textProperty().isEmpty())
+                //.or(movieType.textProperty().isEmpty())
                 .or(director.textProperty().isEmpty())
                 .or(actors.textProperty().isEmpty())
                 .or(description.textProperty().isEmpty())

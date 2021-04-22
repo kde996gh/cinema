@@ -2,7 +2,7 @@
 
 html body {
     padding-top: 70px;
-    background: #487c7c;
+    background: #cfb800;
 }
 
 .container2 {
@@ -14,6 +14,11 @@ html body {
     /*margin-top: 10% !important;*/
 
 }
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #343A40 !important;
+}
+
 
 .table {
     margin-top: 10px;
@@ -50,7 +55,7 @@ html body {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    width: 90px;
+    width: 70px;
 
 }
 
@@ -67,7 +72,7 @@ html body {
 .notTaken{
     border-radius: 20px 20px 0px 0px;
     outline: none;
-    width: 90px;
+    width: 70px;
     padding: 5px;
     font-weight: bold;
     background-color: green;
