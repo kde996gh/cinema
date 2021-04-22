@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
@@ -96,6 +97,7 @@ public class ReservationWindowController implements Initializable {
                     setGraphic(null);
                 } else {
                     VBox container = new VBox();
+                    container.setAlignment(Pos.CENTER);
                     container.getChildren().addAll(editButton, deleteButton);
                     container.setSpacing(10.0);
                     setGraphic(container);

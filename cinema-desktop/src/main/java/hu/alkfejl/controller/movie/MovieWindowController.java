@@ -45,8 +45,8 @@ public class MovieWindowController implements Initializable {
 
     private void imageDrawer(List<Movie> movies){
         Button[] movieButton = new Button[movies.size()];
-        gridPane.setHgap(20);
-        gridPane.setVgap(20);
+        gridPane.setHgap(10);
+        //gridPane.setVgap(15);
         int col = 0;
         int row = 0;
         for (int i = 0; i < movies.size(); i++) {
@@ -61,18 +61,18 @@ public class MovieWindowController implements Initializable {
             Label titleLabel = new Label();
             titleLabel.setText(movies.get(i).getTitle());
 
-            imgV.setFitWidth(140d);
-            imgV.setFitHeight(140d);
+            imgV.setFitWidth(130d);
+            imgV.setFitHeight(130d);
 
             movieButton[i] = new Button("", imgV);
-            movieButton[i].setMinWidth(140d);
-            movieButton[i].setMinHeight(140d);
+            movieButton[i].setMinWidth(130d);
+            movieButton[i].setMinHeight(130d);
             movieButton[i].setAlignment(Pos.CENTER);
 
             VBox container = new VBox();
             container.setAlignment(Pos.CENTER);
 
-            container.setPadding(new Insets(5));
+            container.setPadding(new Insets(3));
 
             container.getChildren().addAll(titleLabel,movieButton[i]);
 
