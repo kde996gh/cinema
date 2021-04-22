@@ -1,9 +1,9 @@
 .button {
-    -fx-background-color: rgb(48, 128, 237);
+    -fx-background-color: #343A40;
     -fx-text-fill: rgb(255, 255, 255);
     -fx-font-weight: bold;
 }
 .root{
     -fx-base: rgb(212, 212, 212);
-    -fx-background: rgb(23, 41, 72);
+    -fx-background: #cfb800;
 }

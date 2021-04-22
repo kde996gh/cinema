@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
@@ -46,12 +47,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public ObservableList<User> listUser(){
+    public List<User> listUser(){
+   // public ObservableList<User> listUser(){
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_USER);
         ) {
-            ObservableList<User> users = FXCollections.observableArrayList();
-
+            //ObservableList<User> users = FXCollections.observableArrayList();
+            List<User> users = new ArrayList<>();
             while (rs.next()) {
                 User currUser = new User();
 

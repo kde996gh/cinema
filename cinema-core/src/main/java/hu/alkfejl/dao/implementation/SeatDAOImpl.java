@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SeatDAOImpl implements SeatDAO {
 
@@ -51,11 +53,13 @@ public class SeatDAOImpl implements SeatDAO {
     }
 
     @Override
-    public ObservableList<Seat> getAllSeats() {
+    public List<Seat> getAllSeats() {
+   // public ObservableList<Seat> getAllSeats() {
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_SEAT);
         ) {
-            ObservableList<Seat> seats = FXCollections.observableArrayList();
+            //ObservableList<Seat> seats = FXCollections.observableArrayList();
+            List<Seat> seats = new ArrayList<>();
 
             while (rs.next()) {
                 Seat seat = new Seat();
@@ -76,9 +80,12 @@ public class SeatDAOImpl implements SeatDAO {
 
 
     @Override
-    public ObservableList<Seat> getPlayTimeSeats(int ptId) {
-        ObservableList<Seat> result = FXCollections.observableArrayList();
-        ObservableList<Seat> sts = this.getAllSeats();
+    public List<Seat> getPlayTimeSeats(int ptId) {
+   // public ObservableList<Seat> getPlayTimeSeats(int ptId) {
+      //  ObservableList<Seat> result = FXCollections.observableArrayList();
+       // ObservableList<Seat> sts = this.getAllSeats();
+        List<Seat> sts = this.getAllSeats();
+        List<Seat> result = new ArrayList<>();
         for (Seat s : sts) {
             if (s.getPlaytimeId() == ptId)
                 result.add(s);
