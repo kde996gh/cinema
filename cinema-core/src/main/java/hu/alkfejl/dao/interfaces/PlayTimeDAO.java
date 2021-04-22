@@ -3,16 +3,18 @@ package hu.alkfejl.dao.interfaces;
 import hu.alkfejl.model.PlayTime;
 import javafx.collections.ObservableList;
 
+import java.util.List;
+
 public interface PlayTimeDAO {
 
 
-    ObservableList<PlayTime> listPlayTimes();
+    List<PlayTime> listPlayTimes();
 
     PlayTime save(PlayTime playTime);
 
     void delete(PlayTime playTime);
 
-    ObservableList<PlayTime> getMoviePlayTimes(String movieName);
+    List<PlayTime> getMoviePlayTimes(String movieName);
 
     void addRoomSeats(PlayTime playTime);
 

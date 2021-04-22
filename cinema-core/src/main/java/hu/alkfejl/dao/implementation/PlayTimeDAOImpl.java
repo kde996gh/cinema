@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayTimeDAOImpl implements PlayTimeDAO {
@@ -46,12 +47,13 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     }
 
     @Override
-    public ObservableList<PlayTime> listPlayTimes() {
+    public List<PlayTime> listPlayTimes() {
+    //public ObservableList<PlayTime> listPlayTimes() {
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_PLAYTIME);
         ) {
-            ObservableList<PlayTime> playtimes = FXCollections.observableArrayList();
-
+            //ObservableList<PlayTime> playtimes = FXCollections.observableArrayList();
+            List<PlayTime> playtimes = new ArrayList<>();
             while (rs.next()) {
                 PlayTime pt = new PlayTime();
 
@@ -116,9 +118,11 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     }
 
     @Override
-    public ObservableList<PlayTime> getMoviePlayTimes(String movieName) {
-        ObservableList<PlayTime> result = FXCollections.observableArrayList();
-        ObservableList<PlayTime> pts = this.listPlayTimes();
+    public List<PlayTime> getMoviePlayTimes(String movieName) {
+   // public ObservableList<PlayTime> getMoviePlayTimes(String movieName) {
+        //ObservableList<PlayTime> result = FXCollections.observableArrayList();
+        List<PlayTime> result = new ArrayList<>();
+        List<PlayTime> pts = this.listPlayTimes();
         for (PlayTime ptit : pts) {
             if (ptit.getMovieName().equals(movieName)) {
                 result.add(ptit);

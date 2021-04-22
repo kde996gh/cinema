@@ -3,10 +3,12 @@ package hu.alkfejl.dao.interfaces;
 import hu.alkfejl.model.Movie;
 import javafx.collections.ObservableList;
 
+import java.util.List;
+
 
 public interface MovieDAO {
 
-    ObservableList<Movie> listMovies();
+    List<Movie> listMovies();
 
     Movie save(Movie movie);
 
