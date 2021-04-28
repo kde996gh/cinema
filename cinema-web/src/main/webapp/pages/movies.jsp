@@ -7,7 +7,7 @@
 </head>
 <body>
 <jsp:include page="common/menu.jsp"/>
-<h1>Filmek</h1>
+<h1 class="container container2">Filmek</h1>
 
 <div class="container container2">
     <form action="/movies" method="post">
