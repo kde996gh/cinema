@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="common/menu.jsp"/>
 <c:if test="${requestScope.message != ''}">
-    ${requestScope.message}
+    <h1 class="container container2">${requestScope.message}</h1>
 </c:if>
 <c:if test="${requestScope.message == ''}">
     <div class="container d-flex justify-content-center">
@@ -57,8 +57,7 @@
     </div>
 </c:if>
 <script type="text/javascript">
-    let glob = [];
-    let fprice;
+    let picked_seats = [];
     let formSeatArray = document.getElementById('formSeatArray');
     let formFinalPrice = document.getElementById('finalPriceToServlet');
     let finalSumPrice = document.getElementById('finalSumPrice');
@@ -73,28 +72,26 @@
         if (currElem.style.backgroundColor === "yellow") {
             currElem.style.backgroundColor = "green"
             currElem.style.color = "white"
-            for (let i = 0; i < glob.length; i++) {
-                if (glob[i] === seat_id) {
-                    glob.splice(i, 1);
+            for (let i = 0; i < picked_seats.length; i++) {
+                if (picked_seats[i] === seat_id) {
+                    picked_seats.splice(i, 1);
                 }
             }
         } else {
-            glob.push(seat_id);
+            picked_seats.push(seat_id);
             currElem.style.backgroundColor = "yellow"
             currElem.style.color = "black"
 
         }
-        //check();
         formSeatArray.value = check();
-        finalPriceCounter();
-        finalSumPrice.value = fprice;
-        //console.log(a + " " + p);
-        //   sendBackPrice = priceCheck()
+        finalSumPrice.value = priceCheck() * picked_seats.length
+        finalPrice.innerHTML = priceCheck() * picked_seats.length;
     }
 
     $(lower_check_box).change(function () {
-        formFinalPrice.value = priceCheck()
-        finalPriceCounter();
+        finalSumPrice.value = priceCheck() * picked_seats.length
+        finalPrice.innerHTML = priceCheck() * picked_seats.length;
+
     });
 
     function priceCheck() {
@@ -107,19 +104,18 @@
 
     function finalPriceCounter() {
         if (lower_check_box.checked === true) {
-            fprice = parseInt(lower_price) * glob.length;
-            // sendBackPrice = parseInt(lower_price);
+            return parseInt(lower_price) * picked_seats.length;
         } else {
-            fprice = parseInt(price) * glob.length;
-            //  sendBackPrice = parseInt(price);
+            return parseInt(price) * picked_seats.length;
         }
-        console.log("final proce: " + fprice);
-        finalPrice.innerHTML = fprice;
     }
 
     function check() {
-        return glob;
+        return picked_seats;
     }
+
+
+
 
 
 </script>

@@ -14,4 +14,6 @@ public interface SeatDAO {
     List<Seat> getPlayTimeSeats(int ptId);
 
     void updateOnDelete(int ptid, int i);
+
+    void deleteSeatsByPlayTimeId(int ptid);
 }

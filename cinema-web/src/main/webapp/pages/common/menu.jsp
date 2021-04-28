@@ -28,9 +28,7 @@
             <c:if test="${sessionScope.email == null}">
                 <li class="nav-item"><a class="nav-link" href="/login">Bejelentkezés</a></li>
                 <li class="nav-item"><a class="nav-link" href="/registration">Regisztráció</a></li>
-
             </c:if>
-
         </ul>
     </div>
 </nav>

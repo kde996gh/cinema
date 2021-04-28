@@ -24,9 +24,6 @@ public class RoomWindowController implements Initializable {
     RoomDAO roomDAO = new RoomDAOImpl();
     private List<Room> all;
 
-    ReservationDAO resdao = new ReservationDAOImpl();
-
-
     public void backToMainWindow(ActionEvent actionEvent) {
         App.loadFXML("/fxml/main_window.fxml");
 

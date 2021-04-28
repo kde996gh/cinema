@@ -2,12 +2,8 @@ package hu.alkfejl.dao.implementation;
 
 import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.UserDAO;
-import hu.alkfejl.model.Movie;
 import hu.alkfejl.model.User;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -47,12 +43,10 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> listUser(){
-   // public ObservableList<User> listUser(){
+    public List<User> listUser() {
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_USER);
         ) {
-            //ObservableList<User> users = FXCollections.observableArrayList();
             List<User> users = new ArrayList<>();
             while (rs.next()) {
                 User currUser = new User();
@@ -120,9 +114,9 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean emailExistCheck(String email){
-        for(User user : this.listUser()){
-            if(user.getEmail().equals(email))
+    public boolean emailExistCheck(String email) {
+        for (User user : this.listUser()) {
+            if (user.getEmail().equals(email))
                 return true;
         }
         return false;

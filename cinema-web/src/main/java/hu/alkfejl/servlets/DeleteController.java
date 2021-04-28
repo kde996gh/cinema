@@ -8,7 +8,6 @@ import hu.alkfejl.dao.interfaces.ReservationDAO;
 import hu.alkfejl.dao.interfaces.SeatDAO;
 import hu.alkfejl.model.PlayTime;
 import hu.alkfejl.model.Reservation;
-import hu.alkfejl.model.Seat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,14 +18,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "DeleteController", urlPatterns = "/deleteres")
 public class DeleteController extends HttpServlet {
     SeatDAO seatdao = SeatDAOImpl.getInstance();
-    // List<Seat> seats = seatdao.getAllSeats();
     PlayTimeDAO playtimedao = PlayTimeDAOImpl.getInstance();
     ReservationDAO rdao = ReservationDAOImpl.getInstance();
 
@@ -47,7 +44,6 @@ public class DeleteController extends HttpServlet {
             String playDate = pt.getPlayTimeDate() + " " + pt.getPlayTimeHours();
 
             if (timeCheck(playDate)) {
-                // List<Integer> seatNumbers = new ArrayList<>();
                 String seats = "";
 
                 for (Reservation r : resses) {

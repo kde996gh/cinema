@@ -8,11 +8,8 @@ html body {
 .container2 {
     display: grid !important;
     grid-template-columns: auto auto auto !important;
-    /* display: flex;*/
     justify-content: center !important;
     text-align: center !important;
-    /*margin-top: 10% !important;*/
-
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
@@ -41,7 +38,7 @@ html body {
 }
 
 
-.taken{
+.taken {
     border-radius: 20px 20px 0px 0px;
     outline: none;
     padding: 5px;
@@ -59,17 +56,17 @@ html body {
 
 }
 
-.taken:focus{
+.taken:focus {
     outline: none;
 }
 
 
-.notTaken:focus{
+.notTaken:focus {
     outline: none;
 }
 
 
-.notTaken{
+.notTaken {
     border-radius: 20px 20px 0px 0px;
     outline: none;
     width: 70px;

@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class RoomAddEditController implements Initializable {
@@ -34,7 +33,6 @@ public class RoomAddEditController implements Initializable {
 
     public void setRoom(Room r) {
         this.room = r;
-       // List<Room> roomList = roomdao.listRooms();
 
         room_name.textProperty().bindBidirectional(room.nameProperty());//szoba nevének betölése 2way bindinggel
         IntegerProperty seatProp = new SimpleIntegerProperty(room.getSeatNumber());// uj prop létrehozása a szoba méretével

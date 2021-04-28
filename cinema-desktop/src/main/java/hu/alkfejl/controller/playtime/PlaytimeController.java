@@ -3,7 +3,11 @@ package hu.alkfejl.controller.playtime;
 import hu.alkfejl.App;
 import hu.alkfejl.controller.Utils;
 import hu.alkfejl.dao.implementation.PlayTimeDAOImpl;
+import hu.alkfejl.dao.implementation.ReservationDAOImpl;
+import hu.alkfejl.dao.implementation.SeatDAOImpl;
 import hu.alkfejl.dao.interfaces.PlayTimeDAO;
+import hu.alkfejl.dao.interfaces.ReservationDAO;
+import hu.alkfejl.dao.interfaces.SeatDAO;
 import hu.alkfejl.model.PlayTime;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -21,6 +24,8 @@ import java.util.ResourceBundle;
 public class PlaytimeController implements Initializable {
 
     PlayTimeDAO playtimedao = new PlayTimeDAOImpl();
+    ReservationDAO resDao = new ReservationDAOImpl();
+    SeatDAO seatDao = new SeatDAOImpl();
     private List<PlayTime> all;
 
     @FXML
@@ -96,7 +101,8 @@ public class PlaytimeController implements Initializable {
             if (buttonType.equals(buttonType.YES)) {
                 playtimedao.delete(playtime);
                 playtimedao.deleteRoomSeat(playtime);
-
+                resDao.deleteReservationByPlayTimeId(playtime.getId());
+                seatDao.deleteSeatsByPlayTimeId(playtime.getId());
             }
         });
         Utils.showInfo("Sikeres törlés!");

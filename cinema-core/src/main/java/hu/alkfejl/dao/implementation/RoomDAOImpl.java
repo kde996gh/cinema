@@ -69,10 +69,8 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public Room save(Room room) {
-        //System.out.println("RoomDAO save: name: " + room.getName() + ", row: " + room.getRowNumber() + ", id: " + room.getId());
-        try (//Connection conn = DriverManager.getConnection(connectionURL);
-             PreparedStatement stmt = room.getId() <= 0 ? conn.prepareStatement(INSERT_ROOM, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_ROOM)
-
+        try (
+                PreparedStatement stmt = room.getId() <= 0 ? conn.prepareStatement(INSERT_ROOM, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_ROOM)
         ) {
             if (room.getId() > 0) {
                 stmt.setInt(5, room.getId());

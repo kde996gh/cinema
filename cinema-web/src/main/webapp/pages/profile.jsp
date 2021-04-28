@@ -9,7 +9,7 @@
 <jsp:include page="common/menu.jsp"/>
 
 <c:if test="${requestScope.message != ''}">
-    ${requestScope.message}
+    <h1 class="container container2">${requestScope.message}</h1>
 </c:if>
 <c:if test="${requestScope.message == ''}">
     <h1>Foglalások</h1>
