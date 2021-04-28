@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="cinema" uuid="ca64df07-d126-4751-bbe9-38915c705b41">
+    <data-source source="LOCAL" name="cinema" uuid="960ff38f-d41e-43a0-9063-f1a2b1bc3703">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\resources\cinema</jdbc-url>
+      <jdbc-url>jdbc:sqlite:E:\TTIK\4._felev\Alkalmazasfejlesztes 1\Project\cinema\cinema-core\src\main\resources\cinema.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.34.0/sqlite-jdbc-3.34.0.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

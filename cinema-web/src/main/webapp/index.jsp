@@ -2,6 +2,6 @@
          pageEncoding="UTF-8" %>
 
 <%
-    String redirectURL = "/movies";
+    String redirectURL = "/";
     response.sendRedirect(redirectURL);
 %>

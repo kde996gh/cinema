@@ -96,6 +96,7 @@ public class PlaytimeController implements Initializable {
             if (buttonType.equals(buttonType.YES)) {
                 playtimedao.delete(playtime);
                 playtimedao.deleteRoomSeat(playtime);
+
             }
         });
         Utils.showInfo("Sikeres törlés!");
