@@ -17,8 +17,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtimeId=? AND email=?";
     private static final String DELETE_RES_BY_PT_ID = "DELETE FROM RESERVATION WHERE playtimeId=?";
 
-    private String connectionURL;
-    private Connection conn;
+    private String connectionURL = CinemaConfiguration.getValue("db.url");
     private static ReservationDAOImpl instance;
 
     public static ReservationDAOImpl getInstance() {
@@ -34,17 +33,12 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     public ReservationDAOImpl() {
-        connectionURL = CinemaConfiguration.getValue("db.url");
-        try {
-            conn = DriverManager.getConnection(connectionURL);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     @Override
     public ObservableList<Reservation> listReservations() {
-        try (Statement stmt = conn.createStatement();
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_RESERVATIONS);
         ) {
             ObservableList<Reservation> ress = FXCollections.observableArrayList();
@@ -70,7 +64,7 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public Reservation save(Reservation reservation) {
-        try {
+        try(Connection conn = DriverManager.getConnection(connectionURL);) {
             PreparedStatement stmt;
             if (checkIfAlreadyExists(reservation)) {
                 stmt = conn.prepareStatement(DELETE_WITH_ID_EMAIL);
@@ -86,7 +80,7 @@ public class ReservationDAOImpl implements ReservationDAO {
             stmt.setString(5, reservation.getMovieName());
             stmt.setString(6, reservation.getPlaytimeDate());
             stmt.executeUpdate();
-
+            stmt.close();
             if (reservation.getId() <= 0) {
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
@@ -137,9 +131,11 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public void deleteReservationByUser(String email, int intptid) {
-        try {
-            PreparedStatement stmt;
-            stmt = conn.prepareStatement(DELETE_WITH_ID_EMAIL);
+        try(
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = conn.prepareStatement(DELETE_WITH_ID_EMAIL);
+
+        ) {
             stmt.setInt(1, intptid);
             stmt.setString(2, email);
             stmt.executeUpdate();
@@ -149,10 +145,13 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public void deleteReservationByPlayTimeId(int playtimeId){
-        try {
-            PreparedStatement stmt;
-            stmt = conn.prepareStatement(DELETE_RES_BY_PT_ID);
+    public void deleteReservationByPlayTimeId(int playtimeId) {
+        try(
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = conn.prepareStatement(DELETE_RES_BY_PT_ID);
+
+        ) {
+
             stmt.setInt(1, playtimeId);
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -163,8 +162,8 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public Reservation getReservationByIdEmail(int ptid, String email) {
-        for(Reservation r : this.listReservations()){
-            if(r.getEmail().equals(email) && r.getPlaytimeId() == ptid){
+        for (Reservation r : this.listReservations()) {
+            if (r.getEmail().equals(email) && r.getPlaytimeId() == ptid) {
                 return r;
             }
         }

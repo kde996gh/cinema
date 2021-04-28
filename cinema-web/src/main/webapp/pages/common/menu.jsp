@@ -20,8 +20,9 @@
                             ${sessionScope.email}
                     </a>
                     <div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>
-                        <a class='dropdown-item' href='/logout'>Kijelentkezés</a>
                         <a class='dropdown-item' href='/profile'>Profilom</a>
+                        <a class='dropdown-item' href='/logout'>Kijelentkezés</a>
+
                     </div>
                 </li>
             </c:if>

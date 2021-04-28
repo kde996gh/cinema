@@ -18,8 +18,7 @@ public class TicketDAOImpl implements TicketDAO {
     private static final String DELETE_TICKET = "DELETE FROM TICKET WHERE id=?";
     private static final String SELECT_ONLY_NAMES = "SELECT ticketType FROM TICKET";
 
-    private String connectionURL;
-    private Connection conn;
+    private String connectionURL = CinemaConfiguration.getValue("db.url");
     private static TicketDAOImpl instance;
 
 
@@ -37,19 +36,15 @@ public class TicketDAOImpl implements TicketDAO {
 
 
     public TicketDAOImpl() {
-        connectionURL = CinemaConfiguration.getValue("db.url");
-        try {
-            conn = DriverManager.getConnection(connectionURL);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     @Override
     public List<Ticket> findAllTicket() {
         List<Ticket> result = new ArrayList<>();
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(SELECT_ALL_TICKET);) {
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SELECT_ALL_TICKET);) {
             while (rs.next()) {
                 Ticket current = new Ticket();
                 current.setId(rs.getInt("id"));
@@ -68,8 +63,10 @@ public class TicketDAOImpl implements TicketDAO {
     @Override
     public ObservableList<Integer> findTicketTypes() {
         ObservableList<Integer> result = FXCollections.observableArrayList();
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(SELECT_ONLY_NAMES)
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SELECT_ONLY_NAMES)
         ) {
             while (rs.next()) {
                 Integer a = rs.getInt("ticketType");
@@ -84,7 +81,9 @@ public class TicketDAOImpl implements TicketDAO {
 
     @Override
     public Ticket save(Ticket ticket) {
-        try (PreparedStatement stmt = ticket.getId() <= 0 ? conn.prepareStatement(INSERT_TICKET, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_TICKET)) {
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = ticket.getId() <= 0 ? conn.prepareStatement(INSERT_TICKET, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_TICKET)) {
             if (ticket.getId() > 0) {
                 stmt.setInt(4, ticket.getId());
             }
@@ -110,7 +109,9 @@ public class TicketDAOImpl implements TicketDAO {
 
     @Override
     public void delete(Ticket ticket) {
-        try (PreparedStatement stmt = conn.prepareStatement(DELETE_TICKET)) {
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = conn.prepareStatement(DELETE_TICKET)) {
             stmt.setInt(1, ticket.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {

@@ -13,9 +13,8 @@ public class UserDAOImpl implements UserDAO {
     private static final String ADD_USER = "INSERT INTO USER (userName, password, email) VALUES  (?,?,?)";
     private static final String USER_CHECK = "SELECT * FROM USER WHERE email = ?";
     private static final String SELECT_ALL_USER = "SELECT * FROM USER";
-    private String connectionURL;
+    private String connectionURL = CinemaConfiguration.getValue("db.url");
 
-    private Connection conn;
 
     private static UserDAOImpl instance;
 
@@ -33,19 +32,14 @@ public class UserDAOImpl implements UserDAO {
 
 
     public UserDAOImpl() {
-        connectionURL = CinemaConfiguration.getValue("db.url");
-        try {
-            conn = DriverManager.getConnection(connectionURL);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
     }
 
     @Override
     public List<User> listUser() {
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(SELECT_ALL_USER);
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SELECT_ALL_USER);
         ) {
             List<User> users = new ArrayList<>();
             while (rs.next()) {
@@ -66,7 +60,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void addNewUser(User user) {
-        try (PreparedStatement stmt = conn.prepareStatement(ADD_USER)) {
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = conn.prepareStatement(ADD_USER)) {
 
             String encodedPassword = BCrypt.withDefaults().hashToString(12, user.getPassword().toCharArray());
             user.setPassword(encodedPassword);
@@ -85,6 +81,7 @@ public class UserDAOImpl implements UserDAO {
     public User loginCheck(String email, String password) {
 
         try (
+                Connection conn = DriverManager.getConnection(connectionURL);
                 PreparedStatement pst = conn.prepareStatement(USER_CHECK)
         ) {
             pst.setString(1, email);

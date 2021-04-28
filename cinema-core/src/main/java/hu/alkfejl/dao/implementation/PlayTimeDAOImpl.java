@@ -19,8 +19,7 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE playtimeId=?";
     private static final String INSERT_SEATS = "INSERT INTO SEAT (playtimeId, seatId, taken) VALUES (?,?,?)";
-    private String connectionURL;
-    private Connection conn;
+    private String connectionURL = CinemaConfiguration.getValue("db.url");
 
     private static PlayTimeDAOImpl instance;
 
@@ -37,18 +36,14 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     }
 
     public PlayTimeDAOImpl() {
-        connectionURL = CinemaConfiguration.getValue("db.url");
-        try {
-            conn = DriverManager.getConnection(connectionURL);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     @Override
     public List<PlayTime> listPlayTimes() {
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(SELECT_ALL_PLAYTIME);
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SELECT_ALL_PLAYTIME);
         ) {
             List<PlayTime> playtimes = new ArrayList<>();
             while (rs.next()) {
@@ -76,8 +71,8 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     @Override
     public PlayTime save(PlayTime playTime) {
-        try (
-                PreparedStatement stmt = playTime.getId() <= 0 ? conn.prepareStatement(INSERT_PLAYTIME, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_PLAYTIME)
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             PreparedStatement stmt = playTime.getId() <= 0 ? conn.prepareStatement(INSERT_PLAYTIME, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_PLAYTIME)
         ) {
             if (playTime.getId() > 0) {
                 stmt.setInt(6, playTime.getId());
@@ -106,7 +101,9 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     @Override
     public void delete(PlayTime playTime) {
-        try (PreparedStatement stmt = conn.prepareStatement(DELETE_PLAYTIME)) {
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = conn.prepareStatement(DELETE_PLAYTIME)) {
             stmt.setInt(1, playTime.getId());
             stmt.executeUpdate();
         } catch (SQLException exception) {
@@ -128,7 +125,7 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     @Override
     public void addRoomSeats(PlayTime playTime) {
-        try {
+        try (Connection conn = DriverManager.getConnection(connectionURL);) {
             PreparedStatement stmt;
             Room r = RoomDAOImpl.getInstance().getRoomByName(playTime.getRoomName());
 
@@ -143,6 +140,7 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     stmt.setInt(3, 0);
                     stmt.executeUpdate();
                 }
+                stmt.close();
             } else {
                 stmt = conn.prepareStatement(INSERT_SEATS);
                 for (int i = 1; i < r.getSeatNumber() + 1; i++) {
@@ -151,6 +149,7 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
                     stmt.setInt(3, 0);
                     stmt.executeUpdate();
                 }
+                stmt.close();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -158,7 +157,8 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     }
 
     public void deleteRoomSeat(PlayTime pt) {
-        try (PreparedStatement stmt = conn.prepareStatement(DELETE_SEAT_WITH_ID)) {
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             PreparedStatement stmt = conn.prepareStatement(DELETE_SEAT_WITH_ID)) {
             stmt.setInt(1, pt.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {

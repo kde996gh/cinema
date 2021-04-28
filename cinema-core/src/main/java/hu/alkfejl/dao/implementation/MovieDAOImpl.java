@@ -17,8 +17,7 @@ public class MovieDAOImpl implements MovieDAO {
     private static final String INSERT_MOVIE = "INSERT INTO MOVIE (title, lengthMin, ageLimit, director, actors, description, coverImage, movieType) VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETE_MOVIE = "DELETE FROM MOVIE WHERE id=?";
     private static final String SELECT_ONLY_TITLES = "SELECT title FROM MOVIE";
-    private String connectionURL;
-    private Connection conn;
+    private String connectionURL = CinemaConfiguration.getValue("db.url");
     private static MovieDAOImpl instance;
 
 
@@ -35,17 +34,12 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     public MovieDAOImpl() {
-        connectionURL = CinemaConfiguration.getValue("db.url");
-        try {
-            conn = DriverManager.getConnection(connectionURL);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     @Override
     public List<Movie> listMovies() {
-        try (Statement stmt = conn.createStatement();
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_MOVIES);
         ) {
             List<Movie> movies = new ArrayList<>();
@@ -75,7 +69,8 @@ public class MovieDAOImpl implements MovieDAO {
     @Override
     public ObservableList<String> listByName() {
         ObservableList<String> result = FXCollections.observableArrayList();
-        try (Statement stmt = conn.createStatement();
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ONLY_TITLES)
         ) {
             while (rs.next()) {
@@ -90,8 +85,8 @@ public class MovieDAOImpl implements MovieDAO {
 
     @Override
     public Movie save(Movie movie) {
-        try (
-                PreparedStatement stmt = movie.getId() <= 0 ? conn.prepareStatement(INSERT_MOVIE, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_MOVIE)
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             PreparedStatement stmt = movie.getId() <= 0 ? conn.prepareStatement(INSERT_MOVIE, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_MOVIE)
         ) {
             if (movie.getId() > 0) {
                 stmt.setInt(9, movie.getId());
@@ -124,7 +119,8 @@ public class MovieDAOImpl implements MovieDAO {
 
     @Override
     public void delete(Movie movie) {
-        try (PreparedStatement stmt = conn.prepareStatement(DELETE_MOVIE)) {
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             PreparedStatement stmt = conn.prepareStatement(DELETE_MOVIE)) {
             stmt.setInt(1, movie.getId());
             stmt.executeUpdate();
         } catch (SQLException exception) {

@@ -14,8 +14,7 @@ public class SeatDAOImpl implements SeatDAO {
     private static final String UPDATE_RESERVE = "UPDATE SEAT SET taken=1 WHERE playtimeId=? AND seatId=?";
     private static final String UPDATE_ON_DELETE = "UPDATE SEAT SET taken=0 WHERE playtimeId=? AND seatId=?";
     private static final String DELETE_SEATS = "DELETE FROM SEAT WHERE playtimeId=?";
-    private String connectionURL;
-    private Connection conn;
+    private String connectionURL = CinemaConfiguration.getValue("db.url");
     private static SeatDAOImpl instance;
 
     public static SeatDAOImpl getInstance() {
@@ -31,18 +30,14 @@ public class SeatDAOImpl implements SeatDAO {
     }
 
     public SeatDAOImpl() {
-        connectionURL = CinemaConfiguration.getValue("db.url");
-        try {
-
-            conn = DriverManager.getConnection(connectionURL);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     @Override
     public void reserve(int playtimeId, int seatId) {
-        try (PreparedStatement stmt = conn.prepareStatement(UPDATE_RESERVE)) {
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = conn.prepareStatement(UPDATE_RESERVE)
+        ) {
             stmt.setInt(1, playtimeId);
             stmt.setInt(2, seatId);
             stmt.executeUpdate();
@@ -53,8 +48,10 @@ public class SeatDAOImpl implements SeatDAO {
 
     @Override
     public List<Seat> getAllSeats() {
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(SELECT_ALL_SEAT);
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SELECT_ALL_SEAT);
         ) {
             List<Seat> seats = new ArrayList<>();
 
@@ -89,7 +86,9 @@ public class SeatDAOImpl implements SeatDAO {
 
     @Override
     public void updateOnDelete(int ptid, int seatid) {
-        try (PreparedStatement stmt = conn.prepareStatement(UPDATE_ON_DELETE)) {
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = conn.prepareStatement(UPDATE_ON_DELETE)) {
             stmt.setInt(1, ptid);
             stmt.setInt(2, seatid);
             stmt.executeUpdate();
@@ -100,7 +99,9 @@ public class SeatDAOImpl implements SeatDAO {
 
     @Override
     public void deleteSeatsByPlayTimeId(int ptid) {
-        try (PreparedStatement stmt = conn.prepareStatement(DELETE_SEATS)) {
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                PreparedStatement stmt = conn.prepareStatement(DELETE_SEATS)) {
             stmt.setInt(1, ptid);
             stmt.executeUpdate();
         } catch (SQLException e) {

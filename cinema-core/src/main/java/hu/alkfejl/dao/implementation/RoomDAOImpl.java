@@ -18,8 +18,7 @@ public class RoomDAOImpl implements RoomDAO {
     private static final String SELECT_ALL_ROOM = "SELECT * FROM ROOM";
     private static final String DELETE_ROOM = "DELETE FROM ROOM WHERE id = ?";
 
-    private String connectionURL;
-    private Connection conn;
+    private String connectionURL = CinemaConfiguration.getValue("db.url");
 
     private static RoomDAOImpl instance;
 
@@ -36,20 +35,14 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     public RoomDAOImpl() {
-        connectionURL = CinemaConfiguration.getValue("db.url");
-        try {
-            conn = DriverManager.getConnection(connectionURL);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     @Override
     public List<Room> listRooms() {
         List<Room> result = new ArrayList<>();
-        try (
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(SELECT_ALL_ROOM);
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(SELECT_ALL_ROOM);
         ) {
             while (rs.next()) {
                 Room current = new Room();
@@ -69,8 +62,8 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public Room save(Room room) {
-        try (
-                PreparedStatement stmt = room.getId() <= 0 ? conn.prepareStatement(INSERT_ROOM, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_ROOM)
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             PreparedStatement stmt = room.getId() <= 0 ? conn.prepareStatement(INSERT_ROOM, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_ROOM)
         ) {
             if (room.getId() > 0) {
                 stmt.setInt(5, room.getId());
@@ -101,7 +94,8 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public void delete(Room room) {
-        try (PreparedStatement stmt = conn.prepareStatement(DELETE_ROOM)) {
+        try (Connection conn = DriverManager.getConnection(connectionURL);
+             PreparedStatement stmt = conn.prepareStatement(DELETE_ROOM)) {
             stmt.setInt(1, room.getId());
             stmt.executeUpdate();
         } catch (SQLException throwables) {
@@ -112,8 +106,10 @@ public class RoomDAOImpl implements RoomDAO {
     @Override
     public ObservableList<String> listByName() {
         ObservableList<String> result = FXCollections.observableArrayList();
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(SELECT_ONLY_NAMES)
+        try (
+                Connection conn = DriverManager.getConnection(connectionURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SELECT_ONLY_NAMES)
         ) {
             while (rs.next()) {
                 String a = rs.getString("name");
