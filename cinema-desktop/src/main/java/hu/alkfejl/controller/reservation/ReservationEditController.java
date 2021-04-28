@@ -29,13 +29,10 @@ public class ReservationEditController implements Initializable {
     private Label priceLabel;
 
     PlayTimeDAO playtimedao = PlayTimeDAOImpl.getInstance();
-    //  SeatDAO seatDAO = SeatDAOImpl.getInstance();
     RoomDAO roomDAO = RoomDAOImpl.getInstance();
     TicketDAO ticketDAO = TicketDAOImpl.getInstance();
     ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
     SeatDAOImpl seatDao = SeatDAOImpl.getInstance();
-    //  MovieDAO moviedao = MovieDAOImpl.getInstance();
-    //  UserDAO userDao = UserDAOImpl.getInstance();
 
     private List<Reservation> reservationList;
 
@@ -70,7 +67,6 @@ public class ReservationEditController implements Initializable {
 
 
         int col = room.getColNumber();
-        int row = room.getRowNumber();
 
         Button[] movieButton = new Button[seats.size()];
         int rowHelper = 0;
@@ -161,9 +157,9 @@ public class ReservationEditController implements Initializable {
 
     public void onSave(ActionEvent actionEvent) {
 
-        if(seatsList.size() == 0){
+        if (seatsList.size() == 0) {
             Utils.showWarning("Nem lehetséges a módosítás!");
-        }else {
+        } else {
 
 
             String[] old = this.res.getReservedSeat().split(",");

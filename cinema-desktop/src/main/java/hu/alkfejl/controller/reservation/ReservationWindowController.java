@@ -118,18 +118,13 @@ public class ReservationWindowController implements Initializable {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Biztosan törlöd a foglalást?", ButtonType.YES, ButtonType.NO);
         confirm.showAndWait().ifPresent(buttonType -> {
             if (buttonType.equals(ButtonType.YES)) {
-                if (timeCheck(res.getPlaytimeDate())) {
-                    reservationDao.deleteReservationByUser(res.getEmail(), res.getPlaytimeId());
-
-
-                    String[] old = res.getReservedSeat().split(",");
-                    for (String string : old) {
-                        seatDao.updateOnDelete(res.getPlaytimeId(), Integer.parseInt(string));
-                    }
-                    Utils.showInfo("Sikeres törlés!");
-                } else {
-                    Utils.showWarning("Nem törölhető, csak 24 órával a vetítés előtt!");
+                reservationDao.deleteReservationByUser(res.getEmail(), res.getPlaytimeId());
+                String[] old = res.getReservedSeat().split(",");
+                for (String string : old) {
+                    seatDao.updateOnDelete(res.getPlaytimeId(), Integer.parseInt(string));
                 }
+                Utils.showInfo("Sikeres törlés!");
+
             }
         });
     }
@@ -145,28 +140,6 @@ public class ReservationWindowController implements Initializable {
         reserve_table.getItems().setAll(reservationList);
     }
 
-    public boolean timeCheck(String playTime_time) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date date = new Date();
-        String currentDate = formatter.format(date);
-
-        DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd H:m");
-
-        LocalDateTime dateTime1 = LocalDateTime.parse(playTime_time, dateformatter);
-        LocalDateTime dateTime2 = LocalDateTime.parse(currentDate, dateformatter);
-        // System.out.println("dateTime1 " + dateTime1);
-        //System.out.println("dateTime2 " + dateTime2);
-
-        long diffInMinutes = Math.abs(java.time.Duration.between(dateTime1, dateTime2).toMinutes());
-        // System.out.println("percek hátra: " + diffInMinutes);
-
-        if (diffInMinutes >= 1440) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
 
     public void onSearch(KeyEvent keyEvent) {
         List<Reservation> filtered = reservationList.stream().filter(reservation -> (reservation.getEmail().toLowerCase().contains(searchText.getText().toLowerCase()))

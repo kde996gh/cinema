@@ -18,7 +18,7 @@
         <div class="card-block px-2">
             <h4 class="card-title"><c:out value="${requestScope.movie.title}"/></h4>
             <p class="card-text">
-                Hossz: <c:out value="${requestScope.movie.lengthMin}"/>
+                Hossz: <c:out value="${requestScope.movie.lengthMin}"/> perc
             </p>
             <p class="card-text">
                 Korhatár: <c:out value="${requestScope.movie.ageLimit}"/>

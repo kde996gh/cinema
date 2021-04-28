@@ -3,6 +3,7 @@ package hu.alkfejl.servlets;
 import hu.alkfejl.dao.implementation.MovieDAOImpl;
 import hu.alkfejl.dao.interfaces.MovieDAO;
 import hu.alkfejl.model.Movie;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +43,6 @@ public class MoviesServlet extends HttpServlet {
         req.setAttribute("movies", all);
 
         getServletContext().getRequestDispatcher("/pages/movies.jsp").forward(req, resp);
-
 
     }
 }

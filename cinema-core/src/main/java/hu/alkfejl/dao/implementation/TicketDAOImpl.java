@@ -5,6 +5,7 @@ import hu.alkfejl.dao.interfaces.TicketDAO;
 import hu.alkfejl.model.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

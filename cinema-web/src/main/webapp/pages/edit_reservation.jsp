@@ -1,5 +1,3 @@
-<%@ page import="hu.alkfejl.model.Seat" %>
-<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -14,7 +12,7 @@
     <p hidden id="reservedSeats">${requestScope.seatsString}</p>
 </c:if>
 <c:if test="${requestScope.message != ''}">
-    ${requestScope.message}
+    <h1 class="container container2">${requestScope.message}</h1>
 </c:if>
 <c:if test="${requestScope.message == ''}">
     <div class="container d-flex justify-content-center">
@@ -146,6 +144,8 @@
     console.log(" lowerpice :" + parseInt(price));
     console.log(" seatspicked :" + picked_seats);
     console.log(" seatspicked :" + picked_seats.length);
+
+
 </script>
 </body>
 

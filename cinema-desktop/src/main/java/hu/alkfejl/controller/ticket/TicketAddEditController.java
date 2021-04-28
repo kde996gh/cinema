@@ -13,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
-import javafx.util.converter.NumberStringConverter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,8 +31,6 @@ public class TicketAddEditController implements Initializable {
 
     public void setTicket(Ticket t) {
         this.ticket = t;
-
-        //price.textProperty().bindBidirectional(ticket.priceProperty(), new NumberStringConverter());
 
         if (ticket.priceProperty().getValue() > 0)
             price.setText(ticket.priceProperty().getValue().toString());

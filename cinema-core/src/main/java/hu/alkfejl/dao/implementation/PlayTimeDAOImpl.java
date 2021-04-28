@@ -4,8 +4,7 @@ import hu.alkfejl.config.CinemaConfiguration;
 import hu.alkfejl.dao.interfaces.PlayTimeDAO;
 import hu.alkfejl.model.PlayTime;
 import hu.alkfejl.model.Room;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -48,11 +47,9 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     @Override
     public List<PlayTime> listPlayTimes() {
-    //public ObservableList<PlayTime> listPlayTimes() {
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_PLAYTIME);
         ) {
-            //ObservableList<PlayTime> playtimes = FXCollections.observableArrayList();
             List<PlayTime> playtimes = new ArrayList<>();
             while (rs.next()) {
                 PlayTime pt = new PlayTime();
@@ -119,8 +116,6 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
 
     @Override
     public List<PlayTime> getMoviePlayTimes(String movieName) {
-   // public ObservableList<PlayTime> getMoviePlayTimes(String movieName) {
-        //ObservableList<PlayTime> result = FXCollections.observableArrayList();
         List<PlayTime> result = new ArrayList<>();
         List<PlayTime> pts = this.listPlayTimes();
         for (PlayTime ptit : pts) {

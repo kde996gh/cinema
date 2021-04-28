@@ -8,7 +8,7 @@ public class Ticket {
     private IntegerProperty id = new SimpleIntegerProperty(this, "id");
     private IntegerProperty price = new SimpleIntegerProperty(this, "price");
     private IntegerProperty lowerPrice = new SimpleIntegerProperty(this, "lowerPrice");
-    private IntegerProperty ticketType = new SimpleIntegerProperty(this,"type");
+    private IntegerProperty ticketType = new SimpleIntegerProperty(this, "type");
 
 
     public int getId() {

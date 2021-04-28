@@ -15,6 +15,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     private static final String SELECT_ALL_RESERVATIONS = "SELECT * FROM RESERVATION";
     private static final String INSERT_RESERVATION = "INSERT INTO RESERVATION(playtimeId, email, reservedSeat, priceSum, movieName, playtimeDate) VALUES (?,?,?,?,?,?)";
     private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtimeId=? AND email=?";
+    private static final String DELETE_RES_BY_PT_ID = "DELETE FROM RESERVATION WHERE playtimeId=?";
 
     private String connectionURL;
     private Connection conn;
@@ -141,6 +142,18 @@ public class ReservationDAOImpl implements ReservationDAO {
             stmt = conn.prepareStatement(DELETE_WITH_ID_EMAIL);
             stmt.setInt(1, intptid);
             stmt.setString(2, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Hiba a foglalás törlésekor!");
+        }
+    }
+
+    @Override
+    public void deleteReservationByPlayTimeId(int playtimeId){
+        try {
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement(DELETE_RES_BY_PT_ID);
+            stmt.setInt(1, playtimeId);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Hiba a foglalás törlésekor!");

@@ -45,12 +45,10 @@ public class MovieDAOImpl implements MovieDAO {
 
     @Override
     public List<Movie> listMovies() {
-   // public ObservableList<Movie> listMovies() {
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_MOVIES);
         ) {
             List<Movie> movies = new ArrayList<>();
-           // ObservableList<Movie> movies = FXCollections.observableArrayList();
 
             while (rs.next()) {
                 Movie currMovie = new Movie();
@@ -76,7 +74,6 @@ public class MovieDAOImpl implements MovieDAO {
 
     @Override
     public ObservableList<String> listByName() {
-    //public ObservableList<String> listByName() {
         ObservableList<String> result = FXCollections.observableArrayList();
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ONLY_TITLES)

@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -43,10 +44,9 @@ public class MovieWindowController implements Initializable {
         imageDrawer(movies);
     }
 
-    private void imageDrawer(List<Movie> movies){
+    private void imageDrawer(List<Movie> movies) {
         Button[] movieButton = new Button[movies.size()];
         gridPane.setHgap(10);
-        //gridPane.setVgap(15);
         int col = 0;
         int row = 0;
         for (int i = 0; i < movies.size(); i++) {
@@ -74,7 +74,7 @@ public class MovieWindowController implements Initializable {
 
             container.setPadding(new Insets(3));
 
-            container.getChildren().addAll(titleLabel,movieButton[i]);
+            container.getChildren().addAll(titleLabel, movieButton[i]);
 
             gridPane.add(container, col, row);
             col++;
@@ -118,6 +118,7 @@ public class MovieWindowController implements Initializable {
             imageDrawer(movies);
         }
     }
+
     public void backToMainWindow(ActionEvent actionEvent) {
         App.loadFXML("/fxml/main_window.fxml");
     }
