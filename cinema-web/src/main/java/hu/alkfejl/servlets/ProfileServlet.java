@@ -52,10 +52,6 @@ public class ProfileServlet extends HttpServlet {
             req.setAttribute("usersPlaytimes", usersPlaytimes);
             req.setAttribute("userReservations", userReservations);
 
-
-            System.out.println("Ez a foglalások számai:  " + userPtResIds);
-
-
             message = "";
         }
 

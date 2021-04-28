@@ -66,11 +66,8 @@ public class EditController extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
 
-        System.out.println((req.getParameter("seatPicked").equals("")) ? true : false);
-
         String email = (String) req.getSession().getAttribute("email");
-
-
+        
         if (email != null && !req.getParameter("seatPicked").equals("")) {
             String[] seatsPicked = req.getParameterValues("seatPicked");
             int ptid = Integer.parseInt(req.getParameter("playTimeId"));
@@ -96,7 +93,6 @@ public class EditController extends HttpServlet {
             reservationDAO.deleteReservationByUser(email, ptid);
 
             for (String splitedSeat : splitedSeatsOld) {
-                System.out.println("Splitted seat acc:  " + splitedSeat);
                 seatDao.updateOnDelete(ptid, Integer.parseInt(splitedSeat));
             }
 

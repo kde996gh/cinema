@@ -17,7 +17,7 @@ public class MovieDAOImpl implements MovieDAO {
     private static final String INSERT_MOVIE = "INSERT INTO MOVIE (title, lengthMin, ageLimit, director, actors, description, coverImage, movieType) VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETE_MOVIE = "DELETE FROM MOVIE WHERE id=?";
     private static final String SELECT_ONLY_TITLES = "SELECT title FROM MOVIE";
-    private String connectionURL = CinemaConfiguration.getValue("db.url");
+    private final String connectionURL = CinemaConfiguration.getValue("db.url");
     private static MovieDAOImpl instance;
 
 

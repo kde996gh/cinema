@@ -18,9 +18,9 @@ public class TicketDAOImpl implements TicketDAO {
     private static final String DELETE_TICKET = "DELETE FROM TICKET WHERE id=?";
     private static final String SELECT_ONLY_NAMES = "SELECT ticketType FROM TICKET";
 
-    private String connectionURL = CinemaConfiguration.getValue("db.url");
-    private static TicketDAOImpl instance;
+    private final String connectionURL = CinemaConfiguration.getValue("db.url");
 
+    private static TicketDAOImpl instance;
 
     public static TicketDAOImpl getInstance() {
         if (instance == null) {

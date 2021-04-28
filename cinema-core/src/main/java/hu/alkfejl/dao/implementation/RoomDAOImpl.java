@@ -18,7 +18,7 @@ public class RoomDAOImpl implements RoomDAO {
     private static final String SELECT_ALL_ROOM = "SELECT * FROM ROOM";
     private static final String DELETE_ROOM = "DELETE FROM ROOM WHERE id = ?";
 
-    private String connectionURL = CinemaConfiguration.getValue("db.url");
+    private final String connectionURL = CinemaConfiguration.getValue("db.url");
 
     private static RoomDAOImpl instance;
 

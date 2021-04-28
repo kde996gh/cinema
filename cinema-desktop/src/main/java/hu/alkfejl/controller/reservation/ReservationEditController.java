@@ -73,7 +73,6 @@ public class ReservationEditController implements Initializable {
         int colHelper = 0;
         for (int i = 0; i < seats.size(); i++) {
             String s = String.valueOf(seats.get(i).getSeatId());
-            System.out.println("Stringben a székid: " + s);
             movieButton[i] = new Button(s);
             colHelper++;
             if (i % col == 0) {
@@ -109,7 +108,7 @@ public class ReservationEditController implements Initializable {
                     seatsList.remove(Integer.valueOf(Integer.parseInt(movieButton[index].textProperty().getValue())));
                     priceUpdate();
                 } else if (movieButton[index].getId().equals("red")) {
-                    //System.out.println("ez foglalt");
+                    System.out.println("ez foglalt");
                 }
 
             });
@@ -164,7 +163,6 @@ public class ReservationEditController implements Initializable {
 
             String[] old = this.res.getReservedSeat().split(",");
             for (String string : old) {
-                // System.out.println("Splitted seat acc:  " + integer);
                 seatDao.updateOnDelete(this.res.getPlaytimeId(), Integer.parseInt(string));
             }
             reservationDAO.deleteReservationByUser(this.res.getEmail(), this.res.getPlaytimeId());

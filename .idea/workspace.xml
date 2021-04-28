@@ -18,8 +18,24 @@
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/SeatDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/SeatDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/TicketDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/TicketDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/java/hu/alkfejl/dao/implementation/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-core/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-core/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/common/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/common/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-desktop/src/main/java/hu/alkfejl/controller/reservation/ReservationEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/EditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/MoviesServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ProfileServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ProfileServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/RegistrationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ReservationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/java/hu/alkfejl/servlets/ReservationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/common/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/common/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/edit_reservation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/edit_reservation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movie.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/movies.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/reservation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/reservation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/showtimes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-web/src/main/webapp/pages/showtimes.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +343,7 @@
       <workItem from="1619598138217" duration="10543000" />
       <workItem from="1619617213221" duration="594000" />
       <workItem from="1619617861112" duration="2635000" />
-      <workItem from="1619632727176" duration="3040000" />
+      <workItem from="1619632727176" duration="5113000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton">
       <created>1617386989614</created>
@@ -623,14 +639,20 @@
       <option name="project" value="LOCAL" />
       <updated>1619612121954</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="db hotfix">
+      <created>1619641152198</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1619641152198</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="vetítés 95% + ülőhelyek beállítása" />
     <MESSAGE value="film keresés több mindenre" />
     <MESSAGE value="asztali funciók 90%" />
     <MESSAGE value="web+-" />
@@ -655,7 +677,8 @@
     <MESSAGE value="desktop css" />
     <MESSAGE value="hotfix" />
     <MESSAGE value="hotfix ,css update, db update" />
-    <option name="LAST_COMMIT_MESSAGE" value="hotfix ,css update, db update" />
+    <MESSAGE value="db hotfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="db hotfix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

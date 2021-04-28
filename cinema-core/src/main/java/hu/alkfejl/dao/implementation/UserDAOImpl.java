@@ -13,7 +13,8 @@ public class UserDAOImpl implements UserDAO {
     private static final String ADD_USER = "INSERT INTO USER (userName, password, email) VALUES  (?,?,?)";
     private static final String USER_CHECK = "SELECT * FROM USER WHERE email = ?";
     private static final String SELECT_ALL_USER = "SELECT * FROM USER";
-    private String connectionURL = CinemaConfiguration.getValue("db.url");
+
+    private final String connectionURL = CinemaConfiguration.getValue("db.url");
 
 
     private static UserDAOImpl instance;
@@ -98,7 +99,6 @@ public class UserDAOImpl implements UserDAO {
                     user.setPassword(rs.getString("password"));
                     user.setEmail(rs.getString("email"));
                     user.setId(rs.getInt("id"));
-                    System.out.println(user);
                     return user;
                 }
             }
@@ -106,7 +106,7 @@ public class UserDAOImpl implements UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("nem sikerült!");
+
         return null;
     }
 

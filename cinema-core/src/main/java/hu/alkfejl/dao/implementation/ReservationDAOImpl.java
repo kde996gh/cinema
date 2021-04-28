@@ -17,7 +17,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     private static final String DELETE_WITH_ID_EMAIL = "DELETE FROM RESERVATION WHERE playtimeId=? AND email=?";
     private static final String DELETE_RES_BY_PT_ID = "DELETE FROM RESERVATION WHERE playtimeId=?";
 
-    private String connectionURL = CinemaConfiguration.getValue("db.url");
+    private final String connectionURL = CinemaConfiguration.getValue("db.url");
     private static ReservationDAOImpl instance;
 
     public static ReservationDAOImpl getInstance() {

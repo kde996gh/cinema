@@ -41,7 +41,6 @@ html body {
 .taken {
     border-radius: 20px 20px 0px 0px;
     outline: none;
-    padding: 5px;
     font-weight: bold;
     background-color: red;
     border: 2px solid black;
@@ -70,7 +69,6 @@ html body {
     border-radius: 20px 20px 0px 0px;
     outline: none;
     width: 70px;
-    padding: 5px;
     font-weight: bold;
     background-color: green;
     border: 2px solid black;

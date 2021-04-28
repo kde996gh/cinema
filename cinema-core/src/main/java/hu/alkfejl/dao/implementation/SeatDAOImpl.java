@@ -14,7 +14,8 @@ public class SeatDAOImpl implements SeatDAO {
     private static final String UPDATE_RESERVE = "UPDATE SEAT SET taken=1 WHERE playtimeId=? AND seatId=?";
     private static final String UPDATE_ON_DELETE = "UPDATE SEAT SET taken=0 WHERE playtimeId=? AND seatId=?";
     private static final String DELETE_SEATS = "DELETE FROM SEAT WHERE playtimeId=?";
-    private String connectionURL = CinemaConfiguration.getValue("db.url");
+    private final String connectionURL = CinemaConfiguration.getValue("db.url");
+
     private static SeatDAOImpl instance;
 
     public static SeatDAOImpl getInstance() {

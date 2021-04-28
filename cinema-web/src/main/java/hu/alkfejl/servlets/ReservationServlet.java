@@ -47,8 +47,6 @@ public class ReservationServlet extends HttpServlet {
             }
             String[] splitedSeats = seatsPickedString1.split(",");
 
-            System.out.println("EZA  STRING:" + seatsPickedString1);
-
             PlayTime currPt = playtimedao.getPlayTimeById(ptid);
 
             Reservation r = new Reservation();
@@ -94,7 +92,6 @@ public class ReservationServlet extends HttpServlet {
         Ticket ticket = ticketDAO.getTicketByType(playTime.getTicketType());
 
         boolean alreadyBooked = reservationDAO.checkIfAlreadyBooked(email, playtimeid);
-        System.out.println("alreadyBooked??? : " + alreadyBooked + ", email: " + email + ", ptid: " + playtimeid);
 
         if (alreadyBooked) {
             message = "Már foglaltál erre a filmre, a profilodon megtekinheted vagy módosíthatod!";

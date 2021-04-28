@@ -16,10 +16,10 @@ public class PlayTimeDAOImpl implements PlayTimeDAO {
     private static final String INSERT_PLAYTIME = "INSERT INTO PLAYTIME (roomName, movieName, ticketType, playTimeDate, playTimeHours) values (?,?,?,?,?)";
     private static final String UPDATE_PLAYTIME = "UPDATE PLAYTIME SET roomName=?, movieName=?, ticketType=?, playTimeDate=?, playTimeHours=? WHERE id=?";
     private static final String DELETE_PLAYTIME = "DELETE FROM PLAYTIME WHERE id=?";
-
     private static final String DELETE_SEAT_WITH_ID = "DELETE FROM SEAT WHERE playtimeId=?";
     private static final String INSERT_SEATS = "INSERT INTO SEAT (playtimeId, seatId, taken) VALUES (?,?,?)";
-    private String connectionURL = CinemaConfiguration.getValue("db.url");
+
+    private final String connectionURL = CinemaConfiguration.getValue("db.url");
 
     private static PlayTimeDAOImpl instance;
 

@@ -45,9 +45,8 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = (String) req.getSession().getAttribute("email");
-        System.out.println("email : " + email);
+
         if (email != null) {
-            System.out.println("bejöttem!");
             message = "Jelentkezz ki ha új felhasználót szeretnél regisztrálni!";
 
         } else {

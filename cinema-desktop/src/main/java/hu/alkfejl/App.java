@@ -1,8 +1,6 @@
 package hu.alkfejl;
 
-import hu.alkfejl.dao.implementation.RoomDAOImpl;
-import hu.alkfejl.dao.interfaces.RoomDAO;
-import hu.alkfejl.model.Room;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
+
 
 /**
  * JavaFX App
@@ -45,12 +43,6 @@ private static Stage stage;
         return loader;
     }
     public static void main(String[] args) {
-
-
-
-        // RoomDAO roomDAO = new RoomDAOImpl();
-         //roomDAO.fillSeats();
-        //System.out.println(roomDAO.findAll());
 
         launch();
     }
